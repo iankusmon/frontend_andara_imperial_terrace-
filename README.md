@@ -1,3 +1,68 @@
+# Andara Imperial Terrace
+
+An oase Andara's application that will handle the processws of sales, rent of property, tender and also tour package features as well.
+
+## About Andara Imperial Terrace Application
+
+### Sales Property
+
+Andara Imperial Terrace is your ultimate platform for seamless property sales and management. Designed to revolutionize the real estate market, it combines cutting-edge technology with strategic features to ensure properties reach their maximum sales potential.
+
+Get ready to redefine property transactions. Join Andara Imperial Terrace today!
+
+Key Features:
+ - Efficient Property Sales
+With a user-friendly interface and streamlined processes, buyers and sellers can easily connect, facilitating faster and more transparent transactions.
+
+- Agent Affiliate Program, Expand your sales force effortlessly with our innovative agent affiliate feature.
+Agents can register, promote properties, and earn competitive commissions.
+This program empowers a network of affiliates to boost property visibility and drive sales.
+Comprehensive Listings. Our platform hosts an extensive portfolio of properties, ensuring diverse options for buyers while maximizing exposure for sellers.
+
+With Andara Imperial Terrace, we’re not just facilitating property sales; we’re creating opportunities for growth, innovation, and success in the real estate market. Whether you’re a seasoned professional or a new agent, this is your gateway to thriving in property sales.
+
+Andara Imperial Terrace is your one-stop solution for handling property tenders, ensuring a smooth collaboration between property owners and constructors.
+
+### Tender
+
+Andara Imperial Terrace also become revolutionize the property tender process for constructors. This innovative application provides a seamless, efficient, and transparent workflow, encompassing every step from registration to tender management.
+
+Key Features:
+- Registration: Constructors can easily sign up and create a comprehensive profile that includes their credentials, certifications, and previous project portfolios.
+
+- Verification: A robust verification system ensures that all applicants meet the required standards and criteria before participating in the tender process.
+
+- Tender Management: The platform offers tools for managing tenders, including:
+
+  - Publishing property tender details.
+  - Allowing constructors to submit bids.
+  - Providing analytics for decision-making.
+  - Facilitating secure communication between stakeholders.
+
+### Rent of Villa
+
+Discover the pinnacle of elegance and indulgence at Andara Imperial Terrace, your ultimate destination for experiencing luxurious European villa-style living. Nestled amidst breathtaking European-inspired panoramas, we provide a haven of sophistication where every moment is tailored to perfection.
+
+Services We Offer:
+- Rooftop BBQ Delights: Savor unforgettable evenings under the stars with premium BBQ selections prepared atop our scenic rooftop terrace.
+- Sushi Time: Experience authentic and exquisite sushi creations, blending tradition and modern flair, served fresh daily.
+- Horsery Adventures: Embrace the thrill of equestrian activities, from guided rides to immersive horseback experiences for all skill levels.
+- Archery Excellence: Unleash your inner marksman with our professional archery setups, designed for fun and precision.
+- Panoramic European Views: Be enchanted by landscapes reminiscent of Europe’s finest destinations, a perfect backdrop for relaxation or memorable photos.
+Whether you’re seeking a serene escape, a romantic getaway, or simply a unique retreat, Andara Imperial Terrace promises an unparalleled experience that blends leisure, luxury, and lifestyle.
+
+Welcome to your European-inspired sanctuary.
+
+### Tour Package
+
+We are dedicated to crafting an Oasis Experience—a rejuvenating journey designed to boost your soul with positive energy. Whether you're exploring the cultural richness of Solo or seeking a serene escape, our tour packages guarantee the perfect blend of relaxation and adventure.
+
+To ensure your comfort, we offer exclusive accommodation in our luxurious European-style villas, providing a unique and charming place to stay, complete with modern amenities and elegant designs that transport you to a world of sophistication.
+
+At Andara Imperial Terrace, we aim to deliver not just tours but unforgettable experiences that leave you feeling refreshed and inspired. Come and let us guide you through the wonders of Solo Raya!
+
+## Framwwork Used
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
