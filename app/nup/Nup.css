@@ -1,0 +1,210 @@
+/* FormWithTooltip.css */
+.react-tooltip {
+  z-index: 1000;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  grid-column: span 2;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Global Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Styling */
+.review-container, .confirmation-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Headings */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Review Step Styling */
+.review-container p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  margin: 10px 0;
+}
+
+.review-container p strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Buttons Styling */
+button {
+  padding: 10px 20px; /* Memberikan jarak dalam tombol */
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px !important; /* Pastikan margin ter-apply dengan !important */
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.secondary {
+  background: #d3d3d3;
+  color: #333;
+  margin-right: 10px !important; /* Jarak khusus untuk tombol sekunder */
+}
+
+button.primary {
+  background: #007bff;
+  color: #fff;
+}
+
+button.success {
+  background: #28a745;
+  color: #fff;
+}
+
+/* Confirmation Section */
+.confirmation-container {
+  text-align: center;
+}
+
+.confirmation-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.confirmation-container label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.confirmation-container input[type="file"] {
+  display: block;
+  margin: 10px auto 20px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.confirmation-container button {
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Shared Container Styling for Steps */
+.step-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.step-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.step-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Form Input Styling */
+.step-container input[type="file"],
+.step-container textarea,
+.step-container input,
+.step-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 5px;
+  cursor: pointer;
+}

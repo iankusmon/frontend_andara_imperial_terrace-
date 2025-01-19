@@ -11,7 +11,7 @@ const Footer = () => {
         {/* LOGO & TEXT */}
         <div className='flex flex-col gap-4'>
           <div className='logo flex items-center gap-2'>
-            <Image src='/logo_ait.png' alt='logo' width={50} height={50} />
+            <Image src='/LogoAITGreen.png' alt='logo' width={50} height={50} />
             <h2 className='font-bold text-2xl'>Andara Imperial Terrace</h2>
           </div>
           <p className='opacity-70'>an oase Andara's application that will handle the process of sales, rent of property, tender and also tour features as well.
