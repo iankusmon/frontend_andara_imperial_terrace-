@@ -14,7 +14,7 @@ const Landmark = () => {
   return (
     <section className='relative max-container padding-container flex flex-col gap-16 py-12'>
       <div className='top'>
-        <Title title='Landmark'/>
+        <Title title='Landmark' subtitle=''/>
       </div>
 
       <div className='bottom flex items-center justify-between'>

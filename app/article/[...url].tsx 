@@ -1,0 +1,90 @@
+"use client"
+
+// import axios from 'axios';
+// import { Container, Typography, CircularProgress, Card, CardContent, CardMedia } from '@mui/material';
+import React from 'react';
+import ArticleLanding from '@/components/ArtilceLanding'
+import MiniBanner from '@/components/MiniBanner'
+
+interface ArticleDetailsProps {
+  label: string;
+  image: string;
+  ingredientLines: string[];
+  calories: number;
+}
+ 
+const ArticleDetailInfo = () => {
+  const router = useRouter();
+  const { slug } = router.query;
+  const [recipe, setRecipe] = useState<ArticleDetailsProps | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const fetchRecipe = async () => {
+  //     if (!router.query.uri) return;
+
+  //     const uri = decodeURIComponent(router.query.uri as string);
+
+  //     try {
+  //       const response = await axios.get(
+  //         `https://api.edamam.com/api/recipes/v2/by-uri`,
+  //         {
+  //           params: {
+  //             type: 'public',
+  //             app_id: APP_ID,
+  //             app_key: APP_KEY,
+  //             uri: uri,
+  //           },
+  //         }
+  //       );
+  //       setRecipe(response.data.recipe);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching recipe:', error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchRecipe();
+  // }, [slug, router.query.uri]);
+
+  // if (loading) {
+  //   return <CircularProgress />;
+  // }
+
+  // if (!recipe) {
+  //   return <Typography variant="h6">Recipe not found</Typography>;
+  // }
+
+  return (
+  //   <Container>
+  //     <Card>
+  //       <CardMedia
+  //         component="img"
+  //         height="140"
+  //         image={recipe.image}
+  //         alt={recipe.label}
+  //       />
+  //       <CardContent>
+  //         <Typography gutterBottom variant="h5" component="div">
+  //           {recipe.label}
+  //         </Typography>
+  //         <Typography variant="body2" color="textSecondary" component="p">
+  //           {recipe.ingredientLines.join(', ')}
+  //         </Typography>
+  //         <Typography variant="body2" color="textSecondary" component="p">
+  //           Calories: {Math.round(recipe.calories)}
+  //         </Typography>
+  //       </CardContent>
+  //     </Card>
+  //   </Container>
+  // );
+      <>
+        <ArticleLanding />
+        <MiniBanner />
+      </>
+    
+  
+};
+
+export default ArticleDetailInfo;
