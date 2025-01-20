@@ -192,7 +192,7 @@ const WizardForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      <Button variant="primary" onClick={goToNextStep}>Next</Button>
+      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
     </form>
   );
 
@@ -214,8 +214,8 @@ const WizardForm: React.FC = () => {
         <p><strong>Transfer Ke:</strong> 0197263634 atas nama Andara Rejo Makmur</p>
         <p><strong>Datang Ke Lokasi (apabila cash):</strong> Kantor Andara Rejo Makmur</p>
       </div>
-      <Button variant="secondary" onClick={goToPreviousStep}>Back</Button>
-      <Button variant="primary" onClick={goToNextStep}>Next</Button>
+      {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
+      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
     </div>
   );
 
@@ -235,8 +235,8 @@ const renderStep3 = () => (
           required
         />
     <div className="button-group">
-        <Button variant="secondary" onClick={goToPreviousStep}>Back</Button>
-        <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button>
+        {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
+        {/* <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button> */}
       </div>
   </div>
 );
@@ -277,9 +277,9 @@ const renderStep3 = () => (
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleModalClose}>
+          {/* <Button variant="primary" onClick={handleModalClose}>
             Dashboard
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>
