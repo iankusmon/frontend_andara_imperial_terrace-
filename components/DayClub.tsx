@@ -25,7 +25,7 @@ const facilities = [
     imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/2e/1f/6c/8a/caption.jpg",
   },
   {
-    title: "Bar & Restaurant",
+    title: "Bar 0% Alcohol",
     description: "Enjoy gourmet meals and refreshing drinks at our bar.",
     imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/27/00/f7/27/day-club.jpg",
   },
