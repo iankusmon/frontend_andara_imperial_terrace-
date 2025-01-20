@@ -102,7 +102,7 @@ const MiniHomepage: React.FC = () => {
 
   return (
     <section className="slider-section">
-      <h2 className="title">Menara Imperial Terrace</h2>
+      <h2 className="title">Landmarks & Facilities</h2>
       {isMobile ? <MobileSlider /> : <DesktopSlider />}
       <style jsx>{`
         .slider-section {
