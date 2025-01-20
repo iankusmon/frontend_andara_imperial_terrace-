@@ -16,17 +16,20 @@
     "bootstrap": "^5.3.3",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.2",
-    "next": "14.0.4",
+    "next": "^14.0.4",
+    "next-share": "^0.27.0",
     "prop-types": "^15.8.1",
     "react": "^18",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18",
     "react-multi-carousel": "^2.8.5",
     "react-number-format": "^5.4.2",
+    "react-slick": "^0.30.3",
     "react-step-wizard": "^5.3.11",
     "react-tooltip": "^5.28.0",
     "react-youtube": "^10.1.0",
-    "swiper": "^11.0.5"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

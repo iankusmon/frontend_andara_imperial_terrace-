@@ -22,7 +22,7 @@ const BookingFeeWizardForm: React.FC = () => {
     <Container>
       <Row>
         <Col md={8} className="mx-auto mt-5">
-          <h2>Form Pengisian Booking Fee</h2>
+          <h2>Form Pengisian Booking Feee</h2>
           <h5>Mohon isikan data diri dibawah untuk melakukan pembayaran Booking Fee</h5>
           <StepWizard>
             <Step1BookingFee />
