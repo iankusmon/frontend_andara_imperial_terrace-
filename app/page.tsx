@@ -1,18 +1,10 @@
-import YoutubeShort from '@/components/YoutubeShort'
 import Hero from '@/components/Hero'
-import MiniBanner from '@/components/MiniBanner'
 import DayClub from '../components/DayClub'; // Komponen Day Club
 import MiniHomepage from '@/components/MiniHomepage';
-import Map from '@/components/Map';
-// import SiteMap from '@/components/SiteMap'
-// import Sitemap3D from '../components/Sitemap3D';
-// import Map2D from '@/components/Map2D';
 import VideoSlider from '../components/VideoSlider';
-// import Landmark from '@/components/Landmark'
-// import VillaType from '@/components/VillaType'
 import VillaSlider from '@/components/VillaSlider';
 import AlurPemesanan from '@/components/AlurPemesanan';
-import Article from '@/components/Article'
+import AffiliateBanner from '@/components/AffiliateBanner';
 
 // pages/_app.tsx
 import 'leaflet/dist/leaflet.css';  // Impor CSS Leaflet
@@ -40,7 +32,7 @@ export default function Home() {
       <VillaSlider />
       <AlurPemesanan/>
       <BannerSlider/>
-      {/* <MiniBanner /> */}
+      <AffiliateBanner/>
     </>
   
   )

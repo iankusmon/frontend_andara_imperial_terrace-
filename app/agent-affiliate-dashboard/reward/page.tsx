@@ -1,11 +1,12 @@
-import AgentAffiliateLanding from '@/components/AgentAffiliateLanding'
-import MiniBanner from '@/components/MiniBanner'
+
+// import MiniBanner from '@/components/MiniBanner'
+import AgAffRewardLanding from '@/components/AgAffRewardLanding'
 
 export default function AgentAffiliateDashboardReward() {
   return (
     <>
-      <AgentAffiliateLanding />
-      <MiniBanner />
+      <AgAffRewardLanding />
+      {/* <MiniBanner /> */}
     </>
   
   )
