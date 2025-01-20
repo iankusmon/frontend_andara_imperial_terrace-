@@ -3,12 +3,15 @@ import React from 'react';
 const AffiliateBanner = () => {
   return (
     <div style={styles.affiliateBanner}>
-      <img src="/Banner.png" alt="Affiliate Registration" style={styles.bannerImage} />
+      <a href="/agent-affiliate-registration">
+       <img src="/Banner.png" alt="Affiliate Registration" style={styles.bannerImage} />
+      </a>
+      {/* <br></br><br></br>
       <div style={styles.bannerContent}>
         <h2>Join Our Affiliate Program</h2>
         <p>Earn commissions by promoting our products. Register now and start earning!</p>
         <a href="/agent-affiliate-registration" style={styles.registerButton}>Register Now</a>
-      </div>
+      </div> */}
     </div>
   );
 };

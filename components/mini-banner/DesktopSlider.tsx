@@ -7,13 +7,13 @@ import 'swiper/css/navigation';
 
 const desktopSlides = [
   { id: 1, image: '/Landmark5.png'},
-  { id: 2, image: '/Landmark2.png'},
+  { id: 2, image: '/Landmark4.png'},
   { id: 3, image: '/Landmark3.png'},
   { id: 4, image: '/Landmark4.png'},
   { id: 5, image: '/Landmark5.png'},
   { id: 1, image: '/Landmark4.png'},
   { id: 2, image: '/Landmark5.png'},
-  { id: 3, image: '/Landmark2.png'},
+  { id: 3, image: '/Landmark4.png'},
   { id: 4, image: '/Landmark5.png'}
 ];
 
