@@ -192,9 +192,9 @@ const WizardForm: React.FC = () => {
       {renderStep()}
 
       <Modal show={showSuccessModal} onHide={handleModalClose} centered>
-        <Modal.Header closeButton>
+        {/* <Modal.Header closeButton>
           <Modal.Title>Konfirmasi Sukses</Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Modal.Body>
           <div style={{ textAlign: "center", marginLeft: "40%" }}>
           <img

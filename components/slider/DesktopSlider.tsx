@@ -19,9 +19,9 @@ const DesktopSlider: React.FC = () => {
   };
 
   const slides = [
-    { image: "/slide2.png", link: "https://www.andaraimperialterrace.click/slide2" },
-    { image: "/slide1.png", link: "https://www.andaraimperialterrace.click/slide1" },
-    { image: "/slide2.png", link: "https://www.andaraimperialterrace.click/slide2" },
+    { image: "/slide2.png", link: "/hunian-murah" },
+    { image: "/slide1.png", link: "/" },
+    { image: "/slide2.png", link: "/hunian-murah" },
   ];
 
   return (
@@ -29,14 +29,16 @@ const DesktopSlider: React.FC = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="slide-item">
-            <Image
-              src={slide.image}
-              alt={`Slide ${index + 1}`}
-              width={1200}
-              height={600}
-              layout="responsive"
-              quality={90}
-            />
+            <a href={slide.link} rel="noopener noreferrer">
+              <Image
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                width={1200}
+                height={600}
+                layout="responsive"
+                quality={90}
+              />
+            </a>
             <div className="share-buttons">
               <FacebookShareButton url={slide.link}>
                 <button className="share-btn">Facebook</button>

@@ -19,9 +19,9 @@ const MobileSlider: React.FC = () => {
   };
 
   const slides = [
-    { image: "/slide_mobile2.png", link: "https://www.andaraimperialterrace.click/slide2" },
-    { image: "/slide_mobile1.png", link: "https://www.andaraimperialterrace.click/slide1" },
-    { image: "/slide_mobile2.png", link: "https://www.andaraimperialterrace.click/slide2" },
+    { image: "/slide_mobile2.png", link: "/hunian-murah" },
+    { image: "/slide_mobile1.png", link: "/" },
+    { image: "/slide_mobile2.png", link: "/hunian-murah" },
   ];
 
   return (
@@ -29,14 +29,16 @@ const MobileSlider: React.FC = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="slide-item">
-            <Image
-              src={slide.image}
-              alt={`Slide ${index + 1}`}
-              width={600}
-              height={400}
-              layout="responsive"
-              quality={80}
-            />
+            <a href={slide.link}  rel="noopener noreferrer">
+              <Image
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                width={600}
+                height={400}
+                layout="responsive"
+                quality={80}
+              />
+            </a>
             <div className="share-buttons">
               <FacebookShareButton url={slide.link}>
                 <button className="share-btn">Facebook</button>

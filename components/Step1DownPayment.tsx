@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
+// import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
 
 interface FormData {
   paymentType: string;
@@ -221,9 +221,9 @@ const renderStep3 = () => (
       {renderStep()}
 
       <Modal show={showSuccessModal} onHide={handleModalClose} centered>
-        <Modal.Header closeButton>
+        {/* <Modal.Header closeButton>
           <Modal.Title>Konfirmasi Sukses</Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Modal.Body>
           <div style={{ textAlign: "center", marginLeft: '40%' }}>
             <img

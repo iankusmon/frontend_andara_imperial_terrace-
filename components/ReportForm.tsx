@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Step1Report from './Step1Report';
 
 const ReportForm: React.FC = () => {
