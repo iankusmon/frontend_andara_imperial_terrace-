@@ -29,8 +29,8 @@ const Step2Nup: React.FC<Step2Nup> = ({ previousStep, nextStep, data }) => {
         {/* Add more details as needed */}
       </div>
 
-      <Button variant="secondary" onClick={previousStep}>Back</Button>
-      <Button variant="primary" onClick={nextStep}>Next</Button>
+      {/* <Button variant="secondary" onClick={previousStep}>Back</Button>
+      <Button variant="primary" onClick={nextStep}>Next</Button> */}
     </div>
   );
 };

@@ -134,7 +134,7 @@ const WizardForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      <Button variant="primary" onClick={handleConfirmationSubmit}>Submit</Button>
+      {/* <Button variant="primary" onClick={handleConfirmationSubmit}>Submit</Button> */}
     </form>
   );
 
@@ -155,7 +155,7 @@ const WizardForm: React.FC = () => {
         />
     <div className="button-group">
         {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-        <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button>
+        {/* <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button> */}
       </div>
   </div>
   );
@@ -186,9 +186,9 @@ const WizardForm: React.FC = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleModalClose}>
+          {/* <Button variant="primary" onClick={handleModalClose}>
             Dashboard
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>

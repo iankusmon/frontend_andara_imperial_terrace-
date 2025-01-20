@@ -14,8 +14,8 @@ const Step3Nup: React.FC<Step3NupProps> = ({ previousStep }) => {
         <Form.Control type="file" />
       </Form.Group>
 
-      <Button variant="secondary" onClick={previousStep}>Back</Button>
-      <Button variant="success">Submit</Button>
+      {/* <Button variant="secondary" onClick={previousStep}>Back</Button> */}
+      {/* <Button variant="success">Submit</Button> */}
     </div>
   );
 };
