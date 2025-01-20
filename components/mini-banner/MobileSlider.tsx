@@ -30,9 +30,8 @@ const MobileSlider: React.FC = () => {
       {mobileSlides.map((slide) => (
         <SwiperSlide key={slide.id}>
           <div className="slide-item">
-            <img src={slide.image} alt={slide.title} />
+            <img src={slide.image} />
             <div className="slide-overlay">
-              <p>{slide.title}</p>
             </div>
           </div>
         </SwiperSlide>
