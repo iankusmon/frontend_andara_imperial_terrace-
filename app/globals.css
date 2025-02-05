@@ -15,7 +15,7 @@
     @apply flex items-center justify-center;
   }
 
-  .nav-container {
+  /* .nav-container {
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
@@ -27,9 +27,118 @@
     background-color: #616C5E;
       color:white;
       width: 100vw;
+    } */
+
+    /* .nav-container {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50; 
+      background-color: #616C5E;
+      color: white;
+      width: 100%;
+      padding: 10px 16px; 
     }
-  
-  .youtube-short-padding{
+    
+    .navbar-scroll {
+      background-color: #616C5E;
+      color: white;
+      width: 100%;
+      z-index: 50;
+      padding: 8px 16px; */
+
+      .nav-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background-color: #616C5E;
+        color: white;
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 14px; /* Ukuran font default */
+      }
+      
+      .navbar-scroll {
+        background-color: #616C5E;
+        color: white;
+        width: 100%;
+        z-index: 50;
+        padding: 8px 16px;
+        font-size: 13px; /* Sedikit lebih kecil saat scroll */
+      }
+      
+      .middle ul li a {
+        font-size: 14px; /* Ukuran font untuk menu navbar */
+        font-weight: 500; /* Agar tetap terlihat jelas */
+        letter-spacing: 0.5px; /* Sedikit spasi antar huruf */
+        padding: 8px 12px; /* Ruang antar item */
+      }
+      
+      .middle ul li a:hover {
+        font-weight: 600; /* Tebal saat hover */
+        background-color: #4b5547; /* Efek hover ringan */
+        border-radius: 4px; 
+      }
+      
+      /* Responsive Font Size */
+      @media (max-width: 768px) {
+        .nav-container {
+          font-size: 12px; /* Ukuran lebih kecil untuk mobile */
+        }
+      
+        .mobile-menu a {
+          font-size: 13px; /* Font mobile menu */
+          padding: 10px; 
+        }
+      }
+    
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #616C5E;
+      position: absolute;
+      top: 100%; /* Positions right below the navbar */
+      left: 0;
+      width: 100%;
+      padding: 8px 0; /* Less padding for compact look */
+      text-align: center;
+      z-index: 49;
+    }
+    
+    .mobile-menu.open {
+      display: flex;
+    }
+    
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+    
+    .mobile-menu a:hover {
+      background-color: #444;
+    }
+    
+    
+    .btn_white_login {
+      font-size: 12px; /* Ukuran font lebih kecil */
+      padding: 6px 12px; /* Sesuaikan padding agar proporsional */
+      font-weight: 500;  /* Tetap jelas terbaca */
+      border-radius: 4px; /* Tambahkan sedikit border-radius */
+      transition: background-color 0.3s ease; /* Efek transisi saat hover */
+    }
+    
+    .btn_white_login:hover {
+      background-color: #4b5547; /* Efek hover */
+      color: white;
+    }
+    
+
+.youtube-short-padding{
     margin-top: 300px;
   }
   

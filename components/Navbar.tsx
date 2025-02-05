@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className='left bg-dark'>
             <Link href='/' className='flexCenter gap-2'>
                 <Image src='/LogoAITGreen.png' alt='logo' width={100} height={100}/>
-                <h2 className='font-bold text-lg'>Andara Imperial Terrace</h2>
+                <h4 className='font-bold'>Andara Imperial Terrace</h4>
             </Link>            
         </div>
 
@@ -65,19 +65,36 @@ const Navbar = () => {
             )}
         </div>         
 
+        {/* Hamburger Button for Mobile */}
         <div className="block cursor-pointer lg:hidden">
-        {
-            !navbarOpen ? (
-                <button onClick={() => setNavbarOpen(true)}>
-                    <Bars3Icon className='h-5 w-5' />
-                </button>
-            ) : (
-                <button onClick={() => setNavbarOpen(false)}>
-                    <XMarkIcon className='h-5 w-5' />
-                </button>
-            )
-        }
+          {navbarOpen ? (
+            <button onClick={() => setNavbarOpen(false)}>
+                <XMarkIcon className='h-5 w-5' />
+            </button>
+          ) : (
+            <button onClick={() => setNavbarOpen(true)}>
+                <Bars3Icon className='h-5 w-5' />
+            </button>
+          )}
         </div> 
+
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${navbarOpen ? 'open' : ''}`}>
+          <ul className="flex flex-col items-center gap-4">
+            {NAV_LINKS.map((link) => (
+              <Link href={link.href} key={link.key} className="text-white text-lg" onClick={() => setNavbarOpen(false)}>
+                {link.label}
+              </Link>
+            ))}
+            {!isLoggedIn ? (
+              <Link href='/login'>
+                <Button type='button' title='Login' variant='btn_white_login' />
+              </Link>
+            ) : (
+              <span className='text-white font-bold'>{username}</span>
+            )}
+          </ul>
+        </div>
     </nav>
   )
 }
