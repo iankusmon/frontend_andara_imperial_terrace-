@@ -26,7 +26,7 @@ export default function Home() {
       <h1 className="title">Day Club Pertama di Pulau Jawa</h1>
       <DayClub/>
       <div>
-        <h1>Peta Interaktif Cimory Bogor</h1>
+        <h1>Peta Interaktif Andara Imperial Terrace</h1>
        <DynamicMap />
      </div>
       <VillaSlider />

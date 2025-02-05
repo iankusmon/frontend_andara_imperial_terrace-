@@ -14,27 +14,27 @@ const Map: React.FC = () => {
     if (typeof window !== 'undefined') {
       // Cek apakah peta sudah ada dan hapus jika ada
       const mapContainer = document.getElementById('map');
-      
+
       // Jika peta sudah ada, kita ambil instansi peta dan menghapusnya
       if (window.mapInstance) {
         window.mapInstance.remove(); // Menghapus peta yang sudah ada
       }
 
-      // Inisialisasi peta baru
-      const map = L.map('map').setView([-6.595, 106.789], 13); // Koordinat Cimory Bogor
+      // Inisialisasi peta baru dengan koordinat Andara Imperial Terrace
+      const map = L.map('map').setView([-7.50654, 110.6572226], 17); // Koordinat Andara Imperial Terrace
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker([-6.595, 106.789]).addTo(map)
-        .bindPopup('Cimory Bogor')
+      L.marker([-7.50654, 110.6572226]).addTo(map)
+        .bindPopup('Andara Imperial Terrace')
         .openPopup();
 
       // Simpan instansi peta ke dalam window global untuk referensi di masa depan
       window.mapInstance = map;
     }
-    
+
   }, []); // Efek hanya dijalankan sekali setelah komponen pertama kali dirender
 
   return <div id="map" style={{ height: '600px' }}></div>;
