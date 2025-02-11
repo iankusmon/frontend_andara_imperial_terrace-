@@ -19,8 +19,8 @@ const DesktopSlider: React.FC = () => {
   };
 
   const slides = [
-    { image: "/slide2.png", link: "/hunian-murah" },
-    { image: "/slide1.png", link: "/" },
+    { image: "/slide5.png", link: "/hunian-murah" },
+    { image: "/slide6.png", link: "/" },
     { image: "/slide3.png", link: "/hunian-murah" },
     { image: "/slide4.png", link: "/" },
   ];

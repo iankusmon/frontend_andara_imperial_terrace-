@@ -19,8 +19,8 @@ const MobileSlider: React.FC = () => {
   };
 
   const slides = [
-    { image: "/slide_mobile2.png", link: "/hunian-murah" },
-    { image: "/slide_mobile1.png", link: "/" },
+    { image: "/slide_mobile5.png", link: "/hunian-murah" },
+    { image: "/slide_mobile6.png", link: "/" },
     { image: "/slide_mobile3.png", link: "/hunian-murah" },
     { image: "/slide_mobile4.png", link: "/" }
   ];
