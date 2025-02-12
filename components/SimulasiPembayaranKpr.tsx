@@ -61,7 +61,7 @@ export default function SimulasiKPR({ endpoint, title }: SimulasiKPRProps) {
       <form onSubmit={handleSubmit} className="grid gap-4">
         {Object.entries({
           hargaProperti: "Harga Properti",
-          uangMuka: "Uang Muka",
+          uangMuka: "Persentase Uang Muka",
           tenor: "Tenor (tahun)",
           sukuBunga: "Suku Bunga (%)",
           fixedRatePeriod: "Masa Fixed Rate (tahun)",

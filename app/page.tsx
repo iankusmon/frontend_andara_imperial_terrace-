@@ -32,7 +32,7 @@ export default function Home() {
       <VillaSlider />
       <AlurPemesanan/>
       <BannerSlider/>
-      <AffiliateBanner/>
+      {/* <AffiliateBanner/> */}
     </>
   
   )
