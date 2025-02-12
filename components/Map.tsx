@@ -2,6 +2,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+interface Location {
+  id: number;
+  name: string;
+  x: number;
+  y: number;
+  img: string;
+}
+
 const desktopLocations = [
   // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
   { id: 2, name: "Menara Eiffel", x: 52, y: 22, img: "/eiffel.jpg" },
@@ -14,11 +22,16 @@ const mobileLocations = [
   { id: 3, name: "Versailles Park", x: 50, y: 30, img: "/versailles.jpg" },
 ];
 
-function MapComponent({ locations, isMobile }) {
-  const [hoveredLocation, setHoveredLocation] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState(null);
+interface MapComponentProps {
+  locations: Location[];
+  isMobile: boolean;
+}
 
-  const handleClick = (loc) => {
+function MapComponent({ locations, isMobile }: MapComponentProps) {
+  const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+
+  const handleClick = (loc: Location) => {
     if (isMobile) {
       if (selectedLocation?.id === loc.id) {
         window.location.href = `/lokasi/${loc.id}`;
@@ -33,7 +46,7 @@ function MapComponent({ locations, isMobile }) {
   return (
     <div className="relative w-full h-[80vh]">
       <Image
-        src="/siteplan2d.jpeg"
+        src="/siteplan.jpeg"
         alt="Site Plan Andara Imperial Terrace"
         layout="fill"
         objectFit="contain"
