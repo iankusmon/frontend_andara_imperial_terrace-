@@ -101,8 +101,12 @@ const MiniHomepage: React.FC = () => {
   }, []);
 
   return (
-    <section className="slider-section">
-      <h2 className="title">Landmarks & Facilities</h2>
+    <section className="slider-section"> 
+      <h2 className="title text-left pl-5 md:pl-[200px] font-bold text-xl md:text-3xl text-black">
+        Landmarks dan Facilities
+      </h2>
+
+
       {isMobile ? <MobileSlider /> : <DesktopSlider />}
       <style jsx>{`
         .slider-section {

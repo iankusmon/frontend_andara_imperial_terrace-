@@ -169,6 +169,13 @@
   }
 
 
+  .text-gradient {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+
 
   .btn_purple {
     @apply bg-[#5D50C6] px-8 py-3 text-white transition-all hover:bg-opacity-50
@@ -302,6 +309,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+/* styles/Map2D.module.css */
+.mapContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Untuk tampilan mobile */
+  height: 500px;
+  margin: auto;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+}
+
+/* Sembunyikan di desktop */
+@media (min-width: 1024px) {
+  .mapContainer {
+    display: none;
+  }
+}
+
+.mapSection {
+  position: absolute;
+  background-color: rgba(0, 123, 255, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  transition: background-color 0.3s ease;
+}
+
+.mapSection:hover {
+  background-color: rgba(0, 123, 255, 0.6);
+}
+
+.status {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 

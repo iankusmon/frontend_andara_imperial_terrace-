@@ -36,9 +36,10 @@ const Navbar = () => {
 
   return (
     <nav className={scrolling ? 'navbar-scroll nav-container flex justify-center py-8 fixed z-50 bg-green-600 text-white px-10 lg:px-32' : 'nav-container flex justify-between py-8 bg-green-600 text-white px-10 lg:px-32'}>
+      
         <div className='left bg-dark'>
             <Link href='/' className='flexCenter gap-2'>
-                <Image src='/LogoAITGreen.png' alt='logo' width={50} height={50}/>
+                <Image src='/LogoAIT2.png' alt='logo' width={50} height={50}/>
                 <h4 className='font-bold'>Andara Imperial Terrace</h4>
             </Link>            
         </div>
