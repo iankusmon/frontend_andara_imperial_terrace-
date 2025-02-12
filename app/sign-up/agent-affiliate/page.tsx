@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
+  const router = useRouter();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,11 +28,12 @@ export default function SignUp() {
     emergency_address: '',
   });
 
-  const handleChange = (e) => {
+  // **Tambahkan tipe data untuk parameter event**
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:3000/api/agent_affiliates', {
@@ -37,7 +41,7 @@ export default function SignUp() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ agent_affiliate: formData }),
       });
-      
+
       if (response.ok) {
         alert('Sign Up Berhasil!');
         setFormData({
@@ -46,6 +50,9 @@ export default function SignUp() {
           gender: 'Male', married_status: 'Single', education: '', salary_range: '', address: '',
           emergency_email: '', emergency_mobile_number: '', emergency_address: '',
         });
+
+        // **Redirect ke halaman dashboard setelah berhasil signup**
+        router.push('/agent-affiliate-dashboard');
       } else {
         alert('Gagal Sign Up. Cek kembali data Anda.');
       }
