@@ -46,8 +46,8 @@ const DesktopSlider: React.FC = () => {
   const slides: Slide[] = [
     { image: "/slide5.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
     { image: "/slide6.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
-    { image: "/slide3.png", link: "/hunian-murah", isVideo: true, message: "Tonton video eksklusif tentang properti ini!" },
-    { image: "/slide4.png", link: "/", isVideo: true, message: "Jangan lewatkan promo terbaru kami!" },
+    { image: "/slide3.png", link: "/hunian-murah", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
+    { image: "/slide4.png", link: "/", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
   ];
 
   return (

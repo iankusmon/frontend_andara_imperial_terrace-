@@ -45,8 +45,8 @@ const MobileSlider: React.FC = () => {
   const slides: Slide[] = [
     { image: "/slide_mobile5.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
     { image: "/slide_mobile6.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
-    { image: "/slide_mobile3.png", link: "/hunian-murah", isVideo: true, message: "Tonton video eksklusif tentang properti ini!" },
-    { image: "/slide_mobile4.png", link: "/", isVideo: true, message: "Jangan lewatkan promo terbaru kami!" },
+    { image: "/slide_mobile3.png", link: "/hunian-murah", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
+    { image: "/slide_mobile4.png", link: "/", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
   ];
 
   return (
