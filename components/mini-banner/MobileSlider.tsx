@@ -9,18 +9,26 @@ import { FacebookShareButton, WhatsappShareButton, TelegramShareButton } from "n
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
-const mobileSlides = [
+interface Slide {
+  id: number;
+  image: string;
+  link: string;
+  isVideo: boolean;
+  message: string;
+}
+
+const mobileSlides: Slide[] = [
   { id: 1, image: "/pissa.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
   { id: 2, image: "/colosseum_2.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
   { id: 3, image: "/infinity_pool.png", link: "/hunian-murah", isVideo: true, message: "Tonton video eksklusif tentang properti ini!" },
   { id: 4, image: "/segara_rasa.png", link: "/", isVideo: true, message: "Jangan lewatkan promo terbaru kami!" },
-  { id: 5, image: '/menara_imperial_terrace.png', link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!"},
-  { id: 6, image: '/water_coaster.png', link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!"}
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
+  { id: 6, image: "/water_coaster.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" }
 ];
 
 const MobileSlider: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(null);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [currentSlide, setCurrentSlide] = useState<Slide | null>(null);
 
   return (
     <div className="mobile-slider-container mb-16">

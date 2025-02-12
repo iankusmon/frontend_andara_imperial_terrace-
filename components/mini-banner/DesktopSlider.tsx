@@ -1,4 +1,3 @@
-// components/DesktopSlider.tsx
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -15,7 +14,14 @@ import "swiper/css/navigation";
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
-const desktopSlides = [
+type SlideType = {
+  id: number;
+  image: string;
+  link: string;
+  message: string;
+};
+
+const desktopSlides: SlideType[] = [
   { id: 1, image: "/pissa.png", link: "/destinasi/pissa", message: "Lihat keindahan Pissa!" },
   { id: 2, image: "/colosseum_2.png", link: "/destinasi/colosseum", message: "Jelajahi megahnya Colosseum!" },
   { id: 3, image: "/infinity_pool.png", link: "/destinasi/infinity-pool", message: "Nikmati pemandangan dari Infinity Pool!" },
@@ -26,7 +32,7 @@ const desktopSlides = [
 
 const DesktopSlider: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState<SlideType | null>(null); // ✅ Perbaikan tipe
 
   return (
     <div className="desktop-slider-container">

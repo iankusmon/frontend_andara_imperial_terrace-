@@ -19,9 +19,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
+// Definisi tipe Slide
+interface Slide {
+  image: string;
+  link: string;
+  isVideo: boolean;
+  message: string;
+}
+
 const MobileSlider: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState<Slide | null>(null); // Perbaikan tipe state
 
   const settings = {
     dots: true,
@@ -34,7 +42,7 @@ const MobileSlider: React.FC = () => {
     arrows: false,
   };
 
-  const slides = [
+  const slides: Slide[] = [
     { image: "/slide_mobile5.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
     { image: "/slide_mobile6.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
     { image: "/slide_mobile3.png", link: "/hunian-murah", isVideo: true, message: "Tonton video eksklusif tentang properti ini!" },

@@ -21,9 +21,16 @@ import "slick-carousel/slick/slick-theme.css";
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
+interface Slide {
+  image: string;
+  link: string;
+  isVideo: boolean;
+  message: string;
+}
+
 const DesktopSlider: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(null);
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+  const [currentSlide, setCurrentSlide] = useState<Slide | null>(null);
 
   const settings = {
     dots: true,
@@ -36,7 +43,7 @@ const DesktopSlider: React.FC = () => {
     arrows: false,
   };
 
-  const slides = [
+  const slides: Slide[] = [
     { image: "/slide5.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
     { image: "/slide6.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
     { image: "/slide3.png", link: "/hunian-murah", isVideo: true, message: "Tonton video eksklusif tentang properti ini!" },
@@ -47,7 +54,7 @@ const DesktopSlider: React.FC = () => {
     <div className="desktop-slider mb-16">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="slide-item relative" style={{ paddingTop: '18px' }}>>
+          <div key={index} className="slide-item relative" style={{ paddingTop: '18px' }}>
             <a href={DOMAIN + slide.link} rel="noopener noreferrer">
               <Image
                 src={slide.image}
