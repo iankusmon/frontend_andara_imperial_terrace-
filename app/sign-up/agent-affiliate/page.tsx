@@ -15,6 +15,7 @@ export default function SignUp() {
     password_confirmation: '',
     mobile: '',
     referral_code: '',
+    nik: ''
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -32,13 +33,13 @@ export default function SignUp() {
     // Jika mobile diubah, generate referral code otomatis
     if (name === "mobile" && value.length > 5) {
       newFormData.referral_code = generateReferralCode(value);
-    }
-  
+    }  
     setFormData(newFormData);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       const response = await fetch('https://api.andaraimperialterrace.co.id/api/agent_affiliates', {
         method: 'POST',
@@ -51,7 +52,7 @@ export default function SignUp() {
         alert('Sign Up Berhasil!');
         setFormData({
           name: '', email: '', password: '', password_confirmation: '',
-          mobile: '', referral_code: '',
+          mobile: '', referral_code: '', nik:''
         });
   
         router.push('/agent-affiliate-dashboard');
@@ -75,6 +76,7 @@ export default function SignUp() {
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="border p-2 rounded" required />
         <input type="text" name="mobile" placeholder="Nomor Handphone" value={formData.mobile} onChange={handleChange} className="border p-2 rounded" required />
         <input type="text" name="referral_code" placeholder="Referral Code (Auto)" value={formData.referral_code} className="border p-2 rounded bg-gray-100" readOnly />
+        <input type="text" name="nik" placeholder="NIK" value={formData.nik} className="border p-2 rounded bg-gray-100" hidden />
         
         <div className="relative">
           <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" value={formData.password} onChange={handleChange} className="border p-2 rounded w-full" required />
