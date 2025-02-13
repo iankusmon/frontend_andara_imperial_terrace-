@@ -40,7 +40,7 @@ export default function SignUp() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/agent_affiliates', {
+      const response = await fetch('https://api.andaraimperialterrace.co.id/api/agent_affiliates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         mode: 'cors', // Pastikan CORS diaktifkan
