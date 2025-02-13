@@ -6,7 +6,7 @@ export default function KprCorner() {
     <>
       <SimulasiPembayaranKpr
       title={'Simulasi Pembayaran KPR'}
-      endpoint={' http://127.0.0.1:3000/api/customers/kpr_calculators'}
+      endpoint={'https://api.andaraimperialterrace.co.id/api/customers/kpr_calculators'}
       />
     </>
   
