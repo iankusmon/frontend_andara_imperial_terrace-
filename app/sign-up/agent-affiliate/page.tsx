@@ -43,6 +43,7 @@ export default function SignUp() {
       const response = await fetch('http://localhost:3000/api/agent_affiliates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        mode: 'cors', // Pastikan CORS diaktifkan
         body: JSON.stringify({ agent_affiliate: formData }),
       });
   
