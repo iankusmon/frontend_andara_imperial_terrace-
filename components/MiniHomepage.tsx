@@ -109,14 +109,16 @@ const MiniHomepage: React.FC = () => {
       <h2 className="title text-left pl-5 md:pl-[200px] font-bold text-xl md:text-3xl text-black">
         Landmarks dan Facilities
       </h2>
-        <a href={fileUrl} download>
-          <button className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
-            Unduh Product Knowledge Andara Imperial Terrace
-          </button>
-        </a>
 
 
       {isMobile ? <MobileSlider /> : <DesktopSlider />}
+      <div>
+      <a href={fileUrl} download>
+    <button className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
+      Unduh Product Knowledge Andara Imperial Terrace
+    </button>
+  </a>
+    </div>
       <style jsx>{`
         .slider-section {
           text-align: center;
@@ -151,6 +153,7 @@ const MiniHomepage: React.FC = () => {
         }
       `}</style>
     </section>
+    
   );
 };
 
