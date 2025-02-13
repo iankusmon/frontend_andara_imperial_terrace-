@@ -18,12 +18,12 @@ interface Slide {
 }
 
 const mobileSlides: Slide[] = [
-  { id: 1, image: "/pissa.png", link: "/hunian-murah", isVideo: false, message: "Lihat hunian murah berkualitas!" },
-  { id: 2, image: "/colosseum_2.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
-  { id: 3, image: "/infinity_pool.png", link: "/hunian-murah", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
-  { id: 4, image: "/segara_rasa.png", link: "/", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
-  { id: 6, image: "/water_coaster.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" }
+  { id: 1, image: "/pissa.png", link: "/article/pissa", isVideo: false, message: "Lihat hunian murah berkualitas!" },
+  { id: 2, image: "/colosseum_2.png", link: "/article/colosseum", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
+  { id: 3, image: "/infinity_pool.png", link: "/article/infinity-pool", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
+  { id: 4, image: "/segara_rasa.png", link: "/article/segara-rasa", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/article/menara-imperial", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
+  { id: 6, image: "/water_coaster.png", link: "/article/water-coaster", isVideo: false, message: "Temukan rumah impian Anda di sini!" }
 ];
 
 const MobileSlider: React.FC = () => {

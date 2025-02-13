@@ -22,12 +22,12 @@ type SlideType = {
 };
 
 const desktopSlides: SlideType[] = [
-  { id: 1, image: "/pissa.png", link: "/destinasi/pissa", message: "Lihat keindahan Pissa!" },
-  { id: 2, image: "/colosseum_2.png", link: "/destinasi/colosseum", message: "Jelajahi megahnya Colosseum!" },
-  { id: 3, image: "/infinity_pool.png", link: "/destinasi/infinity-pool", message: "Nikmati pemandangan dari Infinity Pool!" },
-  { id: 4, image: "/segara_rasa.png", link: "/destinasi/segara-rasa", message: "Rasakan kuliner khas di Segara Rasa!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/destinasi/menara-imperial", message: "Lihat keindahan Menara Imperial Terrace!" },
-  { id: 6, image: "/water_coaster.png", link: "/destinasi/water-coaster", message: "Rasakan serunya Water Coaster!" },
+  { id: 1, image: "/pissa.png", link: "/article/pissa", message: "Lihat keindahan Pissa!" },
+  { id: 2, image: "/colosseum_2.png", link: "/article/colosseum", message: "Jelajahi megahnya Colosseum!" },
+  { id: 3, image: "/infinity_pool.png", link: "/article/infinity-pool", message: "Nikmati pemandangan dari Infinity Pool!" },
+  { id: 4, image: "/segara_rasa.png", link: "/article/segara-rasa", message: "Rasakan kuliner khas di Segara Rasa!" },
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/article/menara-imperial", message: "Lihat keindahan Menara Imperial Terrace!" },
+  { id: 6, image: "/water_coaster.png", link: "/article/water-coaster", message: "Rasakan serunya Water Coaster!" },
 ];
 
 const DesktopSlider: React.FC = () => {

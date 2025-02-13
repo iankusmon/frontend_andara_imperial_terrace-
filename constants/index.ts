@@ -3,7 +3,7 @@ export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Home' },
   { href: '/penjualan', key: 'penjualan', label: 'Penjualan' },
   { href: '/penyewaan-article', key: 'penyewaan', label: 'Penyewaan' },
-  { href: '/affiliate-corner', key: 'affiliate', label: 'Affiliate' },
+  { href: '/sign-up/agent-affiliate', key: 'affiliate', label: 'Affiliate' },
   { href: '/paket-article', key: 'paket', label: 'Paket' },
   { href: '/article', key: 'artikel', label: 'Artikel' },
   { href: '/kpr-corner', key: 'kpr', label: 'KPR' },

@@ -4,55 +4,40 @@ import Script from "next/script";
 
 const GTM_ID = "G-2BE429XD9C";
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
-// Function gtag harus berada di luar block
-const gtag = (...args: any[]) => {
-  if (typeof window !== "undefined" && window.dataLayer) {
-    window.dataLayer.push(args);
-  }
-};
-
-export default function GTM() {
+export default function GTMWrapper() {
   const [consentGranted, setConsentGranted] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedConsent = localStorage.getItem("consentGranted");
-      setConsentGranted(storedConsent === "true");
-    }
+    const storedConsent = localStorage.getItem("consentGranted");
+    setConsentGranted(storedConsent === "true");
   }, []);
 
   const grantConsent = () => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("consentGranted", "true");
-      setConsentGranted(true);
+    localStorage.setItem("consentGranted", "true");
+    setConsentGranted(true);
 
-      // Pastikan dataLayer sudah ada
-      window.dataLayer = window.dataLayer || [];
-
-      gtag("consent", "update", {
-        ad_user_data: "granted",
-        ad_personalization: "granted",
-        ad_storage: "granted",
-        analytics_storage: "granted",
-      });
-
-      // Load GTM dynamically
-      const gtmScript = document.createElement("script");
-      gtmScript.async = true;
-      gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-      document.head.appendChild(gtmScript);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
     }
+
+    gtag("consent", "update", {
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      ad_storage: "granted",
+      analytics_storage: "granted",
+    });
+
+    // Load GTM
+    const gtmScript = document.createElement("script");
+    gtmScript.async = true;
+    gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+    document.head.appendChild(gtmScript);
   };
 
   return (
     <>
-      {/* Set default consent state before analytics load */}
+      {/* Set default consent state */}
       <Script id="consent-mode" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];

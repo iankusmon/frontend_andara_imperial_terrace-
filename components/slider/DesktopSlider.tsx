@@ -44,8 +44,8 @@ const DesktopSlider: React.FC = () => {
   };
 
   const slides: Slide[] = [
-    { image: "/slide5.png", link: "/", isVideo: false, message: "Lihat hunian murah berkualitas!" },
-    { image: "/slide6.png", link: "/", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
+    { image: "/slide5.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Lihat hunian murah berkualitas!" },
+    { image: "/slide6.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
     { image: "/slide3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
     { image: "/slide4.png", link: "/kpr-corner", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
   ];
