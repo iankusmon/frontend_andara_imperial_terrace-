@@ -39,7 +39,7 @@ const Navbar = () => {
       
         <div className='left bg-dark'>
             <Link href='/' className='flexCenter gap-2'>
-                <Image src='/LogoAIT2.png' alt='logo' width={50} height={50}/>
+                <Image src='/LogoAIT3.svg' alt='logo' width={80} height={80}/>
                 <h4 className='font-bold'>Andara Imperial Terrace</h4>
             </Link>            
         </div>

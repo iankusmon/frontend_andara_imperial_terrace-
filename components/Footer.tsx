@@ -18,7 +18,7 @@ const Footer = () => {
         {/* LOGO & TEXT */}
         <div className='flex flex-col gap-4'>
           <div className='logo flex items-center gap-2'>
-            <Image src='/LogoAIT2.png' alt='logo' width={50} height={50} />
+            <Image src='/LogoAIT3.svg' alt='logo' width={80} height={80} />
             <h2 className='font-bold text-2xl'>Andara Imperial Terrace</h2>
           </div>
         </div>
@@ -47,7 +47,7 @@ const Footer = () => {
       <div className='right lg:w-2/3 flex xs:flex-col md:flex-row xs:gap-10 md:gap-0 md:justify-between'>
         <FooterCard title='Product' link1='Penjualan' link2='Penyewaan' link3='Paket' link4='KPR' />
         <FooterCard title='News' link1='Artikel' link2='Promo' link3='Affiliate Corner' />
-        <FooterCard title='Meet Us' link1='+6281228712277' link2='info@andaraimperialterrace.co.id' link3='Bendogantungan, Sumberejo, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57426' />
+        <FooterCard title='Contact Us' link1='+6281228712277' link2='info@andaraimperialterrace.co.id' link3='Bendogantungan, Sumberejo, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57426' />
       </div>
     </footer>
   )
