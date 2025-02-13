@@ -1,24 +1,13 @@
-// import AgentAffiliateLanding from '@/components/AgentAffiliateLanding'
-// import MiniBanner from '@/components/MiniBanner'
-
-// export default function AgentAffiliateDashboard() {
-//   return (
-//     <>
-//       <AgentAffiliateLanding />
-//       <MiniBanner />
-//     </>
-  
-//   )
-// }
-
 import { FaGift, FaMoneyBillWave, FaClipboardCheck, FaBook, FaUsers, FaWallet, FaUserCog, FaComments, FaUserPlus } from 'react-icons/fa';
 
 const stats = [
-  { label: 'Total Reward', value: '10,000 Poin', icon: <FaGift /> },
-  { label: 'Total Komisi', value: 'Rp 25,000,000', icon: <FaMoneyBillWave /> },
-  { label: 'Jumlah Pengunjung', value: '1,200', icon: <FaUsers /> },
-  { label: 'Terjual Bulan Ini', value: '15 Unit', icon: <FaClipboardCheck /> },
-  { label: 'Level/Pangkat', value: 'Diamond', icon: <FaUserCog /> },
+  { label: 'Total Reward', value: '0 Poin', icon: <FaGift /> },
+  { label: 'Komisi Buka Akun', value: 'Rp 500,000', icon: <FaMoneyBillWave /> },
+  { label: 'Komisi Referral ', value: '0', icon: <FaMoneyBillWave /> },
+  { label: 'Total Komisi', value: 'Rp 500,000,000', icon: <FaMoneyBillWave /> },
+  { label: 'Jumlah Pengunjung', value: '0', icon: <FaUsers /> },
+  { label: 'Terjual Bulan Ini', value: '0', icon: <FaClipboardCheck /> },
+  { label: 'Level/Pangkat', value: '-', icon: <FaUserCog /> },
 ];
 
 const dashboardItems = [
@@ -34,9 +23,24 @@ const dashboardItems = [
 ];
 
 export default function Dashboard() {
+  const user = {
+    username: 'Agent',
+    profilePic: 'https://via.placeholder.com/150', // Ganti dengan sumber foto profil yang sesuai
+  };
+
   return (
-    <div className="p-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div className="p-6 pt-20">
+      {/* User Info */}
+      <div className="flex items-center mb-6">
+        <img src={user.profilePic} alt="Profile" className="w-16 h-16 rounded-full mr-4 border-2 border-gray-300" />
+        <div>
+          <p className="text-xl font-bold">Hi, {user.username}</p>
+          <p className="text-gray-500">Agent Affiliate</p>
+        </div>
+      </div>
+      
+      {/* Stats Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 pt-6">
         {stats.map((stat) => (
           <div key={stat.label} className="flex items-center bg-gray-100 p-4 rounded-lg shadow-md">
             <div className="text-4xl text-blue-500 mr-4">{stat.icon}</div>
@@ -47,6 +51,8 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
+      
+      {/* Dashboard Menu */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {dashboardItems.map((item) => (
           <a
