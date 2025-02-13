@@ -33,6 +33,7 @@ export default function SignUp() {
     // Jika mobile diubah, generate referral code otomatis
     if (name === "mobile" && value.length > 5) {
       newFormData.referral_code = generateReferralCode(value);
+      newFormData.nik = Math.random().toString(36).substring(2, 10).toUpperCase();
     }  
     setFormData(newFormData);
   };
@@ -45,7 +46,8 @@ export default function SignUp() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         mode: 'cors', // Pastikan CORS diaktifkan
-        body: JSON.stringify({ agent_affiliate: formData }),
+        body: JSON.stringify({ agent_affiliate: formData })
+        ,
       });
   
       if (response.ok) {
