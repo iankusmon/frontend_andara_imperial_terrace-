@@ -100,11 +100,20 @@ const MiniHomepage: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const fileUrl =
+    "https://drive.google.com/uc?export=download&id=1WUFUICQK4niP4k-nj1e9zUoSS0ERHdHj";
+
+
   return (
     <section className="slider-section"> 
       <h2 className="title text-left pl-5 md:pl-[200px] font-bold text-xl md:text-3xl text-black">
         Landmarks dan Facilities
       </h2>
+        <a href={fileUrl} download>
+          <button className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
+            Unduh Product Knowledge Andara Imperial Terrace
+          </button>
+        </a>
 
 
       {isMobile ? <MobileSlider /> : <DesktopSlider />}

@@ -77,6 +77,7 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
               <p className="text-center mt-2 text-sm font-semibold">{loc.name}</p>
             </div>
           )}
+          
         </div>
       ))}
     </div>

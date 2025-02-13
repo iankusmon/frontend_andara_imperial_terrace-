@@ -2,6 +2,7 @@ import React from 'react'
 import Title from './Title'
 import Image from 'next/image'
 
+
 const YoutubeShort = () => {
   return (
     <section className='relative max-container padding-container flex md:flex-row xs:flex-col py-10 md:h-[420px] xs:h-full gap-8'>
@@ -9,6 +10,7 @@ const YoutubeShort = () => {
       <div className='h-3/3 rounded-t-3xl'>
         <Image className='h-full w-full rounded-t-3xl' src={'/YTShortDescription.png'} alt='img' width={1379} height={300} />
       </div>
+      
     </div>
     </section>
   )
