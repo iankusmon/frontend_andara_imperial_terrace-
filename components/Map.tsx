@@ -44,13 +44,17 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   };
 
   return (
-    <div className="relative w-full h-[80vh]">
-      <Image
+    <div className="relative w-full h-[80vh] mb-40">
+      {/* <Image
         src="/siteplan2d.jpeg"
         alt="Site Plan Andara Imperial Terrace"
         layout="fill"
         objectFit="contain"
-      />
+      /> */}
+      <picture>
+        <source srcSet="/siteplan2d_desktop.png" media="(min-width: 768px)" />
+        <img src="/siteplan2d.jpeg" alt="Sitemap Andara Imperial Terrace" className="w-full mb-4" />
+      </picture>
       {locations.map((loc) => (
         <div
           key={loc.id}
