@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Eye, EyeOff } from 'lucide-react';
+import { ChangeEvent } from "react";
 
 export default function SignUp() {
   const router = useRouter();
@@ -11,29 +13,31 @@ export default function SignUp() {
     email: '',
     password: '',
     password_confirmation: '',
-    photo_profile_url: '',
     mobile: '',
     referral_code: '',
-    fullName: '',
-    nik: '',
-    occupation: '',
-    age: '',
-    gender: 'Male',
-    married_status: 'Single',
-    education: '',
-    salary_range: '',
-    address: '',
-    emergency_email: '',
-    emergency_mobile_number: '',
-    emergency_address: '',
   });
 
-  // **Tambahkan tipe data untuk parameter event**
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const generateReferralCode = (mobile: string): string => {
+    const randomStr = Math.random().toString(36).substring(2, 10).toUpperCase();
+    return `${randomStr}`;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    let newFormData = { ...formData, [name]: value };
+  
+    // Jika mobile diubah, generate referral code otomatis
+    if (name === "mobile" && value.length > 5) {
+      newFormData.referral_code = generateReferralCode(value);
+    }
+  
+    setFormData(newFormData);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:3000/api/agent_affiliates', {
@@ -41,17 +45,14 @@ export default function SignUp() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ agent_affiliate: formData }),
       });
-
+  
       if (response.ok) {
         alert('Sign Up Berhasil!');
         setFormData({
-          name: '', email: '', password: '', password_confirmation: '', photo_profile_url: '',
-          mobile: '', referral_code: '', fullName: '', nik: '', occupation: '', age: '',
-          gender: 'Male', married_status: 'Single', education: '', salary_range: '', address: '',
-          emergency_email: '', emergency_mobile_number: '', emergency_address: '',
+          name: '', email: '', password: '', password_confirmation: '',
+          mobile: '', referral_code: '',
         });
-
-        // **Redirect ke halaman dashboard setelah berhasil signup**
+  
         router.push('/agent-affiliate-dashboard');
       } else {
         alert('Gagal Sign Up. Cek kembali data Anda.');
@@ -62,36 +63,32 @@ export default function SignUp() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded-lg">
+    <div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded-lg pt-40">
+      <h2 className="text-2xl font-bold text-center mb-6">Agent Affiliate Sign Up</h2>
       <picture>
         <source srcSet="/slide3.png" media="(min-width: 768px)" />
-        <img src="/slide_mobile3.png" alt="Andara Agent Affiliate Program" className="w-full mb-4" />
+        <img src="/slide_mobile3.png" alt="KPR Andara Imperial Terrace" className="w-full mb-4" />
       </picture>
-      <h2 className="text-2xl font-bold text-center mb-6">Agent Affiliate Sign Up</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="border p-2 rounded" required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="password" name="password_confirmation" placeholder="Confirm Password" value={formData.password_confirmation} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="mobile" placeholder="Mobile Number" value={formData.mobile} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="referral_code" placeholder="Referral Code (optional)" value={formData.referral_code} onChange={handleChange} className="border p-2 rounded" />
-        <input type="text" name="nik" placeholder="NIK" value={formData.nik} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="occupation" placeholder="Occupation" value={formData.occupation} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} className="border p-2 rounded" required />
-        <select name="gender" value={formData.gender} onChange={handleChange} className="border p-2 rounded">
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        <select name="married_status" value={formData.married_status} onChange={handleChange} className="border p-2 rounded">
-          <option value="Single">Single</option>
-          <option value="Married">Married</option>
-        </select>
-        <input type="text" name="education" placeholder="Education" value={formData.education} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="salary_range" placeholder="Salary Range" value={formData.salary_range} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="email" name="emergency_email" placeholder="Emergency Contact Email" value={formData.emergency_email} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="emergency_mobile_number" placeholder="Emergency Mobile" value={formData.emergency_mobile_number} onChange={handleChange} className="border p-2 rounded" required />
-        <input type="text" name="emergency_address" placeholder="Emergency Address" value={formData.emergency_address} onChange={handleChange} className="border p-2 rounded" required />
+        <input type="text" name="mobile" placeholder="Nomor Handphone" value={formData.mobile} onChange={handleChange} className="border p-2 rounded" required />
+        <input type="text" name="referral_code" placeholder="Referral Code (Auto)" value={formData.referral_code} className="border p-2 rounded bg-gray-100" readOnly />
+        
+        <div className="relative">
+          <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" value={formData.password} onChange={handleChange} className="border p-2 rounded w-full" required />
+          <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 text-gray-600">
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+        
+        <div className="relative">
+          <input type={showConfirmPassword ? "text" : "password"} name="password_confirmation" placeholder="Confirm Password" value={formData.password_confirmation} onChange={handleChange} className="border p-2 rounded w-full" required />
+          <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-2 top-2 text-gray-600">
+            {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+        
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Sign Up</button>
       </form>
     </div>

@@ -4,7 +4,7 @@ const stats = [
   { label: 'Total Reward', value: '0 Poin', icon: <FaGift /> },
   { label: 'Komisi Buka Akun', value: 'Rp 500,000', icon: <FaMoneyBillWave /> },
   { label: 'Komisi Referral ', value: '0', icon: <FaMoneyBillWave /> },
-  { label: 'Total Komisi', value: 'Rp 500,000,000', icon: <FaMoneyBillWave /> },
+  { label: 'Total Komisi', value: 'Rp 500,000', icon: <FaMoneyBillWave /> },
   { label: 'Jumlah Pengunjung', value: '0', icon: <FaUsers /> },
   { label: 'Terjual Bulan Ini', value: '0', icon: <FaClipboardCheck /> },
   { label: 'Level/Pangkat', value: '-', icon: <FaUserCog /> },
