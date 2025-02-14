@@ -6,14 +6,10 @@ import YouTube from "react-youtube";
 
 // Array video ID dari YouTube
 const videoIds = [
-  "nijAWP_G8W8", // Ganti dengan ID video YouTube
-  "HXg8yTZi5m0", // Ganti dengan ID video YouTube
-  "2tRYzWIJZNc", // Ganti dengan ID video YouTube
-  "LStyBlwcpQQ", // Ganti dengan ID video YouTube
-  "NygsBktIK2Y", // Ganti dengan ID video YouTube
-  "Ct5MZCKRfag", // Ganti dengan ID video YouTube
-  "NjhnLOqXQvo", // Ganti dengan ID video YouTube
-  "bGm87UgSqLY", // Ganti dengan ID video YouTube
+  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
+  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
+  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
+  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
 ];
 
 const VideoSliderDesktop = () => {

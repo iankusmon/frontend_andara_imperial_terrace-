@@ -7,7 +7,7 @@ import {
   WhatsappShareButton,
   TelegramShareButton,
 } from "next-share";
-import { FaFacebook, FaWhatsapp, FaTelegram, FaTimes } from "react-icons/fa";
+import { FaFacebook, FaWhatsapp, FaTelegram, FaTimes, FaInstagram } from "react-icons/fa";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -79,6 +79,13 @@ const DesktopSlider: React.FC = () => {
               <TelegramShareButton url={DOMAIN + currentSlide.link} title={currentSlide.message}>
                 <FaTelegram className="text-blue-400 text-3xl cursor-pointer" />
               </TelegramShareButton>
+              <a
+                href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="text-pink-500 text-3xl cursor-pointer" />
+              </a>
             </div>
           </div>
         </div>
