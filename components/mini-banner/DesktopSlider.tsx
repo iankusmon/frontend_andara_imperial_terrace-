@@ -21,13 +21,13 @@ type SlideType = {
   message: string;
 };
 
-const desktopSlides: Slide[] = [
-  { id: 1, image: "/pissa.png", link: "/article/alur-penjualan", isVideo: false, message: "Lihat Keindahan Menara Pisa!" },
-  { id: 2, image: "/colosseum_2.png", link: "/article/alur-penjualan", isVideo: false, message: "Lihat Keindahan Colosseum!" },
-  { id: 3, image: "/infinity_pool.png", link: "/article/alur-penjualan", isVideo: false, message: "Lihat Keseruan Infinity Pool!" },
-  { id: 4, image: "/segara_rasa.png", link: "/article/alur-penjualan", isVideo: false, message: "Mari makan dengan dapur segara!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/article/alur-penjualan", isVideo: false, message: "Lihatlah Kesempuranaan Andara Imperial Terrace!" },
-  { id: 6, image: "/water_coaster.png", link: "/article/alur-penjualan", isVideo: false, message: "Temukan Water Coaster Terpanjang di Solo Raya!" }
+const desktopSlides: SlideType[] = [
+  { id: 1, image: "/pissa.png", link: "/article/alur-penjualan", message: "Lihat Keindahan Menara Pisa!" },
+  { id: 2, image: "/colosseum_2.png", link: "/article/alur-penjualan", message: "Lihat Keindahan Colosseum!" },
+  { id: 3, image: "/infinity_pool.png", link: "/article/alur-penjualan", message: "Lihat Keseruan Infinity Pool!" },
+  { id: 4, image: "/segara_rasa.png", link: "/article/alur-penjualan", message: "Mari makan dengan dapur segara!" },
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/article/alur-penjualan", message: "Lihatlah Kesempuranaan Andara Imperial Terrace!" },
+  { id: 6, image: "/water_coaster.png", link: "/article/alur-penjualan", message: "Temukan Water Coaster Terpanjang di Solo Raya!" }
 ];
 
 const DesktopSlider: React.FC = () => {
