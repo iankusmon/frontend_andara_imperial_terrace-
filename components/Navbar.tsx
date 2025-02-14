@@ -62,8 +62,8 @@ const Navbar = () => {
               {isLoggedIn ? (
                   <span className='font-bold'>{username}</span>
               ) : (
-                  <Link href='/sign-up/agent-affiliate'>
-                      <Button type='button' title='Sign Up' variant='btn_white' />
+                  <Link href='/login'>
+                      <Button type='button' title='Login' variant='btn_white' />
                   </Link>
               )}
           </div>
@@ -91,8 +91,8 @@ const Navbar = () => {
               </Link>
             ))}
             {!hideLoginNavbar && !isLoggedIn ? (
-              <Link href='/sign-up/agent-affiliate'>
-                <Button type='button' title='Sign Up' variant='btn_white_login' />
+              <Link href='/login'>
+                <Button type='button' title='Login' variant='btn_white_login' />
               </Link>
             ) : !hideLoginNavbar ? (
               <span className='text-white font-bold'>{username}</span>

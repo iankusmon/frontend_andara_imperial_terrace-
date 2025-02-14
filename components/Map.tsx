@@ -12,7 +12,7 @@ interface Location {
 
 const desktopLocations = [
   // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 52, y: 40, img: "/eiffel.jpg" },
+  { id: 2, name: "Menara Eiffel", x: 32, y: 30, img: "/eiffel.jpg" },
   { id: 3, name: "Versailles Park", x: 50, y: 24, img: "/versailles.jpg" },
 ];
 
@@ -47,17 +47,17 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   };
 
   return (
-    <div className="relative w-full h-[80vh] mb-40">
+    <div className="relative w-full h-[80vh]">
       {/* <Image
         src="/siteplan2d.jpeg"
         alt="Site Plan Andara Imperial Terrace"
         layout="fill"
         objectFit="contain"
       /> */}
-      <picture>
-        <source srcSet="/siteplan2d_desktop.png" media="(min-width: 768px)" />
-        <img src="/siteplan2d.jpeg" alt="Sitemap Andara Imperial Terrace" className="w-full mb-4" />
-      </picture>
+     <picture>
+      <source srcSet="/siteplan2d_desktop.png" media="(min-width: 768px)" />
+      <img src="/siteplan2d.jpeg" alt="Sitemap Andara Imperial Terrace" className="w-full max-w-screen-lg mx-auto" />
+    </picture>
       {locations.map((loc) => (
         <div
           key={loc.id}

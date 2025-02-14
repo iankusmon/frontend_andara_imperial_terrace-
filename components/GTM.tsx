@@ -12,7 +12,8 @@ declare global {
 
 // Function gtag harus berada di luar block
 const gtag = (...args: any[]) => {
-  if (typeof window !== "undefined" && window.dataLayer) {
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(args);
   }
 };
@@ -23,12 +24,14 @@ export default function GTM() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedConsent = localStorage.getItem("consentGranted");
+      console.log("Stored consent:", storedConsent);
       setConsentGranted(storedConsent === "true");
     }
   }, []);
 
   const grantConsent = () => {
     if (typeof window !== "undefined") {
+      console.log("Consent granted!");
       localStorage.setItem("consentGranted", "true");
       setConsentGranted(true);
 
@@ -46,6 +49,7 @@ export default function GTM() {
       const gtmScript = document.createElement("script");
       gtmScript.async = true;
       gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+      gtmScript.onload = () => console.log("GTM loaded successfully!");
       document.head.appendChild(gtmScript);
     }
   };
@@ -78,11 +82,14 @@ export default function GTM() {
 
       {/* Consent Banner */}
       {consentGranted === false && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg flex justify-between items-center">
+        <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg flex justify-between items-center z-50">
           <p>We use cookies for analytics. Do you accept?</p>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={grantConsent}
+            onClick={() => {
+              console.log("Button clicked!");
+              grantConsent();
+            }}
           >
             Accept
           </button>

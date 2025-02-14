@@ -19,14 +19,13 @@ const LoginPage = () => {
     // Mengecek apakah email dan password sesuai (apapun yang dimasukkan akan sukses)
     if (email && password) {
       // Cek role dari email (contoh sederhana: gunakan email untuk menentukan role)
-      if (email.includes("customer")) {
-        router.push("/customer-dashboard");
-      } else if (email.includes("agent")) {
+      // if (email.includes("customer")) {
+      //   router.push("/customer-dashboard");
+      // } else if (email.includes("agent")) {
         router.push("/agent-affiliate-dashboard");
-      } else {
+      // } else {
         // Redirect ke customer dashboard jika email tidak mengandung "customer" atau "agent"
-        router.push("/customer-dashboard");
-      }
+        // router.push("/customer-dashboard");
     } else {
       alert("Email dan password tidak boleh kosong.");
     }
