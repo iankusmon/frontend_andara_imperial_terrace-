@@ -14,11 +14,11 @@ const facilities = [
     description: "Enjoy our refreshing outdoor pool with a stunning view.",
     imageUrl: "https://asset-2.tstatic.net/travel/foto/bank/images/omnia-dayclub-bali_20180926_095344.jpg", // Gambar fasilitas (ganti dengan URL gambar nyata)
   },
-  {
-    title: "Fitness Center",
-    description: "State-of-the-art gym to keep you fit during your stay.",
-    imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/27/60/7b/75/ambiance.jpg",
-  },
+  // {
+  //   title: "Fitness Center",
+  //   description: "State-of-the-art gym to keep you fit during your stay.",
+  //   imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/27/60/7b/75/ambiance.jpg",
+  // },
   {
     title: "Lounge Area",
     description: "Relax and socialize in our comfortable lounge area.",
@@ -28,17 +28,17 @@ const facilities = [
     title: "Bar 0% Alcohol",
     description: "Enjoy gourmet meals and refreshing drinks at our bar.",
     imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/27/00/f7/27/day-club.jpg",
-  },
-  {
-    title: "Tempate Bertani",
-    description: "Relax and socialize in our comfortable rice area.",
-    imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/2e/3e/05/b7/caption.jpg",
-  },
-  {
-    title: "Tempate Berendem",
-    description: "Relax and socialize in our comfortable pool hi areaghground.",
-    imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/2e/17/50/40/caption.jpg",
-  },
+  }
+  // {
+  //   title: "Tempate Bertani",
+  //   description: "Relax and socialize in our comfortable rice area.",
+  //   imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/2e/3e/05/b7/caption.jpg",
+  // },
+  // {
+  //   title: "Tempate Berendem",
+  //   description: "Relax and socialize in our comfortable pool hi areaghground.",
+  //   imageUrl: "https://media-cdn.tripadvisor.com/media/photo-s/2e/17/50/40/caption.jpg",
+  // },
 ];
 
 const DayClub: React.FC = () => {
