@@ -12,14 +12,17 @@ interface Location {
 
 const desktopLocations = [
   // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 52, y: 22, img: "/eiffel.jpg" },
+  { id: 2, name: "Menara Eiffel", x: 52, y: 40, img: "/eiffel.jpg" },
   { id: 3, name: "Versailles Park", x: 50, y: 24, img: "/versailles.jpg" },
 ];
 
 const mobileLocations = [
   // { id: 1, name: "Colosseum", x: 15, y: 25, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 56, y: 28, img: "/eiffel.jpg" },
-  { id: 3, name: "Versailles Park", x: 50, y: 30, img: "/versailles.jpg" },
+  { id: 2, name: "Menara Eiffel", x: 56, y: 18, img: "/eiffel.jpg" },
+  { id: 3, name: "Versailles Park", x: 50, y: 20, img: "/versailles.jpg" },
+  { id: 4, name: "Davinci Residence", x: 16, y: 24, img: "/davinci_residence.png" },
+  { id: 5, name: "Amsterdam Royale", x: 18, y: 21, img: "/amsterdam_royale.png" },
+  { id: 6, name: "Athena Height", x: 22, y: 20, img: "/athena_height.png" }
 ];
 
 interface MapComponentProps {

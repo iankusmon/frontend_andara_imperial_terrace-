@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <div className="container">
       <h1 className="text-center mt-5">Customer Dashboard</h1>
-      <div className="grid-container mt-4">
+      <div className="grid-container mt-4 pt-20">
         <div className="grid-item">
           <Link href="/customer-dashboard/nup-list">
             <div className="link-item">

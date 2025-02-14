@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { FaGift, FaMoneyBillWave, FaClipboardCheck, FaBook, FaUsers, FaWallet, FaUserCog, FaComments, FaUserPlus } from 'react-icons/fa';
 
 const stats = [
@@ -23,6 +27,14 @@ const dashboardItems = [
 ];
 
 export default function Dashboard() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/agent-affiliate-dashboard") {
+      alert("Selamat datang di Agent Affiliate Dashboard! Nikmati Komisi Buka Akun Rp500.000 🎉");
+    }
+  }, [pathname]); // Alert hanya muncul saat halaman pertama kali dimuat
+
   const user = {
     username: 'Agent',
     profilePic: 'https://via.placeholder.com/150', // Ganti dengan sumber foto profil yang sesuai
@@ -31,7 +43,7 @@ export default function Dashboard() {
   return (
     <div className="p-6 pt-20">
       {/* User Info */}
-      <div className="flex items-center mb-6">
+      <div className="flex items-center mb-6 pt-20">
         <img src={user.profilePic} alt="Profile" className="w-16 h-16 rounded-full mr-4 border-2 border-gray-300" />
         <div>
           <p className="text-xl font-bold">Hi, {user.username}</p>
