@@ -1,91 +1,56 @@
 'use client'
+import Image from 'next/image';
 import Link from 'next/link';
+
+const steps = [
+  {
+    title: 'NUP',
+    description: 'Pelajari lebih lanjut mengenai NUP (Nomor Urut Pemesanan)',
+    image: '/alur_pemesanan_nup.png',
+  },
+  {
+    title: 'Booking Fee',
+    description: 'Informasi tentang Booking Fee yang perlu dibayar terlebih dahulu.',
+    image: '/alur_pemesanan_booking_fee.png',
+  },
+  {
+    title: 'Down Payment',
+    description: 'Detail mengenai pembayaran DP (Down Payment) untuk pemesanan.',
+    image: '/alur_pemesanan_down_payment.png',
+  },
+  {
+    title: 'Pelunasan',
+    description: 'Pelajari cara melakukan pelunasan untuk pemesanan.',
+    image: '/alur_pemesanan_pelunasan.png',
+  },
+];
 
 const AlurPemesanan = () => {
   return (
-    <section className="alur-pemesanan">
-      <h2>Alur Pemesanan</h2>
-      <div className="steps">
-        <div className="step">
-          <h3>NUP</h3>
-          <p>Pelajari lebih lanjut mengenai NUP (Nomor Urut Pemesanan)</p>
-          <Link href="/article/nup">
-            <button className="button">Lihat Detail</button>
-          </Link>
+    <section className="alur-pemesanan p-6 bg-gray-100">
+      <h2 className="text-3xl font-bold text-center mb-6">Alur Pemesanan</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step, index) => (
+          <div key={index} className="step bg-white p-4 rounded-lg shadow-lg text-center">
+            <div className="relative w-full h-40 mb-4">
+              <Image
+                src={step.image}
+                alt={step.title}
+                layout="fill"
+                objectFit="contain"
+                className="rounded-lg"
+              />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+            <p className="mb-4 text-gray-700">{step.description}</p>
+            <Link href="/article/alur-pemesanan">
+              <button className="button bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Lihat Detail</button>
+            </Link>
         </div>
-        <div className="step">
-          <h3>Booking Fee</h3>
-          <p>Informasi tentang Booking Fee yang perlu dibayar terlebih dahulu.</p>
-          <Link href="/article/booking-fee">
-            <button className="button">Lihat Detail</button>
-          </Link>
-        </div>
-        <div className="step">
-          <h3>Down Payment</h3>
-          <p>Detail mengenai pembayaran DP (Down Payment) untuk pemesanan.</p>
-          <Link href="/article/down-payment">
-            <button className="button">Lihat Detail</button>
-          </Link>
-        </div>
-        <div className="step">
-          <h3>Pelunasan</h3>
-          <p>Pelajari cara melakukan pelunasan untuk pemesanan banner.</p>
-          <Link href="/article/pelunasan">
-            <button className="button">Lihat Detail</button>
-          </Link>
-        </div>
+        ))}
       </div>
-
-      <style jsx>{`
-        .alur-pemesanan {
-          padding: 2rem;
-          background-color: #f9f9f9;
-        }
-
-        h2 {
-          text-align: center;
-          margin-bottom: 2rem;
-        }
-
-        .steps {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-        }
-
-        .step {
-          padding: 1.5rem;
-          background: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .step h3 {
-          font-size: 1.25rem;
-          margin-bottom: 1rem;
-        }
-
-        .step p {
-          margin-bottom: 1.5rem;
-        }
-
-        .button {
-          display: inline-block;
-          padding: 0.75rem 1.5rem;
-          background-color: #0070f3;
-          color: white;
-          text-align: center;
-          text-decoration: none;
-          border-radius: 4px;
-        }
-
-        .button:hover {
-          background-color: #005bb5;
-        }
-      `}</style>
     </section>
   );
 };
 
 export default AlurPemesanan;
-
