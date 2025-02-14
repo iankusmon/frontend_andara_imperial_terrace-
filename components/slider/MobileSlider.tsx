@@ -43,10 +43,10 @@ const MobileSlider: React.FC = () => {
   };
 
   const slides: Slide[] = [
-    { image: "/slide_mobile5.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Lihat hunian murah berkualitas!" },
-    { image: "/slide_mobile6.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Temukan rumah impian Anda di sini!" },
-    { image: "/slide_mobile3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Tonton video eksklusif tentang properti ini!" },
-    { image: "/slide_mobile4.png", link: "/kpr-corner", isVideo: false, message: "Jangan lewatkan promo terbaru kami!" },
+    { image: "/slide_mobile5.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
+    { image: "/slide_mobile6.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
+    { image: "/slide_mobile3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
+    { image: "/slide_mobile4.png", link: "/kpr-corner", isVideo: false, message: "Pelajari Fitur KPR kami!" },
   ];
 
   return (

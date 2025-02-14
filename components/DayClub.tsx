@@ -4,8 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import VideoSliderMobile from './VideoSliderMobile'; // Versi mobile VideoSlider
 import VideoSliderDesktop from './VideoSliderDesktop'; // Versi desktop VideoSlider
-import FacilityCardMobile from './FacilityCardMobile'; // Versi mobile FacilityCard
-import FacilityCardDesktop from './FacilityCardDesktop'; // Versi desktop FacilityCard
+// import FacilityCardMobile from './FacilityCardMobile'; // Versi mobile FacilityCard
+// import FacilityCardDesktop from './FacilityCardDesktop'; // Versi desktop FacilityCard
 
 const DayClub: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
