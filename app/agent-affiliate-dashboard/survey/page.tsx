@@ -1,13 +1,7 @@
+import dynamic from "next/dynamic";
 
-// import MiniBanner from '@/components/MiniBanner'
-import AgAffSurveyLanding from '@/components/AgAffSurveyLanding'
+const SurveyPageComponent = dynamic(() => import("@/components/SurveyPageComponent"), { ssr: false });
 
-export default function AgentAffiliateDashboardSurvey() {
-  return (
-    <>
-      <AgAffSurveyLanding />
-      {/* <MiniBanner /> */}
-    </>
-  
-  )
+export default function SurveyPage() {
+  return <SurveyPageComponent />;
 }

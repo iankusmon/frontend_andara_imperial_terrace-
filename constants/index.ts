@@ -2,9 +2,9 @@
 export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Home' },
   { href: '/penjualan', key: 'penjualan', label: 'Penjualan' },
-  { href: '/penyewaan-article', key: 'penyewaan', label: 'Penyewaan' },
-  { href: '/sign-up/agent-affiliate', key: 'affiliate', label: 'Affiliate' },
-  { href: '/paket-article', key: 'paket', label: 'Paket' },
+  { href: '/penjualan', key: 'penyewaan', label: 'Penyewaan' },
+  { href: '/agent-affiliate-dashboard/materi', key: 'affiliate', label: 'Affiliate' },
+  { href: '/penjualan', key: 'paket', label: 'Paket' },
   { href: '/article', key: 'artikel', label: 'Artikel' },
   { href: '/kpr-corner', key: 'kpr', label: 'KPR' },
   { href: '/tentang-kami', key: 'about_us', label: 'Tentang Kami' },

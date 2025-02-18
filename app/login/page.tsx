@@ -1,33 +1,46 @@
 "use client";
 
-// app/login/page.tsx
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Import dari next/navigation
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter(); // Router untuk navigasi di app directory
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
 
-    // Email dan password dummy
-    const dummyEmail = "user@example.com";
-    const dummyPassword = "password123";
+    try {
+      const res = await fetch("hhttps://api.andaraimperialterrace.co.id/api/agent_affiliates/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    // Mengecek apakah email dan password sesuai (apapun yang dimasukkan akan sukses)
-    if (email && password) {
-      // Cek role dari email (contoh sederhana: gunakan email untuk menentukan role)
-      // if (email.includes("customer")) {
-      //   router.push("/customer-dashboard");
-      // } else if (email.includes("agent")) {
-        router.push("/agent-affiliate-dashboard");
-      // } else {
-        // Redirect ke customer dashboard jika email tidak mengandung "customer" atau "agent"
-        // router.push("/customer-dashboard");
-    } else {
-      alert("Email dan password tidak boleh kosong.");
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Login gagal!");
+      }
+
+      // Simpan token dan data user di localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          username: data.agent.name,
+          profilePic:
+            data.agent.photo_profile_url ||
+            "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
+        })
+      );
+
+      router.push("/agent-affiliate-dashboard");
+    } catch (err: any) {
+      setError(err.message || "Terjadi kesalahan saat login.");
     }
   };
 
@@ -35,6 +48,7 @@ const LoginPage = () => {
     <div className="login-container">
       <div className="login-form-wrapper">
         <h2 className="login-heading">Login</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
             <label htmlFor="email">Email</label>
@@ -60,11 +74,23 @@ const LoginPage = () => {
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" className="submit-btn">Login</button>
+          <button type="submit" className="submit-btn">
+            Login
+          </button>
         </form>
+        {/* Tombol Sign Up as Agent Affiliate */}
+        <div className="signup-link">
+          <p>Don't have an account?</p>
+          <button
+            type="button"
+            onClick={() => router.push("/sign-up/agent-affiliate")}
+            className="signup-btn"
+          >
+            Sign Up as Agent Affiliate
+          </button>
+        </div>
       </div>
 
-      {/* Styled JSX for CSS */}
       <style jsx>{`
         .login-container {
           display: flex;
@@ -72,9 +98,8 @@ const LoginPage = () => {
           align-items: center;
           min-height: 100vh;
           background-color: #f4f7fc;
-          font-family: 'Arial', sans-serif;
+          font-family: "Arial", sans-serif;
         }
-
         .login-form-wrapper {
           background-color: white;
           border-radius: 8px;
@@ -82,46 +107,43 @@ const LoginPage = () => {
           padding: 40px;
           width: 100%;
           max-width: 400px;
-        }
-
-        .login-heading {
           text-align: center;
+        }
+        .error-message {
+          color: red;
+          margin-bottom: 10px;
+        }
+        .login-heading {
           font-size: 24px;
           color: #333;
           margin-bottom: 20px;
         }
-
         .login-form {
           display: flex;
           flex-direction: column;
         }
-
         .input-group {
           margin-bottom: 20px;
+          text-align: left;
         }
-
         .input-group label {
           font-size: 14px;
           font-weight: bold;
           margin-bottom: 5px;
           color: #333;
         }
-
         .input-field {
           width: 100%;
           padding: 12px;
           font-size: 16px;
           border: 1px solid #ddd;
           border-radius: 5px;
-          box-sizing: border-box;
           outline: none;
           transition: border-color 0.3s;
         }
-
         .input-field:focus {
           border-color: #4caf50;
         }
-
         .submit-btn {
           padding: 12px;
           font-size: 16px;
@@ -132,31 +154,31 @@ const LoginPage = () => {
           cursor: pointer;
           transition: background-color 0.3s;
         }
-
         .submit-btn:hover {
           background-color: #45a049;
         }
-
-        .submit-btn:active {
-          background-color: #388e3c;
+        .signup-link {
+          margin-top: 20px;
         }
-
-        @media (max-width: 480px) {
-          .login-form-wrapper {
-            padding: 30px;
-          }
-
-          .login-heading {
-            font-size: 20px;
-          }
-
-          .input-field {
-            font-size: 14px;
-          }
-
-          .submit-btn {
-            font-size: 14px;
-          }
+        .signup-link p {
+          margin: 0;
+          font-size: 14px;
+          color: #555;
+        }
+        .signup-btn {
+          margin-top: 10px;
+          padding: 12px;
+          font-size: 16px;
+          background-color: #0070f3;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          width: 100%;
+        }
+        .signup-btn:hover {
+          background-color: #005bb5;
         }
       `}</style>
     </div>
@@ -164,4 +186,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

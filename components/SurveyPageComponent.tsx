@@ -12,19 +12,18 @@ interface RegisteredCustomer {
   created_at: string;
 }
 
-export default function TrackPengunjungPage() {
+export default function SurveyPage() {
   const { agent, loading } = useAuth();
   const [registeredCustomers, setRegisteredCustomers] = useState<RegisteredCustomer[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Ensure component only renders on client side
+  // Set mounted flag on client side to avoid hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Fetch registered customers once agent data is available
   useEffect(() => {
     if (!loading && agent) {
       const fetchRegisteredCustomers = async () => {
@@ -51,19 +50,22 @@ export default function TrackPengunjungPage() {
           setIsLoading(false);
         }
       };
+
       fetchRegisteredCustomers();
     }
   }, [agent, loading]);
 
-  if (!mounted || loading || isLoading) return <p>Loading...</p>;
+  // Do not render anything until the component is mounted on the client
+  if (!mounted) return null;
+  if (loading || isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="p-6 pt-40">
-      <h1 className="text-2xl font-bold mb-4">Track Customer</h1>
+      <h1 className="text-2xl font-bold mb-4">Registered Customers (Survey)</h1>
       {registeredCustomers.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-10">
-          <p className="text-xl text-gray-500">No tracked customers found.</p>
+          <p className="text-2xl text-gray-500">No registered customers found.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4">
@@ -73,7 +75,8 @@ export default function TrackPengunjungPage() {
               <p>Email: {customer.email}</p>
               <p>Mobile: {customer.mobile}</p>
               <p>
-                Registered at: {new Date(customer.created_at).toLocaleString()}
+                Registered at:{" "}
+                {new Date(customer.created_at).toLocaleString()}
               </p>
             </div>
           ))}

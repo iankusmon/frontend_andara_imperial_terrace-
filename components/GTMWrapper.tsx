@@ -4,40 +4,60 @@ import Script from "next/script";
 
 const GTM_ID = "G-2BE429XD9C";
 
-export default function GTMWrapper() {
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
+// Define gtag globally
+const gtag = (...args: any[]) => {
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(args);
+  }
+};
+
+export default function GTM() {
   const [consentGranted, setConsentGranted] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const storedConsent = localStorage.getItem("consentGranted");
-    setConsentGranted(storedConsent === "true");
+    if (typeof window !== "undefined") {
+      const storedConsent = localStorage.getItem("consentGranted");
+
+      if (!storedConsent) {
+        // Automatically accept cookies if user hasn't set a preference
+        localStorage.setItem("consentGranted", "true");
+        setConsentGranted(true);
+        updateConsent();
+      } else {
+        setConsentGranted(storedConsent === "true");
+      }
+    }
   }, []);
 
-  const grantConsent = () => {
-    localStorage.setItem("consentGranted", "true");
-    setConsentGranted(true);
+  const updateConsent = () => {
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      gtag("consent", "update", {
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+        ad_storage: "granted",
+        analytics_storage: "granted",
+      });
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer.push(args);
+      // Load GTM dynamically
+      const gtmScript = document.createElement("script");
+      gtmScript.async = true;
+      gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+      gtmScript.onload = () => console.log("GTM loaded automatically!");
+      document.head.appendChild(gtmScript);
     }
-
-    gtag("consent", "update", {
-      ad_user_data: "granted",
-      ad_personalization: "granted",
-      ad_storage: "granted",
-      analytics_storage: "granted",
-    });
-
-    // Load GTM
-    const gtmScript = document.createElement("script");
-    gtmScript.async = true;
-    gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-    document.head.appendChild(gtmScript);
   };
 
   return (
     <>
-      {/* Set default consent state */}
+      {/* Set default consent state before analytics load */}
       <Script id="consent-mode" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -52,7 +72,7 @@ export default function GTMWrapper() {
         `}
       </Script>
 
-      {/* Load GTM only if consent is granted */}
+      {/* Load GTM if consent is granted */}
       {consentGranted && (
         <Script
           id="gtm"
@@ -61,18 +81,7 @@ export default function GTMWrapper() {
         />
       )}
 
-      {/* Consent Banner */}
-      {consentGranted === false && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg flex justify-between items-center">
-          <p>We use cookies for analytics. Do you accept?</p>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={grantConsent}
-          >
-            Accept
-          </button>
-        </div>
-      )}
+      {/* No Consent Banner Since It’s Auto-Accepted */}
     </>
   );
 }

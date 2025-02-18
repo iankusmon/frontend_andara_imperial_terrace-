@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff } from 'lucide-react';
 import { ChangeEvent } from "react";
+import useAuth from "@/hooks/useAuth";
 
 export default function SignUp() {
   const router = useRouter();
@@ -20,6 +21,19 @@ export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { agent, loading } = useAuth();
+
+  // Jika sudah login (agent tidak null) dan data sudah selesai loading, redirect ke dashboard.
+  useEffect(() => {
+    if (!loading && agent) {
+      router.push("/agent-affiliate-dashboard");
+    }
+  }, [agent, loading, router]);
+
+  // Tampilkan loader saat sedang memuat data atau jika user sudah login (akan segera di-redirect)
+  if (loading) return <p>Loading...</p>;
+  if (agent) return null;
 
   const generateReferralCode = (mobile: string): string => {
     const randomStr = Math.random().toString(36).substring(2, 10).toUpperCase();

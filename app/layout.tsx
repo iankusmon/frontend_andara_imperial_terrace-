@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className="overflow-hidden relative">
+      <body className="relative">
         <GTMWrapper /> {/* GTM dipindah ke Client Component */}
         <Navbar />
         <main className="relative overflow-hidden">{children}</main>
