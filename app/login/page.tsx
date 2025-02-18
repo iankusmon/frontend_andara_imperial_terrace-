@@ -14,7 +14,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await fetch("hhttps://api.andaraimperialterrace.co.id/api/agent_affiliates/login", {
+      const res = await fetch("https://api.andaraimperialterrace.co.id/api/agent_affiliates/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

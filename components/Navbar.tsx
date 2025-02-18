@@ -10,20 +10,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [scrolling, setScrolling] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<{ username: string; profilePic: string } | null>(null);
-  const [showDropdown, setShowDropdown] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolling(window.scrollY > 120);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     // Baca data user dari localStorage
@@ -51,13 +41,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={
-        scrolling
-          ? "navbar-scroll nav-container flex justify-center py-8 fixed z-50 bg-green-600 text-white px-10 lg:px-32"
-          : "nav-container flex justify-between py-8 bg-green-600 text-white px-10 lg:px-32"
-      }
-    >
+    <nav className="nav-container flex justify-between py-8 bg-green-600 text-white px-10 lg:px-32">
       <div className="left">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/LogoAIT3.svg" alt="logo" width={80} height={80} />
@@ -65,23 +49,20 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="middle hidden h-full gap-12 lg:flex pt-5" style={{ display: scrolling ? "none" : "flex" }}>
+      {/* Desktop Menu */}
+      <div className="hidden lg:flex gap-12 pt-5">
         {NAV_LINKS.map((link) => (
-          <Link
-            key={link.key}
-            href={link.href}
-            className="flex items-center cursor-pointer transition-all hover:font-bold"
-          >
+          <Link key={link.key} href={link.href} className="text-white text-md">
             {link.label}
           </Link>
         ))}
       </div>
 
-      {/* Tampilkan profile atau tombol Login */}
-      <div className="right hidden gap-4 lg:flex pt-5" style={{ display: scrolling ? "none" : "flex" }}>
+      {/* Profile/Login Section for Desktop */}
+      <div className="hidden lg:flex gap-4 pt-5">
         {isLoggedIn && user ? (
           <div className="relative">
-            <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
+            <button onClick={() => setNavbarOpen(!navbarOpen)} className="flex items-center gap-2 focus:outline-none">
               <Image
                 src={user.profilePic}
                 alt="Profile"
@@ -91,7 +72,7 @@ const Navbar = () => {
               />
               <span className="font-bold">{user.username}</span>
             </button>
-            {showDropdown && (
+            {navbarOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
                 <Link
                   href="/agent-affiliate-dashboard"
@@ -129,13 +110,13 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${navbarOpen ? "open" : ""}`}>
-        <ul className="flex flex-col items-center gap-4">
+      {navbarOpen && (
+        <div className="absolute top-16 left-0 w-full bg-green-600 text-white p-5 flex flex-col items-center lg:hidden">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.key}
               href={link.href}
-              className="text-white text-lg"
+              className="text-white text-lg py-2"
               onClick={() => setNavbarOpen(false)}
             >
               {link.label}
@@ -169,8 +150,8 @@ const Navbar = () => {
               <Button type="button" title="Login" variant="btn_white_login" />
             </Link>
           )}
-        </ul>
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
