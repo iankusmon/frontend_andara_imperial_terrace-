@@ -113,11 +113,11 @@ const MiniHomepage: React.FC = () => {
 
       {isMobile ? <MobileSlider /> : <DesktopSlider />}
       <div>
-      <a href={fileUrl} download>
+      {/* <a href={fileUrl} download>
     <button className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
       Unduh Product Knowledge Andara Imperial Terrace
     </button>
-  </a>
+  </a> */}
     </div>
       <style jsx>{`
         .slider-section {

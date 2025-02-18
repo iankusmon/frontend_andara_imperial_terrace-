@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const articles = [
   { id: 1, src: "/artikel_affiliate_1.png" },
@@ -10,10 +13,16 @@ const articles = [
 ];
 
 export default function AffiliateCorner() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Cek localStorage apakah ada data user
+    const userData = localStorage.getItem("user");
+    setIsLoggedIn(!!userData);
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8 pt-40">
-      
-
       <h1 className="text-3xl font-bold text-center mb-6 pt-40">
         Kemudahan dan Keuntungan Andara Agen Affiliate Program
       </h1>
@@ -49,10 +58,16 @@ export default function AffiliateCorner() {
       <p className="mb-4">
         Mulai dari menghubungi leads via telepon dan WhatsApp hingga mengonversi mereka menjadi hot prospek yang siap membeli,
         setiap langkah memerlukan usaha dan waktu. Namun, dengan Andara Agen Affiliate Program, Anda hanya perlu membagikan link afiliasi
-        dari <a href="https://www.andaraimperialterrace.co.id" className="text-blue-500">www.andaraimperialterrace.co.id</a>.
+        dari{" "}
+        <a href="https://www.andaraimperialterrace.co.id" className="text-blue-500">
+          www.andaraimperialterrace.co.id
+        </a>
+        .
       </p>
       
-      <h2 className="text-2xl font-semibold mt-6 mb-4">Perbandingan Agen Properti Tradisional vs. Program Affiliate</h2>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
+        Perbandingan Agen Properti Tradisional vs. Program Affiliate
+      </h2>
       <table className="w-full border-collapse border border-gray-300 mb-6">
         <thead>
           <tr className="bg-gray-100">
@@ -112,30 +127,34 @@ export default function AffiliateCorner() {
 
       <h2 className="text-2xl font-semibold mb-4">Hanya SHARE dapat CUAN! Tanpa Keraguan.</h2>
       <p className="mb-4">
-        Anda hanya perlu membagikan link afiliasi dari
-        <a href="https://www.andaraimperialterrace.co.id" className="text-blue-500"> www.andaraimperialterrace.co.id</a>.
+        Anda hanya perlu membagikan link afiliasi dari{" "}
+        <a href="https://www.andaraimperialterrace.co.id" className="text-blue-500">
+          www.andaraimperialterrace.co.id
+        </a>
+        .
       </p>
 
-<div className="text-center mt-4">
-  <a 
-    href="https://drive.google.com/uc?export=download&id=1GpUL0kSjwhcY8YDHYgL9ReMtFpW9Qdw-" 
-    download
-    className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
-  >
-    Download Product Knowledge
-  </a>
-</div>
+      <div className="text-center mt-4">
+        <a
+          href="https://drive.google.com/uc?export=download&id=1GpUL0kSjwhcY8YDHYgL9ReMtFpW9Qdw-"
+          download
+          className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
+        >
+          Download Product Knowledge
+        </a>
+      </div>
 
-<div className="text-center mt-6">
-  <Link 
-    href="/sign-up/agent-affiliate/"
-    className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
-  >
-    Gabung Sekarang
-  </Link>
-</div>
-
-
+      {/* Tampilkan Gabung Sekarang hanya jika user belum login */}
+      {!isLoggedIn && (
+        <div className="text-center mt-6">
+          <Link
+            href="/sign-up/agent-affiliate/"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
+          >
+            Gabung Sekarang
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

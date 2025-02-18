@@ -44,8 +44,9 @@ const DesktopSlider: React.FC = () => {
   };
 
   const slides: Slide[] = [
-    { image: "/slide5.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!!" },
-    { image: "/slide6.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
+    { image: "/slide5.png", link: "/artikel/kawasan-ait", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
+    { image: "/slide6.png", link: "/artikel/kawasan-ait", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
+    { image: "/slide6.png", link: "", isVideo: false, message: "Hanya Share dapat CUAN!" },
     { image: "/slide3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
     { image: "/slide4.png", link: "/kpr-corner", isVideo: false, message: "Pelajari Fitur KPR kami!" },
   ];
