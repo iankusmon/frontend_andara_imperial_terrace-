@@ -64,18 +64,20 @@ export default function SignUp() {
 
       if (response.ok) {
         alert("Sign Up Berhasil!");
-        // const data = await response.json();
-        // // Simpan token dan data user ke localStorage
-        // localStorage.setItem("token", data.token);
-        // localStorage.setItem(
-        //   "user",
-        //   JSON.stringify({
-        //     username: data.agent.name,
-        //     profilePic: data.agent.photo_profile_url || "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
-        //     // Anda dapat menyimpan properti lain jika diperlukan
-        //   })
-        // );
         router.push("/agent-affiliate-dashboard");
+        const data = await response.json();
+        // Simpan token dan data user di localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            username: data.agent.name,
+            profilePic:
+              data.agent.photo_profile_url ||
+              "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
+          })
+        );
+        
       } else {
         alert("Gagal Sign Up. Cek kembali data Anda.");
       }
