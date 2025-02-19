@@ -86,7 +86,7 @@ export default function KawasanAIT() {
             href="/sign-up/customer/"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
           >
-            Gabung Sekarang
+            Investasi Sekarang
           </Link>
         </div>
       )}

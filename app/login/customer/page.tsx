@@ -14,7 +14,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await fetch("https://api.andaraimperialterrace.co.id/api/agent_affiliates/login", {
+      const res = await fetch("https://api.andaraimperialterrace.co.id/api/customers/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -31,14 +31,14 @@ const LoginPage = () => {
       localStorage.setItem(
         "user",
         JSON.stringify({
-          username: data.agent.name,
+          username: data.customer.name,
           profilePic:
-            data.agent.photo_profile_url ||
+            data.customer.photo_profile_url ||
             "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
         })
       );
 
-      router.push("/agent-affiliate-dashboard");
+      router.push("/customer-dashboard");
     } catch (err: any) {
       setError(err.message || "Terjadi kesalahan saat login.");
     }
@@ -47,7 +47,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-form-wrapper">
-        <h2 className="login-heading">Login sebagai Agent Affiliate</h2>
+        <h2 className="login-heading">Login sebagai Customer</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
@@ -74,19 +74,16 @@ const LoginPage = () => {
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" className="submit-btn">
-            Login
-          </button>
+          <button type="submit" className="submit-btn">Login</button>
         </form>
-        {/* Tombol Sign Up as Agent Affiliate */}
         <div className="signup-link">
           <p>Don't have an account?</p>
           <button
             type="button"
-            onClick={() => router.push("/sign-up/agent-affiliate")}
+            onClick={() => router.push("/sign-up/customer")}
             className="signup-btn"
           >
-            Sign Up as Agent Affiliate
+            Sign Up as Customer
           </button>
         </div>
       </div>
