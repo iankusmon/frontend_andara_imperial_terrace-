@@ -35,6 +35,7 @@ const LoginPage = () => {
           profilePic:
             data.customer.photo_profile_url ||
             "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
+            role: "customer"
         })
       );
 
