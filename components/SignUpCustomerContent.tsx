@@ -38,7 +38,7 @@ export default function SignUpCustomerContent() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://api.andaraimperialterrace.co.id/api/customers/sign-up", {
+      const response = await fetch("https://api.andaraimperialterrace.co.id/api/customers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         mode: "cors",
