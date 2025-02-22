@@ -32,7 +32,7 @@ const MobileSlider: React.FC = () => {
 
   return (
     <div className="mobile-slider-container mb-16">
-      <Swiper modules={[Navigation, Autoplay]} spaceBetween={10} slidesPerView={4} autoplay={{ delay: 4000 }} loop navigation>
+      <Swiper modules={[Navigation, Autoplay]} spaceBetween={10} slidesPerView={2} autoplay={{ delay: 4000 }} loop navigation>
         {mobileSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="slide-item relative text-center">
