@@ -110,7 +110,7 @@ export default function KelolaAkunPage() {
     setSuccessMsg(null);
 
     if (!agent) {
-      setError("Agent not found. Please login again.");
+      setError("Agent tidak ditemukan. Silakan login kembali.");
       return;
     }
 
@@ -130,14 +130,12 @@ export default function KelolaAkunPage() {
 
       if (!response.ok) {
         const errData = await response.json();
-        throw new Error(errData.error || "Failed to update profile");
+        throw new Error(errData.error || "Gagal mengupdate profil");
       }
 
       const data = await response.json();
-      // Instead of showing an alert, update the success message state so it renders on the page.
-      alert("Profile updated successfully!");
-      setSuccessMsg("Profile updated successfully!");
-      // Optionally update localStorage with new profile data
+      setSuccessMsg("Profil berhasil diperbarui!");
+      // Update localStorage dengan data profil baru
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -146,7 +144,7 @@ export default function KelolaAkunPage() {
         })
       );
     } catch (err: any) {
-      setError(err.message || "An error occurred");
+      setError(err.message || "Terjadi kesalahan");
     } finally {
       setIsSubmitting(false);
     }
@@ -230,7 +228,7 @@ export default function KelolaAkunPage() {
             value={profile.full_name}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Full Name"
+            placeholder="Nama Lengkap"
           />
         </div>
         <div>
@@ -245,25 +243,25 @@ export default function KelolaAkunPage() {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Occupation:</label>
+          <label className="block text-gray-700">Pekerjaan:</label>
           <input
             type="text"
             name="occupation"
             value={profile.occupation}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Occupation"
+            placeholder="Pekerjaan"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Age:</label>
+          <label className="block text-gray-700">Usia:</label>
           <input
             type="number"
             name="age"
             value={profile.age}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Age"
+            placeholder="Usia"
           />
         </div>
         <div>
@@ -281,7 +279,7 @@ export default function KelolaAkunPage() {
           </select>
         </div>
         <div>
-          <label className="block text-gray-700">Married Status:</label>
+          <label className="block text-gray-700">Status Perkawinan:</label>
           <select
             name="married_status"
             value={profile.married_status}
@@ -295,67 +293,67 @@ export default function KelolaAkunPage() {
           </select>
         </div>
         <div>
-          <label className="block text-gray-700">Education:</label>
+          <label className="block text-gray-700">Pendidikan:</label>
           <input
             type="text"
             name="education"
             value={profile.education}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Education"
+            placeholder="Pendidikan"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Salary Range:</label>
+          <label className="block text-gray-700">Rentang Gaji:</label>
           <input
             type="text"
             name="salary_range"
             value={profile.salary_range}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Salary Range"
+            placeholder="Rentang Gaji"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Address:</label>
+          <label className="block text-gray-700">Alamat:</label>
           <textarea
             name="address"
             value={profile.address}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Address"
+            placeholder="Alamat"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Emergency Email:</label>
+          <label className="block text-gray-700">Email Darurat:</label>
           <input
             type="email"
             name="emergency_email"
             value={profile.emergency_email}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Emergency Email"
+            placeholder="Email Darurat"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Emergency Mobile Number:</label>
+          <label className="block text-gray-700">Nomor Telepon Darurat:</label>
           <input
             type="text"
             name="emergency_mobile_number"
             value={profile.emergency_mobile_number}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Emergency Mobile Number"
+            placeholder="Nomor Telepon Darurat"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Emergency Address:</label>
+          <label className="block text-gray-700">Alamat Darurat:</label>
           <textarea
             name="emergency_address"
             value={profile.emergency_address}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Emergency Address"
+            placeholder="Alamat Darurat"
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -367,40 +365,40 @@ export default function KelolaAkunPage() {
               value={profile.bank}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Bank Name"
+              placeholder="Nama Bank"
             />
           </div>
           <div>
-            <label className="block text-gray-700">Bank Branch:</label>
+            <label className="block text-gray-700">Cabang Bank:</label>
             <input
               type="text"
               name="bank_branch"
               value={profile.bank_branch}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Bank Branch"
+              placeholder="Cabang Bank"
             />
           </div>
           <div>
-            <label className="block text-gray-700">Account Number:</label>
+            <label className="block text-gray-700">Nomor Rekening:</label>
             <input
               type="text"
               name="account_number"
               value={profile.account_number}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Account Number"
+              placeholder="Nomor Rekening"
             />
           </div>
           <div>
-            <label className="block text-gray-700">Account Name:</label>
+            <label className="block text-gray-700">Atas Nama Rekening:</label>
             <input
               type="text"
               name="account_name"
               value={profile.account_name}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Account Name"
+              placeholder="Atas Nama Rekening"
             />
           </div>
         </div>
@@ -409,12 +407,12 @@ export default function KelolaAkunPage() {
           className="bg-green-600 text-white py-2 px-4 rounded mt-4"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Update Profile"}
+          {isSubmitting ? "Submitting..." : "Perbarui Profil"}
         </button>
       </form>
       <div className="mt-4 text-center">
         <Link href="/agent-affiliate-dashboard" className="text-blue-500 hover:underline">
-          Back to Dashboard
+          Kembali ke Dashboard
         </Link>
       </div>
     </div>
