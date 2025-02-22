@@ -63,7 +63,7 @@ export default function KelolaAkunPage() {
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Set mounted flag to avoid hydration issues
+  // Set mounted flag on client side to avoid hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -124,7 +124,6 @@ export default function KelolaAkunPage() {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
-          // Wrap payload inside "agent_affiliate"
           body: JSON.stringify({ agent_affiliate: profile }),
         }
       );
@@ -135,6 +134,8 @@ export default function KelolaAkunPage() {
       }
 
       const data = await response.json();
+      // Instead of showing an alert, update the success message state so it renders on the page.
+      alert("Profile updated successfully!");
       setSuccessMsg("Profile updated successfully!");
       // Optionally update localStorage with new profile data
       localStorage.setItem(
