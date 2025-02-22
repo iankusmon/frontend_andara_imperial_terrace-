@@ -36,6 +36,7 @@ export default function KelolaAkunPage() {
   const { agent, loading } = useAuth();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [profile, setProfile] = useState<AgentProfile>({
     name: "",
     email: "",
@@ -61,9 +62,8 @@ export default function KelolaAkunPage() {
   });
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Set mounted flag on client side to avoid hydration issues
+  // Set mounted flag to avoid hydration issues
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -77,7 +77,7 @@ export default function KelolaAkunPage() {
         photo_profile_url: agent.photo_profile_url || "",
         mobile: agent.mobile || "",
         referral_code: agent.referral_code || "",
-        full_name: agent.full_name || "", // pastikan konsisten (camelCase atau snake_case)
+        full_name: agent.full_name || "",
         nik: agent.nik || "",
         occupation: agent.occupation || "",
         age: agent.age || "",
@@ -98,7 +98,7 @@ export default function KelolaAkunPage() {
   }, [agent, loading]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setProfile((prev) => ({ ...prev, [name]: value }));
@@ -124,6 +124,7 @@ export default function KelolaAkunPage() {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
+          // Wrap payload inside "agent_affiliate"
           body: JSON.stringify({ agent_affiliate: profile }),
         }
       );
@@ -136,10 +137,13 @@ export default function KelolaAkunPage() {
       const data = await response.json();
       setSuccessMsg("Profile updated successfully!");
       // Optionally update localStorage with new profile data
-      localStorage.setItem("user", JSON.stringify({
-        username: data.agent.name,
-        profilePic: data.agent.photo_profile_url,
-      }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          username: data.agent.name,
+          profilePic: data.agent.photo_profile_url,
+        })
+      );
     } catch (err: any) {
       setError(err.message || "An error occurred");
     } finally {
@@ -151,7 +155,9 @@ export default function KelolaAkunPage() {
 
   return (
     <div className="container mx-auto px-4 py-8 pt-80">
-      <h1 className="text-3xl font-bold mb-6 text-center pt-40">Kelola Akun Agent Affiliate</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center pt-40">
+        Kelola Akun Agent Affiliate
+      </h1>
       {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
       {successMsg && <p className="text-green-500 mb-4 text-center">{successMsg}</p>}
       <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto">
@@ -261,25 +267,31 @@ export default function KelolaAkunPage() {
         </div>
         <div>
           <label className="block text-gray-700">Gender:</label>
-          <input
-            type="text"
+          <select
             name="gender"
             value={profile.gender}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Gender"
-          />
+            required
+          >
+            <option value="">Pilih Gender</option>
+            <option value="pria">Pria</option>
+            <option value="wanita">Wanita</option>
+          </select>
         </div>
         <div>
           <label className="block text-gray-700">Married Status:</label>
-          <input
-            type="text"
+          <select
             name="married_status"
             value={profile.married_status}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Married Status"
-          />
+            required
+          >
+            <option value="">Pilih Status</option>
+            <option value="menikah">Menikah</option>
+            <option value="lajang">Lajang</option>
+          </select>
         </div>
         <div>
           <label className="block text-gray-700">Education:</label>
