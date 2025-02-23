@@ -5,7 +5,7 @@ export default function KPRCorner() {
     <div className="container mx-auto p-6">
       <picture>
         <source srcSet="slide4.png" media="(min-width: 768px)" />
-        <img src="slide_mobile4.png" alt="KPR Andara Imperial Terrace" className="w-full mb-4" />
+        <img src="slide_mobile4.png" alt="KPR Andara Imperial Terrace" className="w-full mb-4 pt-40" />
       </picture>
       <h1 className="text-2xl font-bold mb-4">KPR Corner</h1>
       <p className="mb-4">KPR di Andara Imperial Terrace merupakan solusi terbaik bagi Anda yang ingin memiliki hunian impian dengan skema pembayaran yang fleksibel dan proses yang transparan. Kami menawarkan kemudahan pembayaran dengan Down Payment (DP) yang dapat dicicil hingga 12 kali, serta suku bunga yang kompetitif. Proses pengajuan yang cepat dan mudah memungkinkan Anda untuk segera memiliki hunian idaman dengan tenor yang dapat disesuaikan dengan kemampuan finansial. Dapatkan akses ke berbagai fasilitas eksklusif serta layanan konsultasi untuk membantu Anda dalam setiap tahap pengajuan KPR.</p>

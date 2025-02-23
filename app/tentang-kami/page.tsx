@@ -6,7 +6,7 @@ const TentangKami = () => {
   return (
     <div className='container mx-auto px-4 py-12'>
       {/* Logo */}
-      <div className='flex justify-center mb-8 pt-20'>
+      <div className='flex justify-center mb-8 pt-40'>
         <Image src='/LogoAIT2.png' alt='Andara Imperial Terrace' width={150} height={150} />
       </div>
       
