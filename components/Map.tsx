@@ -14,15 +14,18 @@ const desktopLocations = [
   // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
   { id: 2, name: "Menara Eiffel", x: 32, y: 30, img: "/eiffel.jpg" },
   { id: 3, name: "Versailles Park", x: 50, y: 24, img: "/versailles.jpg" },
+  { id: 4, name: "Davinci Residence", x: 16, y: 24, img: "/davinci_residence.png" },
+  { id: 5, name: "Amsterdam Royale", x: 18, y: 21, img: "/amsterdam_royale.png" },
+  { id: 6, name: "Athena Height", x: 22, y: 20, img: "/athena_height.png" }
 ];
 
 const mobileLocations = [
   // { id: 1, name: "Colosseum", x: 15, y: 25, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 56, y: 18, img: "/eiffel.jpg" },
-  { id: 3, name: "Versailles Park", x: 50, y: 20, img: "/versailles.jpg" },
-  { id: 4, name: "Davinci Residence", x: 16, y: 24, img: "/davinci_residence.png" },
-  { id: 5, name: "Amsterdam Royale", x: 18, y: 21, img: "/amsterdam_royale.png" },
-  { id: 6, name: "Athena Height", x: 22, y: 20, img: "/athena_height.png" }
+  { id: 2, name: "Menara Eiffel", x: 50, y: 15, img: "/eiffel.jpg" },
+  { id: 3, name: "Versailles Park", x: 46, y: 19, img: "/versailles.jpg" },
+  { id: 4, name: "Davinci Residence", x: 20, y: 33, img: "/davinci_residence.png" },
+  { id: 5, name: "Amsterdam Royale", x: 19, y: 29, img: "/amsterdam_royale.png" },
+  { id: 6, name: "Athena Height", x: 24, y: 27, img: "/athena_height.png" }
 ];
 
 interface MapComponentProps {
@@ -37,12 +40,12 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   const handleClick = (loc: Location) => {
     if (isMobile) {
       if (selectedLocation?.id === loc.id) {
-        window.location.href = `/lokasi/${loc.id}`;
+        window.location.href = `/artikel/kawasan-ait`;
       } else {
         setSelectedLocation(loc);
       }
     } else {
-      window.location.href = `/lokasi/${loc.id}`;
+      window.location.href = `/artikel/kawasan-ait`;
     }
   };
 
@@ -55,8 +58,8 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
         objectFit="contain"
       /> */}
      <picture>
-      <source srcSet="/siteplan2d_desktop.png" media="(min-width: 768px)" />
-      <img src="/siteplan2d.jpeg" alt="Sitemap Andara Imperial Terrace" className="w-full max-w-screen-lg mx-auto" />
+      <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
+      <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full max-w-screen-lg mx-auto" />
     </picture>
       {locations.map((loc) => (
         <div
