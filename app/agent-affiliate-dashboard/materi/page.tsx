@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const articles = [
   { id: 1, src: "/artikel_affiliate_1.png" },
@@ -14,6 +15,7 @@ const articles = [
 
 export default function AffiliateCorner() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Cek localStorage apakah ada data user
@@ -134,27 +136,126 @@ export default function AffiliateCorner() {
         .
       </p>
 
-      <div className="text-center mt-4">
+      <div className="signup-link text-center mt-4">
         <a
           href="https://drive.google.com/uc?export=download&id=1GpUL0kSjwhcY8YDHYgL9ReMtFpW9Qdw-"
           download
-          className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
         >
-          Download Product Knowledge
+          <button
+            type="button"
+            className="signup-btn"
+          >
+            Download Product Knowledge
+          </button>  
         </a>
+        
       </div>
 
       {/* Tampilkan Gabung Sekarang hanya jika user belum login */}
       {!isLoggedIn && (
-        <div className="text-center mt-6">
-          <Link
-            href="/sign-up/agent-affiliate/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
+        <div className="signup-link text-center mt-4">
+          <button
+            type="button"
+            onClick={() => router.push("/sign-up/agent-affiliate")}
+            className="signup-btn"
           >
             Gabung Sekarang
-          </Link>
+          </button>
         </div>
       )}
+
+<style jsx>{`
+        .login-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f4f7fc;
+          font-family: "Arial", sans-serif;
+        }
+        .login-form-wrapper {
+          background-color: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 40px;
+          width: 100%;
+          max-width: 400px;
+          text-align: center;
+        }
+        .error-message {
+          color: red;
+          margin-bottom: 10px;
+        }
+        .login-heading {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 20px;
+        }
+        .login-form {
+          display: flex;
+          flex-direction: column;
+        }
+        .input-group {
+          margin-bottom: 20px;
+          text-align: left;
+        }
+        .input-group label {
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #333;
+        }
+        .input-field {
+          width: 100%;
+          padding: 12px;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          outline: none;
+          transition: border-color 0.3s;
+        }
+        .input-field:focus {
+          border-color: #4caf50;
+        }
+        .submit-btn {
+          padding: 12px;
+          font-size: 16px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+          background-color: #45a049;
+        }
+        .signup-link {
+          margin-top: 20px;
+          width: 50%;
+          text-align: center;
+        }
+        .signup-link p {
+          margin: 0;
+          font-size: 14px;
+          color: #555;
+        }
+        .signup-btn {
+          margin-top: 10px;
+          padding: 12px;
+          font-size: 16px;
+          background-color: #0070f3;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          width: 100%;
+        }
+        .signup-btn:hover {
+          background-color: #005bb5;
+        }
+      `}</style>
     </div>
   );
 }

@@ -134,6 +134,8 @@ export default function KelolaAkunPage() {
       }
 
       const data = await response.json();
+      // Tampilkan alert sukses setelah update profil berhasil
+      alert("Profil berhasil diperbarui!");
       setSuccessMsg("Profil berhasil diperbarui!");
       // Update localStorage dengan data profil baru
       localStorage.setItem(
@@ -169,7 +171,7 @@ export default function KelolaAkunPage() {
               value={profile.name}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Nama"
+              placeholder="Masukkan nama"
               required
             />
           </div>
@@ -181,7 +183,7 @@ export default function KelolaAkunPage() {
               value={profile.email}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Email"
+              placeholder="Masukkan email"
               required
             />
           </div>
@@ -194,18 +196,18 @@ export default function KelolaAkunPage() {
             value={profile.photo_profile_url}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="URL Photo Profil"
+            placeholder="Masukkan URL photo profil"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Mobile:</label>
+          <label className="block text-gray-700">Nomor Telepon:</label>
           <input
             type="text"
             name="mobile"
             value={profile.mobile}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Nomor Telepon"
+            placeholder="Masukkan nomor telepon"
             required
           />
         </div>
@@ -217,18 +219,18 @@ export default function KelolaAkunPage() {
             value={profile.referral_code}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Referral Code"
+            placeholder="Masukkan referral code"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Full Name:</label>
+          <label className="block text-gray-700">Nama Lengkap:</label>
           <input
             type="text"
             name="full_name"
             value={profile.full_name}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Nama Lengkap"
+            placeholder="Masukkan nama lengkap"
           />
         </div>
         <div>
@@ -239,7 +241,7 @@ export default function KelolaAkunPage() {
             value={profile.nik}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="NIK"
+            placeholder="Masukkan NIK"
           />
         </div>
         <div>
@@ -250,7 +252,7 @@ export default function KelolaAkunPage() {
             value={profile.occupation}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Pekerjaan"
+            placeholder="Masukkan pekerjaan"
           />
         </div>
         <div>
@@ -261,11 +263,11 @@ export default function KelolaAkunPage() {
             value={profile.age}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Usia"
+            placeholder="Masukkan usia"
           />
         </div>
         <div>
-          <label className="block text-gray-700">Gender:</label>
+          <label className="block text-gray-700">Jenis Kelamin:</label>
           <select
             name="gender"
             value={profile.gender}
@@ -273,7 +275,7 @@ export default function KelolaAkunPage() {
             className="w-full border p-2 rounded"
             required
           >
-            <option value="">Pilih Gender</option>
+            <option value="">Pilih gender</option>
             <option value="pria">Pria</option>
             <option value="wanita">Wanita</option>
           </select>
@@ -287,9 +289,11 @@ export default function KelolaAkunPage() {
             className="w-full border p-2 rounded"
             required
           >
-            <option value="">Pilih Status</option>
+            <option value="">Pilih status</option>
             <option value="menikah">Menikah</option>
             <option value="lajang">Lajang</option>
+            <option value="duda">Duda</option>
+            <option value="janda">Janda</option>
           </select>
         </div>
         <div>
@@ -300,7 +304,7 @@ export default function KelolaAkunPage() {
             value={profile.education}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Pendidikan"
+            placeholder="Masukkan pendidikan"
           />
         </div>
         <div>
@@ -311,7 +315,7 @@ export default function KelolaAkunPage() {
             value={profile.salary_range}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Rentang Gaji"
+            placeholder="Masukkan rentang gaji"
           />
         </div>
         <div>
@@ -321,7 +325,7 @@ export default function KelolaAkunPage() {
             value={profile.address}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Alamat"
+            placeholder="Masukkan alamat"
           />
         </div>
         <div>
@@ -332,7 +336,7 @@ export default function KelolaAkunPage() {
             value={profile.emergency_email}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Email Darurat"
+            placeholder="Masukkan email darurat"
           />
         </div>
         <div>
@@ -343,7 +347,7 @@ export default function KelolaAkunPage() {
             value={profile.emergency_mobile_number}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Nomor Telepon Darurat"
+            placeholder="Masukkan nomor telepon darurat"
           />
         </div>
         <div>
@@ -353,19 +357,19 @@ export default function KelolaAkunPage() {
             value={profile.emergency_address}
             onChange={handleChange}
             className="w-full border p-2 rounded"
-            placeholder="Alamat Darurat"
+            placeholder="Masukkan alamat darurat"
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-gray-700">Bank:</label>
+            <label className="block text-gray-700">Nama Bank:</label>
             <input
               type="text"
               name="bank"
               value={profile.bank}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Nama Bank"
+              placeholder="Masukkan nama bank"
             />
           </div>
           <div>
@@ -376,7 +380,7 @@ export default function KelolaAkunPage() {
               value={profile.bank_branch}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Cabang Bank"
+              placeholder="Masukkan cabang bank"
             />
           </div>
           <div>
@@ -387,7 +391,7 @@ export default function KelolaAkunPage() {
               value={profile.account_number}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Nomor Rekening"
+              placeholder="Masukkan nomor rekening"
             />
           </div>
           <div>
@@ -398,7 +402,7 @@ export default function KelolaAkunPage() {
               value={profile.account_name}
               onChange={handleChange}
               className="w-full border p-2 rounded"
-              placeholder="Atas Nama Rekening"
+              placeholder="Masukkan atas nama rekening"
             />
           </div>
         </div>
