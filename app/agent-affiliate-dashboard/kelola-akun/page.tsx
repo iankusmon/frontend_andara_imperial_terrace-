@@ -63,12 +63,12 @@ export default function KelolaAkunPage() {
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Set mounted flag on client side to avoid hydration issues
+  // Set mounted flag untuk menghindari masalah hydration
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Pre-fill form data when agent is available
+  // Pre-fill data ketika agent tersedia
   useEffect(() => {
     if (!loading && agent) {
       setProfile({
@@ -134,10 +134,10 @@ export default function KelolaAkunPage() {
       }
 
       const data = await response.json();
-      // Tampilkan alert sukses setelah update profil berhasil
+      // Tampilkan alert sukses jika diinginkan
       alert("Profil berhasil diperbarui!");
       setSuccessMsg("Profil berhasil diperbarui!");
-      // Update localStorage dengan data profil baru
+      // Perbarui localStorage dengan data profil baru
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -152,7 +152,11 @@ export default function KelolaAkunPage() {
     }
   };
 
+  // Hanya render setelah mounted dan loading selesai
   if (!mounted || loading) return <p>Loading...</p>;
+
+  // Generate referral link jika agent sudah ada
+  const referralLink = `${window.location.origin}/sign-up/customer?referral_code=${profile.referral_code}`;
 
   return (
     <div className="container mx-auto px-4 py-8 pt-80">
@@ -218,8 +222,9 @@ export default function KelolaAkunPage() {
             name="referral_code"
             value={profile.referral_code}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
-            placeholder="Masukkan referral code"
+            disabled={true}
+            className="w-full border p-2 rounded bg-gray-100"
+            placeholder="Referral Code (otomatis)"
           />
         </div>
         <div>
@@ -414,6 +419,27 @@ export default function KelolaAkunPage() {
           {isSubmitting ? "Submitting..." : "Perbarui Profil"}
         </button>
       </form>
+      {/* Generate Referral Link */}
+      {agent && (
+        <div className="mt-6 text-center">
+          <p className="font-bold">Link Referral:</p>
+          <input
+            type="text"
+            readOnly
+            value={`${window.location.origin}/sign-up/customer?referral_code=${profile.referral_code}`}
+            className="w-full border p-2 rounded mt-2"
+          />
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(`${window.location.origin}/sign-up/customer?referral_code=${profile.referral_code}`);
+              alert("Link referral telah disalin!");
+            }}
+            className="mt-2 bg-blue-600 text-white py-1 px-3 rounded"
+          >
+            Salin Link Referral
+          </button>
+        </div>
+      )}
       <div className="mt-4 text-center">
         <Link href="/agent-affiliate-dashboard" className="text-blue-500 hover:underline">
           Kembali ke Dashboard
