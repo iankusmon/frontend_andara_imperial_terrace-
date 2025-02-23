@@ -17,7 +17,6 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Baca data user dari localStorage dan cek properti role
     const userData = localStorage.getItem("user");
     if (userData) {
       try {
@@ -41,31 +40,31 @@ const Navbar = () => {
     router.push("/login");
   };
 
-  // Tentukan dashboard path berdasarkan peran user
-  const dashboardPath = user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-affiliate-dashboard";
+  const dashboardPath =
+    user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-affiliate-dashboard";
 
   return (
-    <nav className="nav-container flex justify-between fixed z-50 bg-green-600 text-white w-full py-8 px-10 lg:px-32">
+    <nav className="flex justify-between fixed z-50 bg-green-600 text-white w-full py-4 px-4 lg:px-16">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <div className="left">
+        {/* Logo dan judul */}
+        <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/LogoAIT3.svg" alt="logo" width={80} height={80} />
-            <h4 className="font-bold">Andara Imperial Terrace</h4>
+            <Image src="/LogoAIT3.svg" alt="logo" width={60} height={60} />
+            <h4 className="font-bold text-sm lg:text-base text-center">Andara Imperial Terrace</h4>
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex gap-12 pt-5">
+        <div className="hidden lg:flex gap-4 pt-2">
           {NAV_LINKS.map((link) => (
-            <Link key={link.key} href={link.href} className="text-white text-md">
+            <Link key={link.key} href={link.href} className="text-white text-sm">
               {link.label}
             </Link>
           ))}
         </div>
 
         {/* Profile/Login Section for Desktop */}
-        <div className="hidden lg:flex gap-4 pt-5">
+        <div className="hidden lg:flex gap-2 pt-2 relative">
           {isLoggedIn && user ? (
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
@@ -76,19 +75,19 @@ const Navbar = () => {
                   height={40}
                   className="rounded-full"
                 />
-                <span className="font-bold">{user.username}</span>
+                <span className="font-bold text-sm">{user.username}</span>
               </button>
               {showDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
                   <Link
                     href={dashboardPath}
-                    className="block px-4 py-2 hover:bg-gray-200 w-full text-left"
+                    className="block px-4 py-2 hover:bg-gray-200 w-full text-left text-sm"
                   >
                     Go to Dashboard
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="block px-4 py-2 hover:bg-gray-200 w-full text-left"
+                    className="block px-4 py-2 hover:bg-gray-200 w-full text-left text-sm"
                   >
                     Logout
                   </button>
@@ -103,7 +102,7 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger Button for Mobile */}
-        <div className="block lg:hidden">
+        <div className="block lg:hidden pt-2 relative z-50">
           {navbarOpen ? (
             <button onClick={() => setNavbarOpen(false)}>
               <XMarkIcon className="h-5 w-5" />
@@ -116,16 +115,21 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu: ditempatkan tepat di bawah navbar */}
       {navbarOpen && (
-        <div className="absolute top-16 left-0 w-full bg-green-600 text-white p-5 flex flex-col items-center lg:hidden">
+        <div className="absolute top-full left-0 w-full bg-green-600 text-white p-5 flex flex-col items-center lg:hidden z-40">
           {NAV_LINKS.map((link) => (
-            <Link key={link.key} href={link.href} className="text-white text-lg py-2" onClick={() => setNavbarOpen(false)}>
+            <Link
+              key={link.key}
+              href={link.href}
+              className="text-white text-sm py-2"
+              onClick={() => setNavbarOpen(false)}
+            >
               {link.label}
             </Link>
           ))}
           {isLoggedIn && user ? (
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-2 mt-2">
               <div className="flex items-center gap-2">
                 <Image
                   src={user.profilePic}
@@ -134,12 +138,12 @@ const Navbar = () => {
                   height={40}
                   className="rounded-full"
                 />
-                <span className="text-white font-bold">{user.username}</span>
+                <span className="text-white font-bold text-sm">{user.username}</span>
               </div>
-              <Link href={dashboardPath} className="text-white hover:underline" onClick={() => setNavbarOpen(false)}>
+              <Link href={dashboardPath} className="text-white hover:underline text-sm" onClick={() => setNavbarOpen(false)}>
                 Go to Dashboard
               </Link>
-              <button onClick={handleLogout} className="text-white hover:underline">
+              <button onClick={handleLogout} className="text-white hover:underline text-sm">
                 Logout
               </button>
             </div>
