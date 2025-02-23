@@ -23,7 +23,7 @@ const NupWizardForm: React.FC = () => {
   return (
     <Container>
       <Row>
-        <Col md={8} className="mx-auto mt-5 pt-20">
+        <Col md={8} className="mx-auto mt-5 pt-40">
           <h2>Form Pengisian NUP</h2>
           <h5>Mohon isikan data diri dibawah untuk melakukan pembayaran NUP</h5>
           <StepWizard>
