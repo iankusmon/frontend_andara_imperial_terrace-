@@ -12,11 +12,11 @@ interface Location {
 
 const desktopLocations = [
   // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 32, y: 30, img: "/eiffel.jpg" },
-  { id: 3, name: "Versailles Park", x: 50, y: 24, img: "/versailles.jpg" },
-  { id: 4, name: "Davinci Residence", x: 16, y: 24, img: "/davinci_residence.png" },
-  { id: 5, name: "Amsterdam Royale", x: 18, y: 21, img: "/amsterdam_royale.png" },
-  { id: 6, name: "Athena Height", x: 22, y: 20, img: "/athena_height.png" }
+  { id: 2, name: "Menara Eiffel", x: 32, y: 24, img: "/eiffel.jpg" },
+  { id: 3, name: "Versailles Park", x: 30.5, y: 30, img: "/versailles.jpg" },
+  { id: 4, name: "Davinci Residence", x: 21.5, y: 52, img: "/davinci_residence.png" },
+  { id: 5, name: "Amsterdam Royale", x: 21.5, y: 46, img: "/amsterdam_royale.png" },
+  { id: 6, name: "Athena Height", x: 22.5, y: 43, img: "/athena_height.png" }
 ];
 
 const mobileLocations = [

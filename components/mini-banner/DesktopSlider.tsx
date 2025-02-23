@@ -19,20 +19,21 @@ type SlideType = {
   image: string;
   link: string;
   message: string;
+  label: string;
 };
 
 const desktopSlides: SlideType[] = [
-  { id: 1, image: "/pissa.png", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!" },
-  { id: 2, image: "/colosseum_2.png", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!" },
-  { id: 3, image: "/infinity_pool.png", link: "/artikel/infinity-pool", message: "Lihat Keseruan Infinity Pool!" },
-  { id: 4, image: "/segara_rasa.png", link: "/artikel/segara-rasa", message: "Mari makan dengan dapur segara!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempuranaan Andara Imperial Terrace!" },
-  { id: 6, image: "/water_coaster.png", link: "/artikel/water-coaster", message: "Temukan Water Coaster Terpanjang di Solo Raya!" }
+  { id: 1, image: "/pissa.png", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pisa!" },
+  { id: 2, image: "/colosseum_2.png", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
+  { id: 3, image: "/infinity_pool.png", link: "/artikel/infinity-pool", message: "Lihat Keseruan Infinity Pool!", label: "Infinity Pool!!" },
+  { id: 4, image: "/segara_rasa.png", link: "/artikel/segara-rasa", message: "Mari makan dengan dapur segara!", label: "Dapur Segara Rasa!!" },
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
+  { id: 6, image: "/water_coaster.png", link: "/artikel/water-coaster", message: "Temukan Water Coaster Terpanjang di Solo Raya!", label: "Water Coaster!" }
 ];
 
 const DesktopSlider: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState<SlideType | null>(null); // ✅ Perbaikan tipe
+  const [currentSlide, setCurrentSlide] = useState<SlideType | null>(null);
 
   return (
     <div className="desktop-slider-container">
@@ -47,6 +48,7 @@ const DesktopSlider: React.FC = () => {
         {desktopSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="slide-item relative flex flex-col items-center">
+              <p className="text-center text-sm font-semibold mb-2 bg-white bg-opacity-75 p-2 rounded-md">{slide.label}</p>
               <a href={DOMAIN + slide.link} rel="noopener noreferrer">
                 <img src={slide.image} className="rounded-lg object-cover w-full h-full" />
               </a>

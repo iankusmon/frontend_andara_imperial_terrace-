@@ -13,17 +13,17 @@ interface Slide {
   id: number;
   image: string;
   link: string;
-  isVideo: boolean;
   message: string;
+  label: string;
 }
 
 const mobileSlides: Slide[] = [
-  { id: 1, image: "/pissa.png", link: "/artikel/menara-pissa", isVideo: false, message: "Lihat Keindahan Menara Pisa!" },
-  { id: 2, image: "/colosseum_2.png", link: "/artikel/colosseum", isVideo: false, message: "Lihat Keindahan Colosseum!" },
-  { id: 3, image: "/infinity_pool.png", link: "/artikel/infinity-pool", isVideo: false, message: "Lihat Keseruan Infinity Pool!" },
-  { id: 4, image: "/segara_rasa.png", link: "/artikel/segara-rasa", isVideo: false, message: "Mari makan dengan dapur segara!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/artikel/menara-imperial-terrace", isVideo: false, message: "Lihatlah Kesempuranaan Andara Imperial Terrace!" },
-  { id: 6, image: "/water_coaster.png", link: "/artikel/water-coaster", isVideo: false, message: "Temukan Water Coaster Terpanjang di Solo Raya!" }
+  { id: 1, image: "/pissa.png", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pisa!" },
+  { id: 2, image: "/colosseum_2.png", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
+  { id: 3, image: "/infinity_pool.png", link: "/artikel/infinity-pool", message: "Lihat Keseruan Infinity Pool!", label: "Infinity Pool!" },
+  { id: 4, image: "/segara_rasa.png", link: "/artikel/segara-rasa", message: "Mari makan dengan dapur segara!", label: "Dapur Segara Rasa!" },
+  { id: 5, image: "/menara_imperial_terrace.png", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
+  { id: 6, image: "/water_coaster.png", link: "/artikel/water-coaster", message: "Temukan Water Coaster Terpanjang di Solo Raya!", label: "Water Coaster!" }
 ];
 
 const MobileSlider: React.FC = () => {
@@ -36,6 +36,9 @@ const MobileSlider: React.FC = () => {
         {mobileSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="slide-item relative text-center">
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-75 px-3 py-1 rounded-md text-sm font-semibold z-10">
+                {slide.label}
+              </div>
               <Image src={slide.image} alt={slide.message} width={600} height={400} layout="responsive" quality={80} />
               <div className="mt-2 flex justify-center">
                 <button onClick={() => { setCurrentSlide(slide); setShowPopup(true); }} className="bg-white p-2 rounded-full shadow-lg">
@@ -67,7 +70,7 @@ const MobileSlider: React.FC = () => {
               <a href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.link}`} target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="text-pink-500 text-2xl cursor-pointer" />
               </a>
-              {currentSlide.isVideo && (
+              {/* {currentSlide.isVideo && (
                 <>
                   <a href={`https://www.youtube.com/share?url=${DOMAIN + currentSlide.link}`} target="_blank" rel="noopener noreferrer">
                     <FaYoutube className="text-red-600 text-2xl cursor-pointer" />
@@ -76,7 +79,7 @@ const MobileSlider: React.FC = () => {
                     <FaTiktok className="text-black text-2xl cursor-pointer" />
                   </a>
                 </>
-              )}
+              )} */}
             </div>
           </div>
         </div>
