@@ -15,6 +15,7 @@ export default function SimulasiKPR({ endpoint, title }: SimulasiKPRProps) {
     fixedRatePeriod: "",
     floatingRate: "",
     floatingRatePeriod: "",
+    salary: ""
   });
   const [result, setResult] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState(false);
@@ -130,6 +131,19 @@ export default function SimulasiKPR({ endpoint, title }: SimulasiKPRProps) {
             name="floatingRatePeriod"
             value={formData.floatingRatePeriod}
             onChange={handleChange}
+            required
+            className="p-2 border rounded w-full"
+          />
+        </label>
+        <label>
+          Gaji Bulanan
+          <input
+            type="text"
+            name="salary"
+            value={formatRupiah(formData.salary)}
+            onChange={(e) =>
+              setFormData({ ...formData, salary: e.target.value.replace(/\D/g, "") })
+            }
             required
             className="p-2 border rounded w-full"
           />
