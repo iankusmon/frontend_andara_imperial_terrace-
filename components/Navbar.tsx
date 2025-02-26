@@ -44,7 +44,7 @@ const Navbar = () => {
     user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-affiliate-dashboard";
 
   return (
-    <nav className="flex justify-between fixed z-50 bg-green-600 text-white w-full py-4 px-4 lg:px-16">
+    <nav className="flex justify-between fixed z-50 text-white w-full py-4 px-4 lg:px-16 nav-container">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo dan judul */}
         <div className="flex items-center gap-2">

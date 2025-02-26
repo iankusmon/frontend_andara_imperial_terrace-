@@ -17,9 +17,9 @@ const villaTypes = [
     concept: 'Konsep Arsitektur: Eropa Klasik',
     features: 'Ornamen megah, balkon luas, taman dalam.',
     facilities: 'Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.',
-    price: 'Rp 3.250.000.000,-',
+    price: 'Rp 2.850.000.000,-',
     image: '/davinci_residence.png',
-    link: '/artikel/kawasan-ait'
+    link: '/villa/davinci-residence'
     // link: '/villa/davinci-residence'
   },
   {
@@ -27,9 +27,9 @@ const villaTypes = [
     concept: 'Konsep Arsitektur: Rumah Belanda',
     features: 'Fasad bata merah, perapian modern, dapur mewah.',
     facilities: 'Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.',
-    price: 'Rp 3.200.000.000,-',
+    price: 'Rp 2.830.000.000,-',
     image: '/amsterdam_royale.png',
-    link: '/artikel/kawasan-ait'
+    link: '/villa/davinci-residence'
     // link: '/villa/amsterdam-royale'
   },
   {
@@ -37,9 +37,9 @@ const villaTypes = [
     concept: 'Konsep Arsitektur: Yunani Klasik',
     features: 'Pilar kokoh, aksen putih bersih, rooftop BBQ area, kolam renang pribadi.',
     facilities: 'Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.',
-    price: 'Rp 3.150.000.000,-',
+    price: 'Rp 2.800.000.000,-',
     image: '/athena_height.png',
-    link: '/artikel/kawasan-ait'
+    link: '/villa/davinci-residence'
     // link: '/villa/athena-height'
   },
 ];
