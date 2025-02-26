@@ -46,16 +46,15 @@ const DesktopSlider: React.FC = () => {
   const slides: Slide[] = [
     { image: "/slide5.png", link: "/artikel/kawasan-ait", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
     { image: "/slide6.png", link: "/artikel/kawasan-ait", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
-    { image: "/slide6.png", link: "", isVideo: false, message: "Hanya Share dapat CUAN!" },
     { image: "/slide3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
     { image: "/slide4.png", link: "/kpr-corner", isVideo: false, message: "Pelajari Fitur KPR kami!" },
   ];
 
   return (
-    <div className="desktop-slider mb-16 pt-20">
+    <div className="desktop-slider pt-20">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="slide-item relative" style={{ paddingTop: '18px' }}>
+          <div key={index} className="slide-item relative" style={{ paddingTop: '0px' }}>
             <a href={DOMAIN + slide.link} rel="noopener noreferrer">
               <Image
                 src={slide.image}

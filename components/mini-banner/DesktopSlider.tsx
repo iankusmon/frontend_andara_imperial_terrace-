@@ -47,14 +47,14 @@ const DesktopSlider: React.FC = () => {
       >
         {desktopSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="slide-item relative flex flex-col items-center">
-              <p className="text-center text-sm font-semibold mb-2 bg-white bg-opacity-75 p-2 rounded-md">{slide.label}</p>
+            <div className="slide-item relative">
               <a href={DOMAIN + slide.link} rel="noopener noreferrer">
                 <img src={slide.image} className="rounded-lg object-cover w-full h-full" />
+                <p className="absolute bottom-0 left-0 right-0 text-center text-sm font-semibold bg-black bg-opacity-50 text-white py-2">{slide.label}</p>
               </a>
               <button
                 onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
-                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 bg-white p-2 rounded-full shadow-lg"
+                className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow-lg"
               >
                 <Image src="/share.png" alt="Share" width={40} height={40} />
               </button>

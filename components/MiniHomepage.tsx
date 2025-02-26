@@ -106,7 +106,7 @@ const MiniHomepage: React.FC = () => {
 
   return (
     <section className="slider-section"> 
-      <h2 className="title text-left pl-5 md:pl-[200px] font-bold text-xl md:text-3xl text-black">
+      <h2 className="title text-left font-bold text-xl text-black">
         Landmarks dan Facilities
       </h2>
 

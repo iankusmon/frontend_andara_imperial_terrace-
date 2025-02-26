@@ -57,7 +57,8 @@
         background-color: #616C5E;
         color: white;
         width: 100%;
-        padding: 10px 16px;
+        height: 80px;
+        padding: 5px 16px;
         font-size: 14px; /* Ukuran font default */
       }
       
