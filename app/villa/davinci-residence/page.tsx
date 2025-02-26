@@ -32,7 +32,7 @@ const VillaDaVinci = () => {
   return (
     <div className="w-full">
       {/* Full-width Autoplay Video */}
-      <div className="w-full h-[500px] overflow-hidden">
+      <div className="w-full h-[600px] overflow-hidden">
         <video
           ref={videoRef}
           src="/davinci_vidio.mp4"
@@ -45,7 +45,7 @@ const VillaDaVinci = () => {
       </div>
       
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-4 mt-10">
+      <div className="max-w-7xl mx-auto p-4 mt-10 pt-20">
         {/* Banner utama */}
         <div className="w-full h-[500px] relative">
           <Image src="/davinci_1.png" alt="Villa Da Vinci" layout="fill" objectFit="cover" className="rounded-xl" />

@@ -26,10 +26,10 @@ const villaTypes = [
     title: 'Amsterdam Royale (7 Unit)',
     concept: 'Konsep Arsitektur: Rumah Belanda',
     features: 'Fasad bata merah, perapian modern, dapur mewah.',
-    facilities: 'Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.',
+    facilities: 'Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan di pagi hari.',
     price: 'Rp 2.830.000.000,-',
     image: '/amsterdam_royale.png',
-    link: '/villa/davinci-residence'
+    link: '/villa/amsterdam-royal'
     // link: '/villa/amsterdam-royale'
   },
   {
@@ -39,7 +39,7 @@ const villaTypes = [
     facilities: 'Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.',
     price: 'Rp 2.800.000.000,-',
     image: '/athena_height.png',
-    link: '/villa/davinci-residence'
+    link: '/villa/athena-height'
     // link: '/villa/athena-height'
   },
 ];
