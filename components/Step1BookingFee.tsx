@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
-// import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
+import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
 
 interface FormData {
   paymentType: string;
@@ -241,8 +241,10 @@ const WizardForm: React.FC = () => {
           <option value="laki_laki">Laki-laki</option>
           <option value="perempuan">Perempuan</option>
         </select>
-      </div>
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      </div>  
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
     </form>
   );
 
@@ -347,8 +349,12 @@ const WizardForm: React.FC = () => {
           required
         ></textarea>
       </div>
-      {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
     </form>
   );
 
@@ -680,8 +686,12 @@ const WizardForm: React.FC = () => {
         />
 
       </div>
-      {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
     </form>
   );
 
@@ -712,11 +722,15 @@ const WizardForm: React.FC = () => {
         <p><strong>Minat Villa Unit:</strong> {formData.villaUnitInterest} Eiffel 99</p>
         <p><strong>Cara Pembayaran:</strong> {formData.paymentMethod} Transfer</p>
         <p><strong>Nominal Pembayaran:</strong> {numberFormat(formData.payment_amount)}</p>
-        <p><strong>Transfer Ke:</strong> 0197263634 atas nama Andara Rejo Makmur</p>
+        <p><strong>Transfer Ke:</strong> 0035-01-001543-56-9 BRI atas nama Andara Rejo Makmur</p>
         <p><strong>Datang Ke Lokasi (apabila cash):</strong> Kantor Andara Rejo Makmur</p>
       </div>
-      {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={handleConfirmationSubmit} className="btn btn-primary">
+      Next
+    </button>
     </div>
   );
 
@@ -736,8 +750,12 @@ const renderStep4 = () => (
           required
         />
     <div className="button-group">
-        {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-        {/* <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button> */}
+    <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
       </div>
   </div>
 );
@@ -787,6 +805,218 @@ const renderStep4 = () => (
           </Button> */}
         </Modal.Footer>
       </Modal>
+<style jsx>{`
+        /* FormWithTooltip.css */
+        .react-tooltip {
+          z-index: 1000;
+          background-color: #333;
+          color: #fff;
+          border-radius: 4px;
+          padding: 5px 10px;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+        
+        .form-container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background-color: #f9f9f9;
+        }
+        
+        .form-container h1 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        
+        .form-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        
+        label {
+          font-weight: bold;
+        }
+        
+        input,
+        select,
+        button {
+          width: 100%;
+          padding: 8px;
+          margin-top: 5px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        
+        button {
+          grid-column: span 2;
+          background-color: #007bff;
+          color: white;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        
+        button:hover {
+          background-color: #0056b3;
+        }
+        
+        /* Global Styling */
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          margin: 0;
+          padding: 0;
+        }
+        
+        /* Container Styling */
+        .review-container, .confirmation-container {
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          margin: 20px auto;
+        }
+        
+        /* Headings */
+        h1 {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 20px;
+        }
+        
+        /* Review Step Styling */
+        .review-container p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: #555;
+          margin: 10px 0;
+        }
+        
+        .review-container p strong {
+          font-weight: bold;
+          color: #333;
+        }
+        
+        /* Buttons Styling */
+        button {
+          padding: 10px 20px; /* Memberikan jarak dalam tombol */
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          margin: 5px !important; /* Pastikan margin ter-apply dengan !important */
+        }
+        
+        button:hover {
+          opacity: 0.9;
+        }
+        
+        button:focus {
+          outline: none;
+        }
+        
+        button.secondary {
+          background: #d3d3d3;
+          color: #333;
+          margin-right: 10px !important; /* Jarak khusus untuk tombol sekunder */
+        }
+        
+        button.primary {
+          background: #007bff;
+          color: #fff;
+        }
+        
+        button.success {
+          background: #28a745;
+          color: #fff;
+        }
+        
+        /* Confirmation Section */
+        .confirmation-container {
+          text-align: center;
+        }
+        
+        .confirmation-container p {
+          font-size: 16px;
+          color: #666;
+          margin-bottom: 20px;
+        }
+        
+        .confirmation-container label {
+          display: block;
+          font-size: 16px;
+          color: #333;
+          margin-bottom: 10px;
+          text-align: left;
+        }
+        
+        .confirmation-container input[type="file"] {
+          display: block;
+          margin: 10px auto 20px;
+          padding: 10px;
+          font-size: 14px;
+        }
+        
+        .confirmation-container button {
+          display: inline-block;
+          margin: 5px;
+        }
+        
+        /* Shared Container Styling for Steps */
+        .step-container {
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 600px;
+          margin: 20px auto;
+        }
+        
+        .step-container h1 {
+          font-size: 24px;
+          color: #333;
+          margin-bottom: 20px;
+        }
+        
+        .step-container p {
+          font-size: 16px;
+          color: #666;
+          margin-bottom: 20px;
+          line-height: 1.5;
+        }
+        
+        /* Form Input Styling */
+        .step-container input[type="file"],
+        .step-container textarea,
+        .step-container input,
+        .step-container select {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+        
+        /* Button Group */
+        .button-group {
+          display: flex;
+          justify-content: space-between;
+        }
+        
+        .button-group button {
+          padding: 10px 20px;
+          font-size: 16px;
+          border-radius: 4px;
+          margin: 5px;
+          cursor: pointer;
+        }
+      `}</style>
     </div>
   );
 };
