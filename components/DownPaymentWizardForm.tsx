@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Step1DownPayment from './Step1DownPayment';
 
 const DownPaymentWizardForm: React.FC = () => {
@@ -21,7 +21,7 @@ const DownPaymentWizardForm: React.FC = () => {
   return (
     <Container>
       <Row>
-        <Col md={8} className="mx-auto mt-5">
+        <Col md={8} className="mx-auto mt-5 pt-40">
           <h2>Form Pengisian Down Payment</h2>
           <h5>Mohon isikan data diri dibawah untuk melakukan pembayaran Down Payment</h5>
           <StepWizard>

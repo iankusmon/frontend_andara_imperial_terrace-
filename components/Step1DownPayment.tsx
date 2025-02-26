@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
-// import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
+import "../app/down-payment/DownPayment.css"; // Add your custom CSS
 
 interface FormData {
   paymentType: string;
@@ -151,7 +151,9 @@ const WizardForm: React.FC = () => {
         />
 
       </div>
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
     </form>
   );
 
@@ -172,11 +174,15 @@ const WizardForm: React.FC = () => {
         <p><strong>Minat Villa Unit:</strong> {formData.villaUnitInterest} Eiffel 99</p>
         <p><strong>Cara Pembayaran:</strong> {formData.paymentMethod} Transfer</p>
         <p><strong>Nominal Pembayaran:</strong> {numberFormat(formData.payment_amount)}</p>
-        <p><strong>Transfer Ke:</strong> 0197263634 atas nama Andara Rejo Makmur</p>
+        <p><strong>Transfer Ke:</strong> 0035-01-001543-56-9 BRI atas nama Andara Rejo Makmur</p>
         <p><strong>Datang Ke Lokasi (apabila cash):</strong> Kantor Andara Rejo Makmur</p>
       </div>
-      {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-      {/* <Button variant="primary" onClick={goToNextStep}>Next</Button> */}
+      <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={goToNextStep} className="btn btn-primary">
+      Next
+    </button>
     </div>
   );
 
@@ -196,8 +202,12 @@ const renderStep3 = () => (
           required
         />
     <div className="button-group">
-        {/* <Button variant="secondary" onClick={goToPreviousStep}>Back</Button> */}
-        {/* <Button variant="success" onClick={handleConfirmationSubmit}>Submit</Button> */}
+    <button type="button" onClick={goToPreviousStep} className="btn btn-primary">
+      Back
+    </button>
+      <button type="button" onClick={handleConfirmationSubmit} className="btn btn-primary">
+      Next
+    </button>
       </div>
   </div>
 );
