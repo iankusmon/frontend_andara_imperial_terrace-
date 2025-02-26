@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Step1Pelunasan from './Step1Pelunasan';
 
 const PelunasanWizardForm: React.FC = () => {
@@ -21,7 +21,7 @@ const PelunasanWizardForm: React.FC = () => {
   return (
     <Container>
       <Row>
-        <Col md={8} className="mx-auto mt-5">
+        <Col md={8} className="mx-auto mt-5 pt-40">
           <h2>Form Pelunasan</h2>
           <StepWizard>
             <Step1Pelunasan />
