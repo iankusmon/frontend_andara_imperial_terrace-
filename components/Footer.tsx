@@ -46,13 +46,13 @@ const Footer = () => {
       {/* LINK FOOTER */}
       <div className='right lg:w-2/3 flex xs:flex-col md:flex-row xs:gap-10 md:gap-0 md:justify-between'>
         <FooterCard title='Product' links={[
-          { name: 'Artikel Kawasan AIT', url: '/artikel/kawasan-ait' },
+          { name: 'AIT', url: '/artikel/kawasan-ait' },
           { name: 'Penyewaan', url: '/artikel/kawasan-ait' },
           { name: 'Paket', url: '/artikel/kawasan-ait' },
           { name: 'KPR', url: '/kpr-corner' },
         ]} />
         <FooterCard title='News' links={[
-          { name: 'Artikel Kawasan AIT', url: '/artikel/kawasan-ait' },
+          { name: 'Kawasan AIT', url: '/artikel/kawasan-ait' },
           { name: 'Promo', url: '/promo' },
           { name: 'Affiliate Corner', url: '/affiliate-corner' },
         ]} />
@@ -62,7 +62,7 @@ const Footer = () => {
           { name: 'Bendogantungan, Sumberejo, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57426', isText: true },
         ]} />
         <FooterCard title='FAQ' links={[
-          { name: 'FAQ Page', url: '/faq' },
+          { name: 'FAQ', url: '/faq' },
         ]} />
       </div>
     </footer>
@@ -77,8 +77,8 @@ interface FooterCardProps {
 const FooterCard = ({ title, links }: FooterCardProps) => {
   return (
     <div className='flex flex-col gap-4'>
-      <h3 className='text-2xl font-bold'>{title}</h3>
-      <ul className='flex flex-col gap-4 mt-4'>
+      <h3 className='text-lg font-bold'>{title}</h3>
+      <ul className='flex flex-col gap-4 mt-4 mr-4'>
         {links.map((link, index) =>
           link.isText ? (
             <span key={index} className='opacity-70'>{link.name}</span>
