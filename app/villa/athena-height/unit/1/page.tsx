@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const VillaAmsterdamRoyal = () => {
+const VillaAthenaHeight = () => {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -17,16 +17,16 @@ const VillaAmsterdamRoyal = () => {
   }, []);
 
   const galleryImages = [
-    "/amsterdam_2_1.png",
-    "/amsterdam_3_1.png",
-    "/amsterdam_4_1.png",
-    "/amsterdam_5_1.png",
-    "/amsterdam_13_1.png",
+    "/athena_10_1.png",
+    "/athena_11_1.png",
+    "/athena_12_1.png",
+    "/athena_6_1.png"
+    // "/athena_6_1.png",
     // "/amsterdam_8_1.png",
   ];
 
-  const exclusiveRooms = ["/amsterdam_10_1.png", "/amsterdam_11_1.png"];
-  const otherFacilities = ["/amsterdam_10_1.png", "/amsterdam_11_1.png", "/amsterdam_12_1.png", "/amsterdam_6_1.png"];
+  const exclusiveRooms = ["/athena_10_1.png", "/athena_11_1.png"];
+  const otherFacilities = ["/athena_10_1.png", "/athena_11_1.png", "/athena_12_1.png", "/athena_7_1.png"];
 
   return (
     <div className="w-full">
@@ -45,10 +45,6 @@ const VillaAmsterdamRoyal = () => {
       
       {/* Main Content */}
       <div className="max-w-7xl mx-auto p-4 pt-6">
-        {/* Banner utama */}
-        <div className="w-full h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] relative">
-          <Image src="/amsterdam_1_1.png" alt="Villa Da Vinci" layout="fill" objectFit="cover" className="rounded-xl" />
-        </div>
 
         {/* Slider Galeri */}
         <div className="mt-6">
@@ -63,18 +59,16 @@ const VillaAmsterdamRoyal = () => {
 
         {/* Narasi */}
         <div className="mt-8 text-center">
-          <h1 className="text-3xl font-bold">Villa Amsterdam Royale</h1>
+          <h1 className="text-3xl font-bold">Villa Athena Height</h1>
           <p className="mt-4 text-lg text-gray-700">
-            Villa Amsterdam Royale di Andara Imperial Terrace adalah lebih dari sekadar tempat tinggal; ini adalah peluang investasi strategis yang
-            menjanjikan keuntungan berkelanjutan. Memadukan arsitektur klasik Belanda dengan teknologi modern, villa ini menjadi simbol kemewahan
-            yang menarik bagi pasar properti premium.
+            Andara Imperial Terrace dengan bangga mempersembahkan Type Villa Athena Height, sebuah mahakarya arsitektur Yunani yang memadukan kemewahan dan kenyamanan dalam setiap detail. Villa ini dirancang untuk menghadirkan pengalaman resor bintang lima dalam kenyamanan hunian pribadi, menjadikannya pilihan sempurna bagi mereka yang mendambakan gaya hidup eksklusif dan prestisius.
           </p>
         </div>
 
         {/* Harga */}
         <div className="mt-4 text-center">
           <h2 className="text-lg sm:text-2xl font-semibold text-gray-800">
-            Harga: <span className="text-red-500 line-through">Rp 3,20 M</span> <span className="text-green-600 font-bold">Rp 2,80 M</span>
+            Harga: <span className="text-red-500 line-through">Rp 3,15 M</span> <span className="text-green-600 font-bold">Rp 2,75 M</span>
           </h2>
         </div>
 
@@ -96,7 +90,7 @@ const VillaAmsterdamRoyal = () => {
           <div className="mt-6">
             <h3 className="text-md sm:text-lg font-semibold text-gray-800">Presidential Suite</h3>
             <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_7_1.png" alt="Presidential Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+              <Image src="/athena_7_1.png" alt="Presidential Suite" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
           </div>
 
@@ -104,7 +98,7 @@ const VillaAmsterdamRoyal = () => {
           <div className="mt-6">
             <h3 className="text-md sm:text-lg font-semibold text-gray-800">Executive Suite</h3>
             <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_8_1.png" alt="Executive Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+              <Image src="/athena_8_1.png" alt="Executive Suite" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
           </div>
 
@@ -112,28 +106,14 @@ const VillaAmsterdamRoyal = () => {
           <div className="mt-6">
             <h3 className="text-md sm:text-lg font-semibold text-gray-800">Junior Suite</h3>
             <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_9_1.png" alt="Junior Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+              <Image src="/athena_9_1.png" alt="Junior Suite" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
           </div>
         </div>
-
-        {/* Fasilitas Lainnya */}
-        <div className="mt-8">
-          <h2 className="text-lg sm:text-xl font-bold text-center">Fasilitas Lainnya</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {otherFacilities.map((src, index) => (
-              <div key={index} className="relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
-                <Image src={src} alt={`Facility ${index + 1}`} layout="fill" objectFit="cover" className="rounded-lg" />
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
     </div>
   );
 };
 
-export default VillaAmsterdamRoyal;
-
-
-
+export default VillaAthenaHeight;

@@ -17,11 +17,11 @@ const VillaAthenaHeight = () => {
   }, []);
 
   const galleryImages = [
-    "/athena_2_1.png",
-    "/athena_3_1.png",
-    "/athena_4_1.png",
-    "/athena_5_1.png",
-    "/athena_6_1.png",
+    "/athena_10_1.png",
+    "/athena_11_1.png",
+    "/athena_12_1.png",
+    "/athena_6_1.png"
+    // "/athena_6_1.png",
     // "/amsterdam_8_1.png",
   ];
 
@@ -45,10 +45,6 @@ const VillaAthenaHeight = () => {
       
       {/* Main Content */}
       <div className="max-w-7xl mx-auto p-4 pt-6">
-        {/* Banner utama */}
-        <div className="w-full h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] relative">
-          <Image src="/athena_1_1.png" alt="Villa Da Vinci" layout="fill" objectFit="cover" className="rounded-xl" />
-        </div>
 
         {/* Slider Galeri */}
         <div className="mt-6">
@@ -114,18 +110,7 @@ const VillaAthenaHeight = () => {
             </div>
           </div>
         </div>
-
-        {/* Fasilitas Lainnya */}
-        <div className="mt-8">
-          <h2 className="text-lg sm:text-xl font-bold text-center">Fasilitas Lainnya</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {otherFacilities.map((src, index) => (
-              <div key={index} className="relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
-                <Image src={src} alt={`Facility ${index + 1}`} layout="fill" objectFit="cover" className="rounded-lg" />
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
     </div>
   );

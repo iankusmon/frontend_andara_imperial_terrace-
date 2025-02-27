@@ -29,7 +29,7 @@ const villaTypes = [
     features: "Fasad bata merah, perapian modern, dapur mewah.",
     facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.",
     image: "/amsterdam_royale.png",
-    link: "/villa/amsterdam-royal",
+    link: "villa/amsterdam-royal/type",
     share_link: "/sign-up/customer?referral_code=CA420C865876",
     share_cta: "Nikmati Kemewahan Amsterdam Royale hanya 7 Unit!"
   },
@@ -39,7 +39,7 @@ const villaTypes = [
     features: "Pilar kokoh, aksen putih bersih, rooftop BBQ area, kolam renang pribadi.",
     facilities: "Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.",
     image: "/athena_height.png",
-    link: "/villa/athena-height",
+    link: "/villa/athena-height/type",
     share_link: "/sign-up/customer?referral_code=CA420C865876",
     share_cta: "Nikmati Kemewahan Athena Height hanya 9 Unit!"
   },
