@@ -19,7 +19,7 @@ const villaTypes = [
     features: "Ornamen megah, balkon luas, taman dalam.",
     facilities: "Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.",
     image: "/davinci_residence.png",
-    link: "/villa/davinci-residence",
+    link: "/villa/davinci-residence/type",
     share_link: "/sign-up/customer?referral_code=CA420C865876",
     share_cta: "Nikmati Kemewahan Da Vinci Residence hanya 10 unit!"
   },

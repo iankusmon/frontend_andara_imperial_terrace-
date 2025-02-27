@@ -37,7 +37,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUser(null);
-    router.push("/login");
+    router.push("/login/customer");
   };
 
   const dashboardPath =
@@ -95,7 +95,7 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <Link href="/login">
+            <Link href="/login/customer">
               <Button type="button" title="Login" variant="btn_white" />
             </Link>
           )}
@@ -148,7 +148,7 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link href="/login">
+            <Link href="/login/customer">
               <Button type="button" title="Login" variant="btn_white_login" />
             </Link>
           )}
