@@ -603,3 +603,6 @@ p {
 }
 
 
+#fc_frame {
+  display: block !important;
+}
