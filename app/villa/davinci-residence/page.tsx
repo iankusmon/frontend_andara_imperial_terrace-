@@ -17,22 +17,21 @@ const VillaDaVinci = () => {
   }, []);
 
   const galleryImages = [
-    "/davinci_2.png",
-    "/davinci_3.png",
-    "/davinci_4.png",
-    "/davinci_5.png",
-    "/davinci_6.png",
-    "/davinci_7.png",
-    "/davinci_8.png",
+    "/davinci_2_1.png",
+    "/davinci_3_1.png",
+    "/davinci_4_1.png",
+    "/davinci_5_1.png",
+    "/davinci_7_1.png",
+    "/davinci_8_1.png",
   ];
 
-  const exclusiveRooms = ["/davinci_10.png", "/davinci_11.png"];
-  const otherFacilities = ["/davinci_12.png", "/davinci_13.png"];
+  const exclusiveRooms = ["/davinci_10_1.png", "/davinci_11_1.png"];
+  const otherFacilities = ["/davinci_10_1.png", "/davinci_11_1.png", "/davinci_12_1.png", "/davinci_13_1.png"];
 
   return (
     <div className="w-full">
       {/* Full-width Autoplay Video */}
-      <div className="w-full h-[600px] overflow-hidden">
+      <div className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
         <video
           ref={videoRef}
           src="/davinci_vidio.mp4"
@@ -45,17 +44,17 @@ const VillaDaVinci = () => {
       </div>
       
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-4 mt-10 pt-20">
+      <div className="max-w-7xl mx-auto p-4 pt-6">
         {/* Banner utama */}
-        <div className="w-full h-[500px] relative">
-          <Image src="/davinci_1.png" alt="Villa Da Vinci" layout="fill" objectFit="cover" className="rounded-xl" />
+        <div className="w-full h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] relative">
+          <Image src="/davinci_1_1.png" alt="Villa Da Vinci" layout="fill" objectFit="cover" className="rounded-xl" />
         </div>
 
         {/* Slider Galeri */}
         <div className="mt-6">
           <Carousel showThumbs={false} autoPlay infiniteLoop>
             {galleryImages.map((src, index) => (
-              <div key={index} className="h-[400px] relative">
+              <div key={index} className="h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] relative">
                 <Image src={src} alt={`Gallery ${index + 1}`} layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
             ))}
@@ -63,9 +62,9 @@ const VillaDaVinci = () => {
         </div>
 
         {/* Narasi */}
-        <div className="mt-8 text-center">
-          <h1 className="text-3xl font-bold">Villa Da Vinci Residence</h1>
-          <p className="mt-4 text-lg text-gray-700">
+        <div className="mt-6 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold">Villa Da Vinci Residence</h1>
+          <p className="mt-4 text-sm sm:text-lg text-gray-700">
             Villa Da Vinci Residence bukan hanya menawarkan keindahan dan kenyamanan sebagai tempat tinggal,
             tetapi juga peluang investasi yang luar biasa. Dengan desain elegan ala Eropa klasik dan fasilitas
             sekelas resor hotel bintang 5, villa ini menjadi pilihan terbaik untuk investasi properti yang
@@ -74,38 +73,57 @@ const VillaDaVinci = () => {
         </div>
 
         {/* Harga */}
-        <div className="mt-6 text-center">
-          <h2 className="text-2xl font-semibold text-gray-800">Harga: Rp 2.800.000.000</h2>
+        <div className="mt-4 text-center">
+          <h2 className="text-lg sm:text-2xl font-semibold text-gray-800">
+            Harga: <span className="text-red-500 line-through">Rp 3,25 M</span> <span className="text-green-600 font-bold">Rp 2,85 M</span>
+          </h2>
         </div>
 
         {/* Button NUP */}
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <button
             onClick={() => router.push("/nup")}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
+            className="px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 text-white rounded-lg text-sm sm:text-lg font-semibold hover:bg-blue-700 transition"
           >
-            Silahkan NUP Sekarang
+            Segera NUP Sekarang
           </button>
         </div>
 
-        {/* Fasilitas Kamar Eksklusif */}
+        {/* Spesifikasi Kamar */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold">Fasilitas Kamar Eksklusif</h2>
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            {exclusiveRooms.map((src, index) => (
-              <div key={index} className="relative h-64">
-                <Image src={src} alt={`Exclusive Room ${index + 1}`} layout="fill" objectFit="cover" className="rounded-lg" />
-              </div>
-            ))}
+          <h2 className="text-lg sm:text-xl font-bold text-center">Spesifikasi Kamar</h2>
+
+          {/* Presidential Suite */}
+          <div className="mt-6">
+            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Presidential Suite</h3>
+            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
+              <Image src="/davinci_7_1.png" alt="Presidential Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+            </div>
+          </div>
+
+          {/* Executive Suite */}
+          <div className="mt-6">
+            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Executive Suite</h3>
+            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
+              <Image src="/davinci_8_1.png" alt="Executive Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+            </div>
+          </div>
+
+          {/* Junior Suite */}
+          <div className="mt-6">
+            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Junior Suite</h3>
+            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
+              <Image src="/davinci_9_1.png" alt="Junior Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+            </div>
           </div>
         </div>
 
         {/* Fasilitas Lainnya */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold">Fasilitas Lainnya</h2>
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <h2 className="text-lg sm:text-xl font-bold text-center">Fasilitas Lainnya</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             {otherFacilities.map((src, index) => (
-              <div key={index} className="relative h-64">
+              <div key={index} className="relative h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
                 <Image src={src} alt={`Facility ${index + 1}`} layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
             ))}
