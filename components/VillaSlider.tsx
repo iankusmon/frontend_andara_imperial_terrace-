@@ -17,7 +17,7 @@ const villaTypes = [
     concept: 'Konsep Arsitektur: Eropa Klasik',
     features: 'Ornamen megah, balkon luas, taman dalam.',
     facilities: 'Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.',
-    price: 'Rp 2.850.000.000,-',
+    // price: 'Rp 2.850.000.000,-',
     image: '/davinci_residence.png',
     link: '/villa/davinci-residence'
     // link: '/villa/davinci-residence'
@@ -26,8 +26,8 @@ const villaTypes = [
     title: 'Amsterdam Royale (7 Unit)',
     concept: 'Konsep Arsitektur: Rumah Belanda',
     features: 'Fasad bata merah, perapian modern, dapur mewah.',
-    facilities: 'Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan di pagi hari.',
-    price: 'Rp 2.830.000.000,-',
+    facilities: 'Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan pagi hari yang sangat estetik pemandangan dan suasana tak terlupakan.',
+    // price: 'Rp 2.830.000.000,-',
     image: '/amsterdam_royale.png',
     link: '/villa/amsterdam-royal'
     // link: '/villa/amsterdam-royale'
@@ -37,7 +37,7 @@ const villaTypes = [
     concept: 'Konsep Arsitektur: Yunani Klasik',
     features: 'Pilar kokoh, aksen putih bersih, rooftop BBQ area, kolam renang pribadi.',
     facilities: 'Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.',
-    price: 'Rp 2.800.000.000,-',
+    // price: 'Rp 2.800.000.000,-',
     image: '/athena_height.png',
     link: '/villa/athena-height'
     // link: '/villa/athena-height'
@@ -76,7 +76,7 @@ const VillaSlider = () => {
               <p className="villa-concept"><strong>{villa.concept}</strong></p>
               <p><strong>Ciri Khas:</strong> {villa.features}</p>
               <p><strong>Fasilitas Tambahan:</strong> {villa.facilities}</p>
-              <p><strong>Harga Jual:</strong> {villa.price}</p>
+              {/* <p><strong>Harga Jual:</strong> {villa.price}</p> */}
               <Link href={villa.link}>
                 <button className="buy-button">Beli Sekarang</button>
               </Link>

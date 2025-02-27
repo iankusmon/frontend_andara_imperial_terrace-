@@ -21,8 +21,8 @@ const VillaDaVinci = () => {
     "/davinci_3_1.png",
     "/davinci_4_1.png",
     "/davinci_5_1.png",
-    "/davinci_7_1.png",
-    "/davinci_8_1.png",
+    "/davinci_14_1.png",
+    // "/davinci_8_1.png",
   ];
 
   const exclusiveRooms = ["/davinci_10_1.png", "/davinci_11_1.png"];
