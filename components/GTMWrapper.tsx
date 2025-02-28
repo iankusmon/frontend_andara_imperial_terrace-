@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
-const GTM_ID = "G-2BE429XD9C";
+const GTM_ID = "G-QB0F5RXXGV";
 
 declare global {
   interface Window {

@@ -51,7 +51,7 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   };
 
   return (
-    <div className="relative w-full h-[80vh]">
+    <div className="relative w-full h-[70vh]">
       {/* <Image
         src="/siteplan2d.jpeg"
         alt="Site Plan Andara Imperial Terrace"
