@@ -138,7 +138,7 @@ export default function AffiliateCorner() {
 
       <div className="text-center mt-4">
         <a 
-          href="https://drive.google.com/uc?export=download&id=1GpUL0kSjwhcY8YDHYgL9ReMtFpW9Qdw-" 
+          href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7" 
           download
           className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
         >

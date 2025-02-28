@@ -138,7 +138,7 @@ export default function AffiliateCorner() {
 
       <div className="signup-link text-center mt-4">
         <a
-          href="https://drive.google.com/uc?export=download&id=1GpUL0kSjwhcY8YDHYgL9ReMtFpW9Qdw-"
+          href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7"
           download
         >
           <button

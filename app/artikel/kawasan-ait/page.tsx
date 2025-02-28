@@ -70,7 +70,7 @@ export default function KawasanAIT() {
 
       <div className="text-center mt-4">
         <a 
-          href="https://drive.google.com/uc?export=download&id=1WUFUICQK4niP4k-nj1e9zUoSS0ERHdHj" 
+          href="https://drive.google.com/uc?export=download&id=12UNuD8X8FRiPpUb8BPMuLvV5YQaxyscY" 
           download
           className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
         >
