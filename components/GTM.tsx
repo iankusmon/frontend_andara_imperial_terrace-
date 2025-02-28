@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
-const GTM_ID = "G-2BE429XD9C";
+const GTM_ID = "GTM-WDBXLMPN"; // Pastikan ini adalah ID GTM yang benar
 
 declare global {
   interface Window {
@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-// Define gtag globally
+// Properly define gtag
 const gtag = (...args: any[]) => {
   if (typeof window !== "undefined") {
     window.dataLayer = window.dataLayer || [];
@@ -46,18 +46,28 @@ export default function GTM() {
         analytics_storage: "granted",
       });
 
-      // Load GTM dynamically
-      const gtmScript = document.createElement("script");
-      gtmScript.async = true;
-      gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-      gtmScript.onload = () => console.log("GTM loaded automatically!");
-      document.head.appendChild(gtmScript);
+      console.log("Consent updated and GTM initialized!");
     }
   };
 
   return (
     <>
-      {/* Set default consent state before analytics load */}
+      {/* Load Google Tag Manager (GTM) */}
+      <Script
+        id="gtm-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `,
+        }}
+      />
+
+      {/* Consent Management */}
       <Script id="consent-mode" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -71,15 +81,6 @@ export default function GTM() {
           });
         `}
       </Script>
-
-      {/* Load GTM if consent is granted */}
-      {consentGranted && (
-        <Script
-          id="gtm"
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
-        />
-      )}
 
       {/* No Consent Banner Since It’s Auto-Accepted */}
     </>
