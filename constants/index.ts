@@ -1,7 +1,7 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Home' },
-  { href: '/artikel/kawasan-ait', key: 'penjualan', label: 'Penjualan' },
+  { href: '/sales', key: 'penjualan', label: 'Penjualan' },
   { href: '/artikel/kawasan-ait', key: 'penyewaan', label: 'Penyewaan' },
   { href: '/affiliate-corner', key: 'affiliate', label: 'Affiliate' },
   { href: '/artikel/kawasan-ait', key: 'paket', label: 'Paket' },
