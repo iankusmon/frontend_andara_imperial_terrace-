@@ -24,6 +24,7 @@ const BookingFeeWizardForm: React.FC = () => {
         <Col md={8} className="mx-auto mt-5 pt-40">
           <h2>Form Pengisian Booking Feee</h2>
           <h5>Mohon isikan data diri dibawah untuk melakukan pembayaran Booking Fee</h5>
+          <p><strong>Transfer sebesar <b>Rp50,000,000.00</b> Ke:</strong> 0035-01-001543-56-9 BRI atas nama Andara Rejo Makmur</p>
           <StepWizard>
             <Step1BookingFee />
           </StepWizard>

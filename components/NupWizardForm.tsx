@@ -26,7 +26,7 @@ const NupWizardForm: React.FC = () => {
         <Col md={8} className="mx-auto mt-5 pt-40">
           <h2>Form Pengisian NUP</h2>
           <h5>Mohon isikan data diri dibawah untuk melakukan pembayaran NUP</h5>
-          <p><strong>Transfer Ke:</strong> 0035-01-001543-56-9 BRI atas nama Andara Rejo Makmur</p>
+          <p><strong>Transfer sebesar <b>Rp2,500,000.00</b> Ke:</strong> 0035-01-001543-56-9 BRI atas nama Andara Rejo Makmur</p>
           <br/>
           <StepWizard>
             <Step1Nup />
