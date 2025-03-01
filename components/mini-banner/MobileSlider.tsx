@@ -38,17 +38,17 @@ const MobileSlider: React.FC = () => {
       <Swiper modules={[Navigation, Autoplay]} spaceBetween={10} slidesPerView={2} autoplay={{ delay: 4000 }} loop navigation>
         {mobileSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="slide-item relative text-center">
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-75 px-3 py-1 rounded-md text-sm font-semibold z-10">
-                {slide.label}
+            <a href={slide.link} rel="noopener noreferrer">
+              <div className="slide-item relative text-center">
+                <Image src={slide.image} alt={slide.message} width={600} height={400} layout="responsive" quality={80} />
+                <div className="mt-2 text-center text-sm font-semibold bg-white bg-opacity-75 px-3 py-1 rounded-md">{slide.label}</div>
+                <div className="mt-2 flex justify-center">
+                  <button onClick={() => { setCurrentSlide(slide); setShowPopup(true); }} className="bg-white p-2 rounded-full shadow-lg">
+                    <Image src="/share.svg" alt="Share" width={30} height={30} />
+                  </button>
+                </div>
               </div>
-              <Image src={slide.image} alt={slide.message} width={600} height={400} layout="responsive" quality={80} />
-              <div className="mt-2 flex justify-center">
-                <button onClick={() => { setCurrentSlide(slide); setShowPopup(true); }} className="bg-white p-2 rounded-full shadow-lg">
-                  <Image src="/share.svg" alt="Share" width={30} height={30} />
-                </button>
-              </div>
-            </div>
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>
