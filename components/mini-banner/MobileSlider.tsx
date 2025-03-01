@@ -18,12 +18,15 @@ interface Slide {
 }
 
 const mobileSlides: Slide[] = [
-  { id: 1, image: "/pissa.png", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pisa!" },
-  { id: 2, image: "/colosseum_2.png", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
-  { id: 3, image: "/infinity_pool.png", link: "/artikel/infinity-pool", message: "Lihat Keseruan Infinity Pool!", label: "Infinity Pool!" },
-  { id: 4, image: "/segara_rasa.png", link: "/artikel/segara-rasa", message: "Mari makan dengan dapur segara!", label: "Dapur Segara Rasa!" },
-  { id: 5, image: "/menara_imperial_terrace.png", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
-  { id: 6, image: "/water_coaster.png", link: "/artikel/water-coaster", message: "Temukan Water Coaster Terpanjang di Solo Raya!", label: "Water Coaster!" }
+  { id: 1, image: "/menara_pissa_2.jpg", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pisa!" },
+  { id: 2, image: "/colosseum_3.jpg", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
+  { id: 3, image: "/venice_canals_2.jpg", link: "/artikel/venice-canals", message: "Lihat Keseruan Venice Canals!", label: "Venice Canals!" },
+  { id: 4, image: "/versailles_park_2.jpg", link: "/artikel/versailles-park", message: "Mari berpetualangan di Europe Versailles Park!", label: "Versailles Park!" },
+  { id: 5, image: "/menara_imperial_terrace_2.jpg", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
+  { id: 6, image: "/tour_vehicle.jpg", link: "/artikel/tour-vehicle", message: "Temukan Tour Vehicle terkeren di Solo Raya!", label: "Tour Vehicle!" },
+  { id: 7, image: "/play_story.jpg", link: "/artikel/play-story", message: "Temukan Play Story yang fun dan berhadiah menarik!", label: "Play Story!" },
+  { id: 8, image: "/lobby_villa_resort.jpg", link: "/artikel/lobby-villa-resort", message: "Temukan Kelengkapan dan Kemewahab Lobby Villa Resort di Solo Raya!", label: "Lobby Villa Resort!" },
+  { id: 9, image: "/restoran.jpg", link: "/artikel/imperial-dine-lounge-by-andara", message: "Temukan Imperial Dine & Lounge by Andara dengan pemandangan sawah terasering asri dan segar!", label: "Imperial Dine & Lounge by Andara!" }
 ];
 
 const MobileSlider: React.FC = () => {

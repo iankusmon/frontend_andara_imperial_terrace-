@@ -107,4 +107,3 @@ export default function SiteMap() {
 
   return <MapComponent locations={isMobile ? mobileLocations : desktopLocations} isMobile={isMobile} />;
 }
-
