@@ -2,16 +2,27 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const articles = [
-  { id: 1, src: "/colosseum_2.png" },
+  { id: 1, src: "/colosseum_3.jpg" },
 ];
 
 export default function KawasanAIT() {
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleDownload = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 pt-40">
       <h1 className="text-3xl font-bold text-center mb-6 pt-40">
-      Lihat Keindahan Menara Pisa!
+      Lihat Keindahan Colosseum!
       </h1>
       <p className="text-lg mb-4">
         Kemewahan dan Prestise Andara Imperial Terrace mengutamakan kemewahan dalam setiap aspek desain dan fasilitasnya. Inspirasi arsitektur dari ikon Eropa seperti Colosseum, Menara Eiffel, Menara Pisa, kincir Angin Belanda, dan Kanal Venice mencerminkan estetika kelas dunia yang menghadirkan nuansa prestise dan eksklusivitas.
@@ -61,14 +72,29 @@ export default function KawasanAIT() {
       </div>
 
       <div className="text-center mt-4">
-        <a 
-          href="https://drive.google.com/uc?export=download&id=12UNuD8X8FRiPpUb8BPMuLvV5YQaxyscY" 
-          download
-          className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
-        >
-          Download Product Knowledge
-        </a>
-      </div>
+      {showAlert && (
+        <div className="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 shadow-md animate-fade-in">
+          ✅ Sukses Unduh Product Knowledge
+        </div>
+      )}
+      <a
+        href="https://drive.google.com/uc?export=download&id=12UNuD8X8FRiPpUb8BPMuLvV5YQaxyscY"
+        download
+        onClick={handleDownload}
+        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
+      >
+        Download Product Knowledge
+      </a>
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+      `}</style>
+    </div>
 
       {/* Gabung Sekarang hanya muncul jika user belum login */}
       {/* Asumsikan pengecekan login dilakukan dengan localStorage */}

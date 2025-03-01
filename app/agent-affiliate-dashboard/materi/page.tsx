@@ -15,6 +15,7 @@ const articles = [
 
 export default function AffiliateCorner() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -22,6 +23,13 @@ export default function AffiliateCorner() {
     const userData = localStorage.getItem("user");
     setIsLoggedIn(!!userData);
   }, []);
+
+  const handleDownload = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 pt-40">
@@ -136,35 +144,44 @@ export default function AffiliateCorner() {
         .
       </p>
 
-      <div className="signup-link text-center mt-4">
-        <a
-          href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7"
-          download
-        >
-          <button
-            type="button"
-            className="signup-btn"
-          >
-            Download Product Knowledge
-          </button>  
-        </a>
-        
-      </div>
-
-      {/* Tampilkan Gabung Sekarang hanya jika user belum login */}
-      {!isLoggedIn && (
-        <div className="signup-link text-center mt-4">
-          <button
-            type="button"
-            onClick={() => router.push("/sign-up/agent-affiliate")}
-            className="signup-btn"
-          >
-            Gabung Sekarang
-          </button>
+    <div className="text-center mt-4">
+      {showAlert && (
+        <div className="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 shadow-md animate-fade-in">
+          ✅ Sukses Unduh Product Knowledge
         </div>
+      )}
+      <a
+        href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7"
+        download
+        onClick={handleDownload}
+        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
+      >
+        Unduh Product Knowledge
+      </a>
+  
+    </div>
+
+      {/* Gabung Sekarang hanya muncul jika user belum login */}
+      {/* Asumsikan pengecekan login dilakukan dengan localStorage */}
+      {typeof window !== "undefined" && !localStorage.getItem("user") && (
+      <div className="text-center mt-6">
+        <Link 
+          href="/sign-up/agent-affiliate"
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
+        >
+          Gabung Sekarang
+        </Link>
+      </div>
       )}
 
 <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.5s ease-in-out;
+        }
         .login-container {
           display: flex;
           justify-content: center;
@@ -243,6 +260,7 @@ export default function AffiliateCorner() {
         .signup-btn {
           margin-top: 10px;
           padding: 12px;
+          text-align: center;
           font-size: 16px;
           background-color: #0070f3;
           color: white;

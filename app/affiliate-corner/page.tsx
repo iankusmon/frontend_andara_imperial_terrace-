@@ -15,6 +15,7 @@ const articles = [
 
 export default function AffiliateCorner() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -22,6 +23,13 @@ export default function AffiliateCorner() {
     const userData = localStorage.getItem("user");
     setIsLoggedIn(!!userData);
   }, []);
+
+  const handleDownload = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 pt-40">
@@ -136,15 +144,22 @@ export default function AffiliateCorner() {
         .
       </p>
 
-      <div className="text-center mt-4">
-        <a 
-          href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7" 
-          download
-          className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
-        >
-          Download Product Knowledge
-        </a>
-      </div>
+    <div className="text-center mt-4">
+      {showAlert && (
+        <div className="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 shadow-md animate-fade-in">
+          ✅ Sukses Unduh Product Knowledge
+        </div>
+      )}
+      <a
+        href="https://drive.google.com/uc?export=download&id=1O9ZKwjolqq2cQSCIk5W2rISnzY3yttZ7"
+        download
+        onClick={handleDownload}
+        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
+      >
+        Unduh Product Knowledge
+      </a>
+  
+    </div>
 
       {/* Gabung Sekarang hanya muncul jika user belum login */}
       {/* Asumsikan pengecekan login dilakukan dengan localStorage */}
@@ -159,8 +174,14 @@ export default function AffiliateCorner() {
       </div>
       )}
 
-
 <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.5s ease-in-out;
+        }
         .login-container {
           display: flex;
           justify-content: center;
