@@ -7,9 +7,12 @@ import YouTube from "react-youtube";
 // Array video ID dari YouTube
 const videoIds = [
   "PMGUv02vdvQ", // Ganti dengan ID video YouTube
+  "klVdZCG8Z-4", // Ganti dengan ID video YouTube
+  "ss94riPTPVs", // Ganti dengan ID video YouTube
   "PMGUv02vdvQ", // Ganti dengan ID video YouTube
-  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
-  "PMGUv02vdvQ", // Ganti dengan ID video YouTube
+  "bMBFjLkF0Hg",
+  "e8BsSTGbfJM",
+  "-olJWuoHTNc?"
 ];
 
 function VideoSliderMobile() {

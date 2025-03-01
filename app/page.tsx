@@ -14,11 +14,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import dynamic from 'next/dynamic';
 import BannerSlider from '@/components/BannerSlider';
 
+const PopupBanner = dynamic(() => import("@/components/PopupBanner"), {
+  ssr: false,
+});
 const DynamicMap = dynamic(() => import('../components/Map'), { ssr: false });
 
 export default function Home() {
   return (
     <>
+      <PopupBanner />
       <Hero />
       <MiniHomepage />
       <DynamicMap />
