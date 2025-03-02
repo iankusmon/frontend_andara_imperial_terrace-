@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
-const GTM_ID = "G-2BE429XD9C"; // Pastikan ini adalah ID GTM yang benar
+const GTM_ID = "GTM-WDBXLMPN"; // Pastikan ini adalah ID GTM yang benar
 
 declare global {
   interface Window {
