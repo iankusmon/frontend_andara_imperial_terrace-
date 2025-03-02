@@ -155,7 +155,7 @@ const WizardForm: React.FC = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/customers/nups", {
+      const response = await fetch("https://api.andaraimperialterrace.co.id/api/customers/nups", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
