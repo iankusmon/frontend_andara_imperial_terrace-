@@ -28,10 +28,12 @@ const LoginPage = () => {
 
       // Simpan token dan data user di localStorage
       localStorage.setItem("token", data.token);
+      localStorage.setItem("customerId", data.customer.id);
       localStorage.setItem(
         "user",
         JSON.stringify({
           username: data.customer.name,
+          customerId: data.customer.id,
           profilePic:
             data.customer.photo_profile_url ||
             "https://w7.pngwing.com/pngs/620/1022/png-transparent-person-in-necktie-and-jacket-art-computer-icons-avatar-business-agent-icon-service-people-logo-thumbnail.png",
@@ -39,7 +41,7 @@ const LoginPage = () => {
         })
       );
 
-      router.push("/customer-dashboard");
+      router.push("/nup");
     } catch (err: any) {
       setError(err.message || "Terjadi kesalahan saat login.");
     }

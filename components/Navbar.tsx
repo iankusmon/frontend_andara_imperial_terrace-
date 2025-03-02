@@ -41,7 +41,7 @@ const Navbar = () => {
   };
 
   const dashboardPath =
-    user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-affiliate-dashboard";
+    user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-dashboard";
 
   return (
     <nav className="flex justify-between fixed z-50 text-white w-full py-4 px-4 lg:px-16 nav-container">

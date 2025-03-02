@@ -49,7 +49,8 @@ export default function SignUpCustomerContent() {
         alert("Sign Up Berhasil!");
         const data = await response.json();
         localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify({ username: data.customer.name }));
+        localStorage.setItem("customerId", data.customer.id);
+        localStorage.setItem("user", JSON.stringify({ username: data.customer.name, customerId: data.customer.id }));
         router.push("/customer-dashboard");
         setFormData({
           name: "",

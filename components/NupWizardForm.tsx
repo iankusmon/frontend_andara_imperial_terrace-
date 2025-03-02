@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StepWizard from 'react-step-wizard';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Step1Nup from './Step1Nup';
 import Step2Nup from './Step2Nup';
 import Step3Nup from './Step3Nup';
