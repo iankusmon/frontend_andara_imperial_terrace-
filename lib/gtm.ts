@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-const GTM_ID = "G-2BE429XD9C";
+const GTM_ID = "GTM-WDBXLMPN";
 
 export const pageview = (url: string) => {
   if (typeof window !== "undefined" && window.gtag) {
