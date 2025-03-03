@@ -14,7 +14,7 @@ const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
 const villaTypes = [
   {
-    title: "Da Vinci Residence (10 Unit)",
+    title: "Da Vinci Residence",
     concept: "Konsep Arsitektur: Eropa Klasik",
     features: "Ornamen megah, balkon luas, taman dalam.",
     facilities: "Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.",
@@ -24,7 +24,7 @@ const villaTypes = [
     share_cta: "Nikmati Kemewahan Da Vinci Residence hanya 10 unit!"
   },
   {
-    title: "Amsterdam Royale (7 Unit)",
+    title: "Amsterdam Royale",
     concept: "Konsep Arsitektur: Rumah Belanda",
     features: "Fasad bata merah, perapian modern, dapur mewah.",
     facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.",
@@ -34,7 +34,7 @@ const villaTypes = [
     share_cta: "Nikmati Kemewahan Amsterdam Royale hanya 7 Unit!"
   },
   {
-    title: "Athena Height (9 Unit)",
+    title: "Athena Height",
     concept: "Konsep Arsitektur: Yunani Klasik",
     features: "Pilar kokoh, aksen putih bersih, rooftop BBQ area, kolam renang pribadi.",
     facilities: "Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.",

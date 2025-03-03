@@ -24,11 +24,12 @@ export default function Home() {
     <>
       <PopupBanner />
       <Hero />
-      <MiniHomepage />
+      <VillaSlider />
       <DynamicMap />
       <DayClub/>
-      <VillaSlider />
+      <MiniHomepage />
       <AlurPemesanan/>
+      <AffiliateBanner/>
       <FreshChat />
     </>
   

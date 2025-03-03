@@ -8,25 +8,23 @@ interface Location {
   x: number;
   y: number;
   img: string;
-  url: string
+  url: string;
 }
 
 const desktopLocations = [
-  // { id: 1, name: "Colosseum", x: 10, y: 20, img: "/colosseum.jpg" },
-  { id: 2, name: "Menara Eiffel", x: 32, y: 24, img: "/eiffel.jpg", url: "/artikel/kawasan-ait" },
-  { id: 3, name: "Versailles Park", x: 30.5, y: 30, img: "/versailles.jpg", url: "/artikel/versailles-park" },
-  { id: 4, name: "Davinci Residence", x: 21.5, y: 52, img: "/davinci_residence.png", url: "/villa/davinci-residence/type" },
-  { id: 5, name: "Amsterdam Royale", x: 21.5, y: 46, img: "/amsterdam_royale.png", url: "/villa/amsterdam-royal/type" },
-  { id: 6, name: "Athena Height", x: 22.5, y: 43, img: "/athena_height.png", url: "/villa/athena-height/type" }
+  { id: 2, name: "Menara Eiffel", x: 27.5, y: 32, img: "/eiffel.jpg", url: "/artikel/kawasan-ait" },
+  { id: 3, name: "Versailles Park", x: 36, y: 23, img: "/versailles.jpg", url: "/artikel/versailles-park" },
+  { id: 4, name: "Davinci Residence", x: 14.5, y: 69, img: "/davinci_residence.png", url: "/villa/davinci-residence/type" },
+  { id: 5, name: "Amsterdam Royale", x: 14.5, y: 62, img: "/amsterdam_royale.png", url: "/villa/amsterdam-royal/type" },
+  { id: 6, name: "Athena Height", x: 16, y: 56, img: "/athena_height.png", url: "/villa/athena-height/type" }
 ];
 
 const mobileLocations = [
-  // { id: 1, name: "Colosseum", x: 15, y: 25, img: "/colosseum.jpg", url: "/artikel/kawasan-ait" },
-  { id: 2, name: "Menara Eiffel", x: 50, y: 15, img: "/eiffel.jpg", url: "/artikel/kawasan-ait" },
-  { id: 3, name: "Versailles Park", x: 46, y: 19, img: "/versailles.jpg", url: "/artikel/versailles-park" },
-  { id: 4, name: "Davinci Residence", x: 20, y: 33, img: "/davinci_residence.png", url: "/villa/davinci-residence/type" },
-  { id: 5, name: "Amsterdam Royale", x: 19, y: 29, img: "/amsterdam_royale.png", url: "/villa/amsterdam-royal/type" },
-  { id: 6, name: "Athena Height", x: 24, y: 27, img: "/athena_height.png", url: "/villa/athena-height/type" }
+  { id: 2, name: "Menara Eiffel", x: 50, y: 17, img: "/eiffel.jpg", url: "/artikel/kawasan-ait" },
+  { id: 3, name: "Versailles Park", x: 69, y: 11, img: "/versailles.jpg", url: "/artikel/versailles-park" },
+  { id: 4, name: "Davinci Residence", x: 20, y: 42, img: "/davinci_residence.png", url: "/villa/davinci-residence/type" },
+  { id: 5, name: "Amsterdam Royale", x: 19, y: 38, img: "/amsterdam_royale.png", url: "/villa/amsterdam-royal/type" },
+  { id: 6, name: "Athena Height", x: 24, y: 34, img: "/athena_height.png", url: "/villa/athena-height/type" }
 ];
 
 interface MapComponentProps {
@@ -51,17 +49,12 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   };
 
   return (
-    <div className="relative w-full h-[70vh]">
-      {/* <Image
-        src="/siteplan2d.jpeg"
-        alt="Site Plan Andara Imperial Terrace"
-        layout="fill"
-        objectFit="contain"
-      /> */}
-     <picture>
-      <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
-      <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full max-w-screen-lg mx-auto" />
-    </picture>
+    <div className="relative w-full h-[75vh] flex flex-col items-center justify-center mt-20 mb-20">
+      <h2 className="text-xl md:text-2xl font-bold text-center mb-4">Jelajahi Kawasan AIT Virtual Yuk!</h2>
+      <picture className="w-full max-w-screen-xl">
+        <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
+        <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full object-cover max-w-screen-xl" />
+      </picture>
       {locations.map((loc) => (
         <div
           key={loc.id}
@@ -88,7 +81,6 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
               <p className="text-center mt-2 text-sm font-semibold">{loc.name}</p>
             </div>
           )}
-          
         </div>
       ))}
     </div>
