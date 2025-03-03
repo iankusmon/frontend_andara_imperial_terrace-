@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 
-const GTM_ID = "GTM-WDBXLMPN"; // Ganti dengan GTM ID Anda
-const GA_ID = "G-QB0F5RXXGV"; // Ganti dengan GA4 ID Anda
+const GTM_ID = "GTM-WDBXLMPN"; // Ganti dengan ID GTM Anda
+const GA_ID = "G-2BE429XD9C"; // Ganti dengan ID Google Analytics Anda
 
 export default function GTMWrapper() {
   const pathname = usePathname();
