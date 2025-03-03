@@ -5,7 +5,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 
 const GTM_ID = "GTM-WDBXLMPN"; // Ganti dengan ID GTM Anda
-const GA_ID = "G-2BE429XD9C"; // Ganti dengan ID Google Analytics Anda
+const GA_ID = "G-Y4J434SLC6"; // Ganti dengan ID Google Analytics Anda
 
 export default function GTMWrapper() {
   const pathname = usePathname();
