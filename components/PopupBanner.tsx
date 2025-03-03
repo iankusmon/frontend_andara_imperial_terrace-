@@ -16,8 +16,8 @@ const PopupBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 h-screen">
-      <div className="relative bg-white p-4 rounded-lg shadow-lg max-w-lg w-full text-center">
+    <div className="fixed inset-0 flex items-start justify-center bg-black bg-opacity-50 z-50 min-h-screen">
+      <div className="relative bg-white p-4 rounded-lg shadow-lg max-w-md w-full text-center">
         <button
           onClick={() => setIsVisible(false)}
           className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1"
