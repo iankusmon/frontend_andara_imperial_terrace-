@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,8 +13,11 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<{ username: string; profilePic: string; role: string } | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showLoginDropdown, setShowLoginDropdown] = useState(false);
+  const [showSignupDropdown, setShowSignupDropdown] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -39,6 +42,24 @@ const Navbar = () => {
     setUser(null);
     router.push("/login/customer");
   };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) // ✅ Konversi event.target ke Node
+      ) {
+        setShowDropdown(false);
+        setShowLoginDropdown(false);
+        setShowSignupDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const dashboardPath =
     user?.role === "agent" ? "/agent-affiliate-dashboard" : "/customer-dashboard";
@@ -95,9 +116,44 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <Link href="/login/customer">
-              <Button type="button" title="Login" variant="btn_white" />
-            </Link>
+            <div className="flex gap-2 relative">
+              <div>
+                <button onClick={() => {
+                  setShowLoginDropdown(!showLoginDropdown);
+                  setShowSignupDropdown(false);
+                }} className="btn_white px-4 py-2 rounded">
+                  Login
+                </button>
+                {showLoginDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
+                    <Link href="/login/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Customer
+                    </Link>
+                    <Link href="/login" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Agent Affiliate
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <div>
+                <button onClick={() => {
+                  setShowSignupDropdown(!showSignupDropdown);
+                  setShowLoginDropdown(false);
+                }} className="btn_white px-4 py-2 rounded">
+                  Sign Up
+                </button>
+                {showSignupDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
+                    <Link href="/sign-up/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Customer
+                    </Link>
+                    <Link href="/sign-up/agent-affiliate" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Agent Affiliate
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
 
@@ -148,9 +204,44 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link href="/login/customer">
-              <Button type="button" title="Login" variant="btn_white_login" />
-            </Link>
+            <div className="flex gap-2 relative">
+              <div className="dropdown-menu">
+                <button onClick={() => {
+                  setShowLoginDropdown(!showLoginDropdown);
+                  setShowSignupDropdown(false);
+                }} className="btn_white px-4 py-2 rounded">
+                  Login
+                </button>
+                {showLoginDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
+                    <Link href="/login/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Customer
+                    </Link>
+                    <Link href="/login" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Agent Affiliate
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <div className="dropdown-menu">
+                <button onClick={() => {
+                  setShowSignupDropdown(!showSignupDropdown);
+                  setShowLoginDropdown(false);
+                }} className="btn_white px-4 py-2 rounded">
+                  Sign Up
+                </button>
+                {showSignupDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
+                    <Link href="/sign-up/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Customer
+                    </Link>
+                    <Link href="/sign-up/agent-affiliate" className="block px-4 py-2 hover:bg-gray-200 text-sm">
+                      Agent Affiliate
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
       )}
