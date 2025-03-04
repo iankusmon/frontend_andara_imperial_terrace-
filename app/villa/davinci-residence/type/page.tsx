@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,18 +19,29 @@ const DavinciResidence = () => {
   ];
 
   const totalUnits = 10;
-  const availableUnits = [1, 2, 3,4, 5, 6, 7, 8, 9, 10]; // Available units for selection
+  const availableUnits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = false;
+      video.autoplay = true;
+      video.play().catch(error => console.error("Video play failed", error));
+    }
+  }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gray-100 p-4">
+    <div className="w-full min-h-screen bg-gray-100">
       {/* Video Section */}
       <div className="w-full h-[600px] overflow-hidden">
         <video
+          ref={videoRef}
           className="w-full h-full object-cover"
           src="/davinci_vidio.mp4"
           autoPlay
           loop
-          muted
+          playsInline
         />
       </div>
 

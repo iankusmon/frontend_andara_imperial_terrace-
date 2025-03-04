@@ -11,8 +11,11 @@ const VillaDaVinci = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play();
+    const video = videoRef.current;
+    if (video) {
+      video.muted = false;
+      video.autoplay = true;
+      video.play().catch(error => console.error("Video play failed", error));
     }
   }, []);
 
