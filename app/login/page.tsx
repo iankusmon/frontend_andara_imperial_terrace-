@@ -28,6 +28,7 @@ const LoginPage = () => {
 
       // Simpan token dan data user di localStorage
       localStorage.setItem("token", data.token);
+      localStorage.setItem("referralCode", data.agent.referral_code);
       localStorage.setItem(
         "user",
         JSON.stringify({

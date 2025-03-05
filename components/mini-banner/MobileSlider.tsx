@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { FaFacebook, FaWhatsapp, FaTelegram, FaInstagram, FaYoutube, FaTiktok, FaTimes } from "react-icons/fa";
 import { FacebookShareButton, WhatsappShareButton, TelegramShareButton } from "next-share";
+import { useRouter } from "next/navigation";
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
 
@@ -15,27 +16,39 @@ interface Slide {
   link: string;
   message: string;
   label: string;
+  share_link: string;
 }
 
 const mobileSlides: Slide[] = [
-  { id: 1, image: "/menara_pissa_2.jpg", link: "/artikel/menara-pissa", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pisa!" },
-  { id: 2, image: "/colosseum_3.jpg", link: "/artikel/colosseum", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
-  { id: 3, image: "/venice_canals_2.jpg", link: "/artikel/venice-canals", message: "Lihat Keseruan Venice Canals!", label: "Venice Canals!" },
-  { id: 4, image: "/versailles_park_2.jpg", link: "/artikel/versailles-park", message: "Mari berpetualangan di Europe Versailles Park!", label: "Versailles Park!" },
-  { id: 5, image: "/menara_imperial_terrace_2.jpg", link: "/artikel/menara-imperial-terrace", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
-  { id: 6, image: "/tour_vehicle.jpg", link: "/artikel/tour-vehicle", message: "Temukan Tour Vehicle terkeren di Solo Raya!", label: "Tour Vehicle!" },
-  { id: 7, image: "/play_story.jpg", link: "/artikel/play-story", message: "Temukan Play Story yang fun dan berhadiah menarik!", label: "Play Story!" },
-  { id: 8, image: "/lobby_villa_resort.jpg", link: "/artikel/lobby-villa-resort", message: "Temukan Kelengkapan dan Kemewahab Lobby Villa Resort di Solo Raya!", label: "Lobby Villa Resort!" },
-  { id: 9, image: "/restoran.jpg", link: "/artikel/imperial-dine-lounge-by-andara", message: "Temukan Imperial Dine & Lounge by Andara dengan pemandangan sawah terasering asri dan segar!", label: "Imperial Dine & Lounge by Andara!" }
+  { id: 1, image: "/menara_pissa_2.jpg", link: "/artikel/menara-pissa", share_link: "/sign-up/customer", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pissa!" },
+  { id: 2, image: "/colosseum_3.jpg", link: "/artikel/colosseum", share_link: "/sign-up/customer", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
+  { id: 3, image: "/venice_canals_2.jpg", link: "/artikel/venice-canals", share_link: "/sign-up/customer", message: "Lihat Keseruan naik perahu di Venice Canals!", label: "Venice Canals!!" },
+  { id: 4, image: "/versailles_park_2.jpg", link: "/artikel/versailles-park", share_link: "/sign-up/customer", message: "Mari berpetualangan di Europe Versailles Park!", label: "Versailles Park!" },
+  { id: 5, image: "/menara_imperial_terrace_2.jpg", link: "/artikel/menara-imperial-terrace", share_link: "/sign-up/customer", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
+  { id: 6, image: "/tour_vehicle.jpg", link: "/artikel/tour-vehicle", share_link: "/sign-up/customer", message: "Temukan Tour Vehicle terkeren di Solo Raya!", label: "Tour Vehicle!" },
+  { id: 7, image: "/play_story.jpg", link: "/artikel/play-story", share_link: "/sign-up/customer", message: "Temukan Play Story yang fun dan berhadiah menarik!", label: "Play Story!" },
+  { id: 8, image: "/lobby_villa_resort.jpg", link: "/artikel/lobby-villa-resort", share_link: "/sign-up/customer", message: "Temukan Kelengkapan dan Kemewahab Lobby Villa Resort di Solo Raya!", label: "Lobby Villa Resort!" },
+  { id: 9, image: "/restoran.jpg", link: "/artikel/imperial-dine-lounge-by-andara", share_link: "/sign-up/customer", message: "Temukan Imperial Dine & Lounge by Andara dengan pemandangan sawah terasering asri dan segar!", label: "Imperial Dine & Lounge by Andara!" }
 ];
 
 const MobileSlider: React.FC = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [currentSlide, setCurrentSlide] = useState<Slide | null>(null);
+  const [referralCode, setReferralCode] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+  
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
+  
 
   return (
-    <div className="mobile-slider-container mb-16">
-      <Swiper modules={[Navigation, Autoplay]} spaceBetween={10} slidesPerView={2} autoplay={{ delay: 4000 }} loop navigation>
+    <div className="mobile-slider-container">
+      <Swiper modules={[Navigation, Autoplay]} spaceBetween={10} slidesPerView={1} autoplay={{ delay: 4000 }} loop navigation>
         {mobileSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <a href={slide.link} rel="noopener noreferrer">
@@ -60,29 +73,23 @@ const MobileSlider: React.FC = () => {
             </button>
             <h3 className="text-md font-bold mb-2">Bagikan</h3>
             <p className="mb-3">{currentSlide.message}</p>
-            <div className="flex gap-2 justify-center">
-              <FacebookShareButton url={DOMAIN + currentSlide.link} hashtag="#PropertiImpian">
-                <FaFacebook className="text-blue-600 text-2xl cursor-pointer" />
+            <div className="flex gap-3 justify-center">
+              <FacebookShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
+                <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
               </FacebookShareButton>
-              <WhatsappShareButton url={DOMAIN + currentSlide.link} title={currentSlide.message} separator=" - ">
-                <FaWhatsapp className="text-green-500 text-2xl cursor-pointer" />
+              <WhatsappShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} title={currentSlide.message} separator=" - ">
+                <FaWhatsapp className="text-green-500 text-3xl cursor-pointer" />
               </WhatsappShareButton>
-              <TelegramShareButton url={DOMAIN + currentSlide.link} title={currentSlide.message}>
-                <FaTelegram className="text-blue-400 text-2xl cursor-pointer" />
+              <TelegramShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} title={currentSlide.message}>
+                <FaTelegram className="text-blue-400 text-3xl cursor-pointer" />
               </TelegramShareButton>
-              <a href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.link}`} target="_blank" rel="noopener noreferrer">
-                <FaInstagram className="text-pink-500 text-2xl cursor-pointer" />
+              <a
+                href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.share_link}?referral_code=${referralCode}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="text-pink-500 text-3xl cursor-pointer" />
               </a>
-              {/* {currentSlide.isVideo && (
-                <>
-                  <a href={`https://www.youtube.com/share?url=${DOMAIN + currentSlide.link}`} target="_blank" rel="noopener noreferrer">
-                    <FaYoutube className="text-red-600 text-2xl cursor-pointer" />
-                  </a>
-                  <a href={`https://www.tiktok.com/share?url=${DOMAIN + currentSlide.link}`} target="_blank" rel="noopener noreferrer">
-                    <FaTiktok className="text-black text-2xl cursor-pointer" />
-                  </a>
-                </>
-              )} */}
             </div>
           </div>
         </div>

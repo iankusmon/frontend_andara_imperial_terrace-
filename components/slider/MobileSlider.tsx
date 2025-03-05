@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import {
@@ -13,6 +13,7 @@ import {
   FaInstagram,
   FaTimes,
 } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,11 +26,23 @@ interface Slide {
   link: string;
   isVideo: boolean;
   message: string;
+  share_link: string;
 }
 
 const MobileSlider: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [currentSlide, setCurrentSlide] = useState<Slide | null>(null); // Perbaikan tipe state
+  const router = useRouter();
+
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
 
   const settings = {
     dots: true,
@@ -42,11 +55,12 @@ const MobileSlider: React.FC = () => {
     arrows: false,
   };
 
+
   const slides: Slide[] = [
-    { image: "/slide_mobile5.png", link: "/sales", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
-    { image: "/slide_mobile6.png", link: "/artikel/kawasan-ait", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
-    { image: "/slide_mobile3.png", link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN!" },
-    { image: "/slide_mobile4.png", link: "/kpr-corner", isVideo: false, message: "Pelajari Fitur KPR kami!" },
+    { image: "/slide_mobile5.png", link: "/sales", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
+    { image: "/slide_mobile6.png", link: "/artikel/kawasan-ait", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
+    { image: "/slide_mobile3.png", link: "/sign-up/agent-affiliate", share_link: "/sign-up/customer", isVideo: false, message: "Hanya Share dapat CUAN!" },
+    { image: "/slide_mobile4.png", link: "/kpr-corner", share_link: "/sign-up/customer", isVideo: false, message: "Pelajari Fitur KPR kami!" },
   ];
 
   return (
@@ -82,21 +96,21 @@ const MobileSlider: React.FC = () => {
             <h3 className="text-md font-bold mb-2">Bagikan</h3>
             <p className="mb-3">{currentSlide.message}</p>
             <div className="flex gap-2 justify-center">
-              <FacebookShareButton url={DOMAIN + currentSlide.link} hashtag="#PropertiImpian">
-                <FaFacebook className="text-blue-600 text-2xl cursor-pointer" />
+            <FacebookShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
+                <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
               </FacebookShareButton>
-              <WhatsappShareButton url={DOMAIN + currentSlide.link} title={currentSlide.message} separator=" - ">
-                <FaWhatsapp className="text-green-500 text-2xl cursor-pointer" />
+              <WhatsappShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} title={currentSlide.message} separator=" - ">
+                <FaWhatsapp className="text-green-500 text-3xl cursor-pointer" />
               </WhatsappShareButton>
-              <TelegramShareButton url={DOMAIN + currentSlide.link} title={currentSlide.message}>
-                <FaTelegram className="text-blue-400 text-2xl cursor-pointer" />
+              <TelegramShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} title={currentSlide.message}>
+                <FaTelegram className="text-blue-400 text-3xl cursor-pointer" />
               </TelegramShareButton>
               <a
-                href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.link}`}
+                href={`https://www.instagram.com/?url=${DOMAIN + currentSlide.share_link}?referral_code=${referralCode}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram className="text-pink-500 text-2xl cursor-pointer" />
+                <FaInstagram className="text-pink-500 text-3xl cursor-pointer" />
               </a>
             </div>
           </div>

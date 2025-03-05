@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -8,6 +8,7 @@ import {
   WhatsappShareButton,
   TelegramShareButton,
 } from "next-share";
+import { useRouter } from "next/navigation";
 import { FaFacebook, FaWhatsapp, FaTelegram, FaInstagram, FaTimes } from "react-icons/fa";
 
 const DOMAIN = "https://www.andaraimperialterrace.co.id";
@@ -20,7 +21,7 @@ const villaTypes = [
     facilities: "Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.",
     image: "/davinci_residence.png",
     link: "/villa/davinci-residence/type",
-    share_link: "/sign-up/customer?referral_code=CA420C865876",
+    share_link: "/sign-up/customer",
     share_cta: "Nikmati Kemewahan Da Vinci Residence hanya 10 unit!"
   },
   {
@@ -30,7 +31,7 @@ const villaTypes = [
     facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.",
     image: "/amsterdam_royale.png",
     link: "villa/amsterdam-royal/type",
-    share_link: "/sign-up/customer?referral_code=CA420C865876",
+    share_link: "/sign-up/customer",
     share_cta: "Nikmati Kemewahan Amsterdam Royale hanya 7 Unit!"
   },
   {
@@ -40,16 +41,25 @@ const villaTypes = [
     facilities: "Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.",
     image: "/athena_height.png",
     link: "/villa/athena-height/type",
-    share_link: "/sign-up/customer?referral_code=CA420C865876",
+    share_link: "/sign-up/customer",
     share_cta: "Nikmati Kemewahan Athena Height hanya 9 Unit!"
   },
 ];
 
 const VillaSlider = () => {
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   // const [currentVilla, setCurrentVilla] = useState(null);
   const [currentVilla, setCurrentVilla] = useState<null | (typeof villaTypes)[0]>(null);
+  const [referralCode, setReferralCode] = useState("");
 
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
 
   const handleShareClick = (villa: (typeof villaTypes)[0]) => {
     setCurrentVilla(villa);
@@ -111,16 +121,16 @@ const VillaSlider = () => {
             </button>
             <h2 className="text-center mb-3">Bagikan {currentVilla.share_cta}</h2>
             <div className="flex gap-3 justify-center">
-              <FacebookShareButton url={`${DOMAIN}${currentVilla.share_link}`} hashtag="#PropertiImpian">
+              <FacebookShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
                 <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
               </FacebookShareButton>
-              <WhatsappShareButton url={`${DOMAIN}${currentVilla.share_link}`} title={currentVilla.share_cta} separator=" - ">
+              <WhatsappShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} title={currentVilla.share_cta} separator=" - ">
                 <FaWhatsapp className="text-green-500 text-3xl cursor-pointer" />
               </WhatsappShareButton>
-              <TelegramShareButton url={`${DOMAIN}${currentVilla.share_link}`} title={currentVilla.share_cta}>
+              <TelegramShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} title={currentVilla.share_cta}>
                 <FaTelegram className="text-blue-400 text-3xl cursor-pointer" />
               </TelegramShareButton>
-              <a href={`https://www.instagram.com/?url=${DOMAIN}${currentVilla.share_link}`} target="_blank" rel="noopener noreferrer">
+              <a href={`https://www.instagram.com/?url=${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="text-pink-500 text-3xl cursor-pointer" />
               </a>
             </div>
