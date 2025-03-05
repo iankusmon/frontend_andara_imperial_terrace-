@@ -38,7 +38,7 @@ const DavinciResidence = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          src="/amsterdam_vidio.mp4"
+          src="/amsterdam_vidio_2.mp4"
           autoPlay
           loop
           playsInline

@@ -38,7 +38,7 @@ const AthenaHeight = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          src="/athena_vidio.mp4"
+          src="/athena_vidio_2.mp4"
           autoPlay
           loop
           playsInline
