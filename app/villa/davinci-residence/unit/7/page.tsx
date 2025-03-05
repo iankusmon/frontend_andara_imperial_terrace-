@@ -37,7 +37,7 @@ const VillaDaVinci = () => {
       <div className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
         <video
           ref={videoRef}
-          src="/davinci_vidio.mp4"
+          src="/davinci_vidio_2.mp4"
           className="w-full h-full object-cover"
           autoPlay
           muted
