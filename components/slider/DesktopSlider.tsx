@@ -57,10 +57,10 @@ const DesktopSlider: React.FC = () => {
   }, []);
 
   const slides: Slide[] = [
-    { image: "/slide5.png", link: "/sales", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
-    { image: "/slide6.png", link: "/artikel/kawasan-ait", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace!" },
-    { image: "/slide3.png", link: "/sign-up/agent-affiliate", share_link: "/sign-up/customer", isVideo: false, message: "Hanya Share dapat CUAN!" },
-    { image: "/slide4.png", link: "/kpr-corner", share_link: "/sign-up/customer", isVideo: false, message: "Pelajari Fitur KPR kami!" },
+    { image: "/slide5.png", link: "/sales", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
+    { image: "/slide6.png", link: "/artikel/kawasan-ait", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
+    { image: "/slide3.png", link: "/sign-up/agent-affiliate", share_link: "/sign-up/agent-affiliate", isVideo: false, message: "Hanya Share dapat CUAN! Ayuk, Cari CUAN sekarang: " },
+    { image: "/slide4.png", link: "/kpr-corner", share_link: "/sign-up/customer", isVideo: false, message: "Pelajari Fitur KPR kami! Ayuk, Investasi sekarang: " },
   ];
   
   return (

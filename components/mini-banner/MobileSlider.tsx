@@ -20,15 +20,15 @@ interface Slide {
 }
 
 const mobileSlides: Slide[] = [
-  { id: 1, image: "/menara_pissa_2.jpg", link: "/artikel/menara-pissa", share_link: "/sign-up/customer", message: "Lihat Keindahan Menara Pisa!", label: "Menara Pissa!" },
-  { id: 2, image: "/colosseum_3.jpg", link: "/artikel/colosseum", share_link: "/sign-up/customer", message: "Lihat Keindahan Colosseum!", label: "Colosseum!" },
-  { id: 3, image: "/venice_canals_2.jpg", link: "/artikel/venice-canals", share_link: "/sign-up/customer", message: "Lihat Keseruan naik perahu di Venice Canals!", label: "Venice Canals!!" },
-  { id: 4, image: "/versailles_park_2.jpg", link: "/artikel/versailles-park", share_link: "/sign-up/customer", message: "Mari berpetualangan di Europe Versailles Park!", label: "Versailles Park!" },
-  { id: 5, image: "/menara_imperial_terrace_2.jpg", link: "/artikel/menara-imperial-terrace", share_link: "/sign-up/customer", message: "Lihatlah Kesempurnaan Menara Imperial Terrace!", label: "Menara Imperial Terrace!" },
-  { id: 6, image: "/tour_vehicle.jpg", link: "/artikel/tour-vehicle", share_link: "/sign-up/customer", message: "Temukan Tour Vehicle terkeren di Solo Raya!", label: "Tour Vehicle!" },
-  { id: 7, image: "/play_story.jpg", link: "/artikel/play-story", share_link: "/sign-up/customer", message: "Temukan Play Story yang fun dan berhadiah menarik!", label: "Play Story!" },
-  { id: 8, image: "/lobby_villa_resort.jpg", link: "/artikel/lobby-villa-resort", share_link: "/sign-up/customer", message: "Temukan Kelengkapan dan Kemewahab Lobby Villa Resort di Solo Raya!", label: "Lobby Villa Resort!" },
-  { id: 9, image: "/restoran.jpg", link: "/artikel/imperial-dine-lounge-by-andara", share_link: "/sign-up/customer", message: "Temukan Imperial Dine & Lounge by Andara dengan pemandangan sawah terasering asri dan segar!", label: "Imperial Dine & Lounge by Andara!" }
+  { id: 1, image: "/menara_pissa_2.jpg", link: "/artikel/menara-pissa", share_link: "/sign-up/customer", message: "Lihat Keindahan Menara Pisa! Ayuk, Investasi sekarang: ", label: "Menara Pissa!" },
+  { id: 2, image: "/colosseum_3.jpg", link: "/artikel/colosseum", share_link: "/sign-up/customer", message: "Lihat Keindahan Colosseum! Ayuk, Investasi sekarang: ", label: "Colosseum!" },
+  { id: 3, image: "/venice_canals_2.jpg", link: "/artikel/venice-canals", share_link: "/sign-up/customer", message: "Lihat Keseruan naik perahu di Venice Canals! Ayuk, Investasi sekarang: ", label: "Venice Canals!!" },
+  { id: 4, image: "/versailles_park_2.jpg", link: "/artikel/versailles-park", share_link: "/sign-up/customer", message: "Mari berpetualangan di Europe Versailles Park! Ayuk, Investasi sekarang: ", label: "Versailles Park!" },
+  { id: 5, image: "/menara_imperial_terrace_2.jpg", link: "/artikel/menara-imperial-terrace", share_link: "/sign-up/customer", message: "Lihatlah Kesempurnaan Menara Imperial Terrace! Ayuk, Investasi sekarang: ", label: "Menara Imperial Terrace!" },
+  { id: 6, image: "/tour_vehicle.jpg", link: "/artikel/tour-vehicle", share_link: "/sign-up/customer", message: "Temukan Tour Vehicle terkeren di Solo Raya! Ayuk, Investasi sekarang: ", label: "Tour Vehicle!" },
+  { id: 7, image: "/play_story.jpg", link: "/artikel/play-story", share_link: "/sign-up/customer", message: "Temukan Play Story yang fun dan berhadiah menarik! Ayuk, Investasi sekarang: ", label: "Play Story!" },
+  { id: 8, image: "/lobby_villa_resort.jpg", link: "/artikel/lobby-villa-resort", share_link: "/sign-up/customer", message: "Temukan Kelengkapan dan Kemewahab Lobby Villa Resort di Solo Raya! Ayuk, Investasi sekarang: ", label: "Lobby Villa Resort!" },
+  { id: 9, image: "/restoran.jpg", link: "/artikel/imperial-dine-lounge-by-andara", share_link: "/sign-up/customer", message: "Temukan Imperial Dine & Lounge by Andara dengan pemandangan sawah terasering asri dan segar! Ayuk, Investasi sekarang: ", label: "Imperial Dine & Lounge by Andara!" }
 ];
 
 const MobileSlider: React.FC = () => {
