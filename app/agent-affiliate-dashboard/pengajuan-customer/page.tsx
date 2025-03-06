@@ -9,7 +9,7 @@ interface RegisteredCustomerPayload {
   name: string;
   email: string;
   mobile: string;
-  photo_profile_url: string;
+  photo_profile: File | null;
   minat_villa: string;
 }
 
@@ -21,7 +21,7 @@ export default function PengajuanCustomerPage() {
     name: "",
     email: "",
     mobile: "",
-    photo_profile_url: "",
+    photo_profile: null,
     minat_villa: "",
   });
   const [error, setError] = useState<string | null>(null);
@@ -29,13 +29,18 @@ export default function PengajuanCustomerPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    // Set mounted flag on client side to avoid hydration issues
     setMounted(true);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFormData((prev) => ({ ...prev, photo_profile: e.target.files![0] }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,16 +55,23 @@ export default function PengajuanCustomerPage() {
 
     setIsSubmitting(true);
     try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("customer[name]", formData.name);
+      formDataToSend.append("customer[email]", formData.email);
+      formDataToSend.append("customer[mobile]", formData.mobile);
+      formDataToSend.append("customer[minat_villa]", formData.minat_villa);
+      if (formData.photo_profile) {
+        formDataToSend.append("customer[photo_profile]", formData.photo_profile);
+      }
+
       const response = await fetch(
         `https://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}/register_customer`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
-          // Wrap payload ke dalam "customer"
-          body: JSON.stringify({ customer: formData }),
+          body: formDataToSend,
         }
       );
 
@@ -68,13 +80,12 @@ export default function PengajuanCustomerPage() {
         throw new Error(errData.error || "Failed to register customer");
       }
 
-      const data = await response.json();
       setSuccessMsg("Customer registered successfully!");
       setFormData({
         name: "",
         email: "",
         mobile: "",
-        photo_profile_url: "",
+        photo_profile: null,
         minat_villa: "",
       });
     } catch (err: any) {
@@ -130,15 +141,12 @@ export default function PengajuanCustomerPage() {
           />
         </div>
         <div>
-          <label className="block text-gray-700">Photo Profil URL:</label>
+          <label className="block text-gray-700">Photo Profil:</label>
           <input
-            type="text"
-            name="photo_profile_url"
-            value={formData.photo_profile_url}
-            onChange={handleChange}
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
             className="w-full border p-2 rounded"
-            placeholder="URL photo profil customer"
-            required
           />
         </div>
         <div>
@@ -150,7 +158,6 @@ export default function PengajuanCustomerPage() {
             onChange={handleChange}
             className="w-full border p-2 rounded"
             placeholder="Minat villa customer"
-            required
           />
         </div>
         <button
