@@ -36,6 +36,7 @@ export default function KelolaAkunPage() {
   const { agent, loading } = useAuth();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [profile, setProfile] = useState<AgentProfile>({
     name: "",
@@ -117,7 +118,7 @@ export default function KelolaAkunPage() {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        `https://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`,
+        `http://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`,
         {
           method: "PATCH",
           headers: {
@@ -193,14 +194,12 @@ export default function KelolaAkunPage() {
           </div>
         </div>
         <div>
-          <label className="block text-gray-700">Photo Profil URL:</label>
+          <label className="block text-gray-700">Upload Foto Profil:</label>
           <input
-            type="text"
-            name="photo_profile_url"
-            value={profile.photo_profile_url}
-            onChange={handleChange}
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPhotoFile(e.target.files?.[0] || null)}
             className="w-full border p-2 rounded"
-            placeholder="Masukkan URL photo profil"
           />
         </div>
         <div>
