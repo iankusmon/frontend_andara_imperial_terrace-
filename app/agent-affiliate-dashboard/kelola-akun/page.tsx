@@ -36,7 +36,6 @@ export default function KelolaAkunPage() {
   const { agent, loading } = useAuth();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [profile, setProfile] = useState<AgentProfile>({
     name: "",
@@ -194,12 +193,14 @@ export default function KelolaAkunPage() {
           </div>
         </div>
         <div>
-          <label className="block text-gray-700">Upload Foto Profil:</label>
+          <label className="block text-gray-700">Photo Profil URL:</label>
           <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setPhotoFile(e.target.files?.[0] || null)}
+            type="text"
+            name="photo_profile_url"
+            value={profile.photo_profile_url}
+            onChange={handleChange}
             className="w-full border p-2 rounded"
+            placeholder="Masukkan URL photo profil"
           />
         </div>
         <div>
