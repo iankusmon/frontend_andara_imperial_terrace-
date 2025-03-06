@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 const SurveyPageComponent = dynamic(() => import("@/components/SurveyPageComponent"), { ssr: false });
