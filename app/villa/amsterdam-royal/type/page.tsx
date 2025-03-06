@@ -213,6 +213,10 @@ const DavinciResidence = () => {
       </div>
 
       {/* Available Units Section */}
+      <picture>
+        <source srcSet="/siteplan_kavling.png" media="(min-width: 768px)" />
+        <img src="/siteplan_kavling.png" alt="KPR Andara Imperial Terrace" className="w-full mb-4 pt-40" />
+      </picture>
       <h2 className="text-center text-2xl font-bold text-gray-800 my-4">Available Units</h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center p-4">
         {Array.from({ length: totalUnits }, (_, i) => i + 1).map((unit) => (
@@ -221,7 +225,7 @@ const DavinciResidence = () => {
             href={`/villa/amsterdam-royal/unit/${unit}`}
             className={`p-4 rounded-lg shadow-lg font-bold transition ${availableUnits.includes(unit) ? 'bg-gold text-white hover:bg-black' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
           >
-            <p className="text-lg">Unit {unit}</p>
+            <p className="text-lg">Unit AH.{unit}</p>
             <p className="text-sm">{availableUnits.includes(unit) ? 'Available' : 'Sold Out'}</p>
           </Link>
         ))}
