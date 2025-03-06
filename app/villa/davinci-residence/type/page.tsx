@@ -62,6 +62,17 @@ const DavinciResidence = () => {
         </Swiper>
       </div>
 
+      {/* Narasi */}
+      <div className="mt-6 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold">Villa Da Vinci Residence</h1>
+          <p className="mt-4 text-sm sm:text-lg text-gray-700">
+            Villa Da Vinci Residence bukan hanya menawarkan keindahan dan kenyamanan sebagai tempat tinggal,
+            tetapi juga peluang investasi yang luar biasa. Dengan desain elegan ala Eropa klasik dan fasilitas
+            sekelas resor hotel bintang 5, villa ini menjadi pilihan terbaik untuk investasi properti yang
+            menjanjikan profit tinggi dan manfaat jangka panjang.
+          </p>
+        </div>
+
       {/* Available Units Section */}
       <h2 className="text-center text-2xl font-bold text-gray-800 my-4">Available Units</h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center p-4">
