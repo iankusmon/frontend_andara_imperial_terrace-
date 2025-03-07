@@ -117,7 +117,7 @@ export default function KelolaAkunPage() {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        `http://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`,
+        `https://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`,
         {
           method: "PATCH",
           headers: {
