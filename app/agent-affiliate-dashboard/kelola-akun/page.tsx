@@ -36,6 +36,7 @@ export default function KelolaAkunPage() {
   const { agent, loading } = useAuth();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [profile, setProfile] = useState<AgentProfile>({
     name: "",
@@ -108,25 +109,28 @@ export default function KelolaAkunPage() {
     e.preventDefault();
     setError(null);
     setSuccessMsg(null);
-
     if (!agent) {
       setError("Agent tidak ditemukan. Silakan login kembali.");
       return;
     }
-
     setIsSubmitting(true);
+
     try {
-      const response = await fetch(
-        `https://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({ agent_affiliate: profile }),
-        }
-      );
+      const formData = new FormData();
+      Object.entries(profile).forEach(([key, value]) => {
+        formData.append(`agent_affiliate[${key}]`, value);
+      });
+      if (photoFile) {
+        formData.append("agent_affiliate[photo_profile]", photoFile);
+      }
+
+      const response = await fetch(`https://api.andaraimperialterrace.co.id/api/agent_affiliates/${agent.id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      });
 
       if (!response.ok) {
         const errData = await response.json();
@@ -134,10 +138,8 @@ export default function KelolaAkunPage() {
       }
 
       const data = await response.json();
-      // Tampilkan alert sukses jika diinginkan
       alert("Profil berhasil diperbarui!");
       setSuccessMsg("Profil berhasil diperbarui!");
-      // Perbarui localStorage dengan data profil baru
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -193,14 +195,11 @@ export default function KelolaAkunPage() {
           </div>
         </div>
         <div>
-          <label className="block text-gray-700">Photo Profil URL:</label>
+          <label className="block text-gray-700">Upload Foto Profil:</label>
           <input
-            type="text"
-            name="photo_profile_url"
-            value={profile.photo_profile_url}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-            placeholder="Masukkan URL photo profil"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPhotoFile(e.target.files?.[0] || null)}
           />
         </div>
         <div>

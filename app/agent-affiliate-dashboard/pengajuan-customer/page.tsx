@@ -80,6 +80,7 @@ export default function PengajuanCustomerPage() {
         throw new Error(errData.error || "Failed to register customer");
       }
 
+      const data = await response.json();
       setSuccessMsg("Customer registered successfully!");
       setFormData({
         name: "",
@@ -88,6 +89,13 @@ export default function PengajuanCustomerPage() {
         photo_profile: null,
         minat_villa: "",
       });
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          username: data.customer.name,
+          profilePic: data.customer.photo_profile_url,
+        })
+      );
     } catch (err: any) {
       setError(err.message || "An error occurred");
     } finally {
