@@ -57,9 +57,9 @@ const MobileSlider: React.FC = () => {
 
 
   const slides: Slide[] = [
-    { image: "/banner_promo_mobile.png", link: "/sales", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
-    { image: "/banner_affiliate_mobile.png", link: "/artikel/kawasan-ait", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
-    { image: "/slide_mobile6.png", link: "/artikel/kawasan-ait", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
+    { image: "/banner_promo_mobile.png", link: "/villa/davinci-residence/type", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
+    { image: "/banner_promo2_mobile.png", link: "/villa/athena-height/type", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },
+    { image: "/banner_affiliate_mobile.png", link: "/sign-up/agent-affiliate", share_link: "/sign-up/customer", isVideo: false, message: "Nikmati Kemewahan dan Kesempurnaan Andara Imperial Terrace! Ayuk, Investasi sekarang: " },    
     { image: "/slide_mobile4.png", link: "/kpr-corner", share_link: "/sign-up/customer", isVideo: false, message: "Pelajari Fitur KPR kami! Ayuk, Investasi sekarang: " },
   ];
 
