@@ -86,6 +86,14 @@ const Navbar = () => {
 
         {/* Profile/Login Section for Desktop */}
         <div className="hidden lg:flex gap-2 pt-2 relative">
+          {!isLoggedIn && (
+            <Link
+              href="/sign-up/agent-affiliate"
+              className="bg-white text-black border border-gray-300 hover:bg-gray-200 px-4 py-2 rounded"
+            >
+              Daftar Affiliate
+            </Link>
+          )}
           {isLoggedIn && user ? (
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
@@ -173,17 +181,25 @@ const Navbar = () => {
 
       {/* Mobile Menu: ditempatkan tepat di bawah navbar */}
       {navbarOpen && (
-        <div className="absolute top-full left-0 w-full bg-green-600 text-white p-5 flex flex-col items-center lg:hidden z-40">
+        <div className="absolute top-full left-0 w-full bg-green-custom text-white p-5 flex flex-col items-center lg:hidden z-40">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.key}
               href={link.href}
-              className="text-white text-sm py-2"
+              className="text-white text-sm py-2 pt-10"
               onClick={() => setNavbarOpen(false)}
             >
               {link.label}
             </Link>
           ))}
+          {!isLoggedIn && (
+            <Link
+              href="/sign-up/agent-affiliate"
+              className="bg-white text-black border hover:bg-gray-200 px-4 py-2 rounded"
+            >
+              Daftar Affiliate
+            </Link>
+          )}
           {isLoggedIn && user ? (
             <div className="flex flex-col items-center gap-2 mt-2">
               <div className="flex items-center gap-2">
