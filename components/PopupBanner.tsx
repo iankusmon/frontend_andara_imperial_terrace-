@@ -28,21 +28,26 @@ const PopupBanner = () => {
 
   return (
     <div className="fixed inset-0 flex items-start justify-center bg-black bg-opacity-50 z-50 min-h-screen">
-      <div className={ isMobile? "relative bg-white p-4 mt-10 rounded-lg shadow-lg max-w-sm w-full text-center" : "relative bg-white p-4 rounded-lg shadow-lg max-w-md w-full text-center" }>
+      <div
+        className={`relative p-4 rounded-lg shadow-lg text-center bg-white ${
+          isMobile ? "absolute bottom-0 h-2/3 w-3/4" : "max-w-md w-full"
+        }`}
+      >
         <button
           onClick={() => setIsVisible(false)}
-          className={ isMobile? "absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1" : "absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1" }>
+          className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1"
+        >
           ✕
         </button>
         <Image
-          src={isMobile ? "/prelaunch_1_cover.png" : "/prelaunch_1_cover.png"}
+          src="/prelaunch_1_cover.png"
           alt="The Royale Elegance"
           width={isMobile ? 350 : 500}
           height={isMobile ? 200 : 300}
-          className="rounded-lg cursor-pointer"
+          className="rounded-lg cursor-pointer mx-auto"
           onClick={handleClick}
         />
-        <p className="mt-4 text-gray-800 font-semibold">
+        <p className={isMobile ? "text-gray-800" : "mt-4 text-gray-800 font-semibold"}>
           The Royale Elegance adalah tempat di mana kemewahan dan keharmonisan dengan alam bersatu, menciptakan lingkungan yang elegan dan penuh kedamaian.
         </p>
       </div>
