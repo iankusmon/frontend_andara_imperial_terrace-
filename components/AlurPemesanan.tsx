@@ -1,5 +1,8 @@
 'use client'
-import Image from 'next/image';
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import ShareModal from "./ShareModal"; // sesuaikan path jika diperlukan
 import Link from 'next/link';
 
 const steps = [
@@ -26,6 +29,25 @@ const steps = [
 ];
 
 const AlurPemesanan = () => {
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+
   return (
     <section className="alur-pemesanan p-6 bg-gray-100">
       <h2 className="text-3xl font-bold text-center mb-6">Alur Pemesanan</h2>
@@ -40,6 +62,13 @@ const AlurPemesanan = () => {
                 objectFit="contain"
                 className="rounded-lg"
               />
+              {/* Tombol share di pojok kanan atas tiap slide */}
+              <button
+                onClick={handleOpenShareModal}
+                className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+              >
+                <Image src="/share.svg" alt="Share" width={24} height={24} />
+              </button>
             </div>
             <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
             <p className="mb-4 text-gray-700">{step.description}</p>
@@ -48,6 +77,14 @@ const AlurPemesanan = () => {
             </Link>
         </div>
         ))}
+        {/* ShareModal diletakkan di luar slider agar hanya ada satu modal */}
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={handleCloseShareModal}
+          message="Bagikan Cara Melakukan Pemesanan Villa AIT"
+          shareLink="/sign-up/customer"
+          referralCode={referralCode}
+        />
       </div>
     </section>
   );

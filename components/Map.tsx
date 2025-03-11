@@ -1,6 +1,7 @@
 'use client'
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import ShareModal from "./ShareModal"; // sesuaikan path jika diperlukan
 
 interface Location {
   id: number;
@@ -35,6 +36,25 @@ interface MapComponentProps {
 function MapComponent({ locations, isMobile }: MapComponentProps) {
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   const handleClick = (loc: Location) => {
     if (isMobile) {
@@ -51,6 +71,22 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   return (
     <div className="relative w-full h-[75vh] flex flex-col items-center justify-center mt-20 mb-20">
       <h2 className="text-xl md:text-2xl font-bold text-center mb-4">Jelajahi Kawasan AIT Virtual Yuk!</h2>
+      {/* Tombol share dengan icon di pojok kanan atas */}
+      <button
+          onClick={handleOpenShareModal}
+          className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition"
+        >
+          <Image src="/share.svg" alt="Share" width={24} height={24} />
+        </button>
+
+        {/* ShareModal diposisikan di atas dengan properti z-index */}
+        <ShareModal
+              isOpen={isShareModalOpen}
+              onClose={handleCloseShareModal}
+              message="Bagikan Keseruan Map Kawasan AIT"
+              shareLink="/sign-up/customer"
+              referralCode={referralCode}
+            />
       <picture className="w-full max-w-screen-xl">
         <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
         <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full object-cover max-w-screen-xl" />
