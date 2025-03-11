@@ -65,7 +65,7 @@ const MobileSlider: React.FC = () => {
   ];
 
   return (
-    <div className="mobile-slider pt-16 mb-16 pt-20">
+    <div className="mobile-slider pt-5 mb-16">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="slide-item relative">

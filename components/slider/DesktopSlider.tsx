@@ -65,7 +65,7 @@ const DesktopSlider: React.FC = () => {
   ];
   
   return (
-    <div className="desktop-slider pt-20">
+    <div className="desktop-slider pt-5">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="slide-item relative" style={{ paddingTop: '0px' }}>
