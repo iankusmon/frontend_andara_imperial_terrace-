@@ -43,10 +43,10 @@ const VideoLanding = () => {
     <>
       
       {/* Video Section */}
-      <div className="relative w-full h-full sm:h-[400px] md:h-[500px] lg:h-[800px] overflow-hidden">
+      <div className="mt-20 relative w-full h-full sm:h-[400px] md:h-[500px] lg:h-[800px] overflow-hidden">
         <video
           ref={videoRef}
-          className="w-full h-[800px] object-cover"
+          className="relatve w-full h-[800px] object-cover"
           src="/vidio_landing_page2.mp4"
           autoPlay
           loop
