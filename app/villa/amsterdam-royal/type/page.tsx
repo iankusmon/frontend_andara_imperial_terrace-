@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import ShareModal from "../../../../components/ShareModal"; // sesuaikan path jika diperlukan
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,6 +22,21 @@ const DavinciResidence = () => {
   const totalUnits = 9;
   const availableUnits = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const referral = localStorage.getItem("referralCode") || "";
+    setReferralCode(referral);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -32,9 +48,9 @@ const DavinciResidence = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gray-100">
+    <div className="relative w-full min-h-screen bg-gray-100 pt-20">
       {/* Video Section */}
-      <div className="w-full h-[900px] overflow-show">
+      <div className="relative w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[900px] overflow-hidden">
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
@@ -42,6 +58,21 @@ const DavinciResidence = () => {
           autoPlay
           loop
           playsInline
+        />
+        {/* Tombol share dengan icon di pojok kanan atas */}
+        <button
+          onClick={handleOpenShareModal}
+          className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+        >
+          <Image src="/share.svg" alt="Share" width={24} height={24} />
+        </button>
+        {/* ShareModal diposisikan di atas dengan properti z-index */}
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={handleCloseShareModal}
+          message="Bagikan Kemewahan Villa Type Amsterdam Royal"
+          shareLink="/sign-up/customer"
+          referralCode={referralCode}
         />
       </div>
 
