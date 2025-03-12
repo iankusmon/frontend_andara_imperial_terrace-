@@ -65,7 +65,7 @@ const AlurPemesanan = () => {
               {/* Tombol share di pojok kanan atas tiap slide */}
               <button
                 className="absolute top-0 right-0 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
-                onClick={() => handleOpenShareModal(villa)}
+                onClick={handleOpenShareModal}
                 >              
                 <Image src="/share.svg" alt="Share" width={24} height={24} />
               </button>
