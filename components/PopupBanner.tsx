@@ -30,7 +30,7 @@ const PopupBanner = () => {
     <div className="fixed inset-0 flex items-start justify-center bg-black bg-opacity-50 z-50 min-h-screen">
       <div
         className={`relative p-4 rounded-lg shadow-lg text-center bg-white ${
-          isMobile ? "mt-20 absolute bottom-0 h-2/3 w-3/4" : "mt-20 max-w-md w-full"
+          isMobile ? "mt-20 absolute bottom-0 h-3/8 w-3/4" : "mt-10 max-w-md w-full"
         }`}
       >
         <button

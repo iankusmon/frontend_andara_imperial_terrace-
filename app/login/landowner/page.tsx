@@ -50,7 +50,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-form-wrapper">
-        <h2 className="login-heading">Login sebagai Pemilik Lahan</h2>
+        <h2 className="login-heading">Login Pemilik Lahan</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
@@ -79,16 +79,6 @@ const LoginPage = () => {
           </div>
           <button type="submit" className="submit-btn">Login</button>
         </form>
-        <div className="signup-link">
-          <p>Don't have an account?</p>
-          <button
-            type="button"
-            onClick={() => router.push("/sign-up/customer")}
-            className="signup-btn"
-          >
-            Sign Up as Pemilik Lahan
-          </button>
-        </div>
       </div>
 
       <style jsx>{`

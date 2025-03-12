@@ -50,7 +50,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-form-wrapper">
-        <h2 className="login-heading">Login sebagai Agent Affiliate</h2>
+        <h2 className="login-heading">Login Agent Affiliate</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
@@ -89,7 +89,7 @@ const LoginPage = () => {
             onClick={() => router.push("/sign-up/agent-affiliate")}
             className="signup-btn"
           >
-            Sign Up as Agent Affiliate
+            Sign Up Agent Affiliate
           </button>
         </div>
       </div>
