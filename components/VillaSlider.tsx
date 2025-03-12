@@ -32,7 +32,7 @@ const villaTypes = [
     image: "/amsterdam_royale.png",
     link: "villa/amsterdam-royal/type",
     share_link: "/sign-up/customer",
-    share_cta: "Nikmati Kemewahan Amsterdam Royale hanya 7 Unit!"
+    share_cta: "Nikmati Kemewahan Amsterdam Royale hanya 9 Unit!"
   },
   {
     title: "Athena Height",
@@ -42,7 +42,7 @@ const villaTypes = [
     image: "/athena_height.png",
     link: "/villa/athena-height/type",
     share_link: "/sign-up/customer",
-    share_cta: "Nikmati Kemewahan Athena Height hanya 9 Unit!"
+    share_cta: "Nikmati Kemewahan Athena Height hanya 7 Unit!"
   },
 ];
 
@@ -95,10 +95,10 @@ const VillaSlider = () => {
               <img src={villa.image} alt={villa.title} className="villa-image" />
               {/* Tombol Share di pojok kanan atas gambar */}
               <button
-                className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md"
+                className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
                 onClick={() => handleShareClick(villa)}
-              >
-                <Image src="/share.png" alt="Share" width={30} height={30} />
+                >              
+                <Image src="/share.svg" alt="Share" width={24} height={24} />
               </button>
               <h2 className="villa-title">{villa.title}</h2>
               <p><strong>{villa.concept}</strong></p>
@@ -113,8 +113,8 @@ const VillaSlider = () => {
       </Slider>
 
       {showModal && currentVilla && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" onClick={() => setShowModal(false)}>
+          <div className="modal-content bg-white p-6 rounded-lg w-96 text-center relative z-50" onClick={(e) => e.stopPropagation()}>
             {/* Tombol Close */}
             <button className="close-button" onClick={() => setShowModal(false)}>
               <FaTimes className="text-gray-600 text-2xl" />

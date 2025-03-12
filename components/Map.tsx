@@ -71,8 +71,8 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   return (
     <div className="relative w-full h-[75vh] flex flex-col items-center justify-center mt-20 mb-20">
       <h2 className="text-xl md:text-2xl font-bold text-center mb-4">Jelajahi Kawasan AIT Virtual Yuk!</h2>
-      {/* Tombol share dengan icon di pojok kanan atas */}
-      <button
+        {/* Tombol share dengan icon di pojok kanan atas */}
+        <button
           onClick={handleOpenShareModal}
           className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition"
         >
@@ -81,13 +81,13 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
 
         {/* ShareModal diposisikan di atas dengan properti z-index */}
         <ShareModal
-              isOpen={isShareModalOpen}
-              onClose={handleCloseShareModal}
-              message="Bagikan Keseruan Map Kawasan AIT"
-              shareLink="/sign-up/customer"
-              referralCode={referralCode}
-            />
-      <picture className="w-full max-w-screen-xl">
+          isOpen={isShareModalOpen}
+          onClose={handleCloseShareModal}
+          message="Bagikan Keseruan Map Kawasan AIT"
+          shareLink="/sign-up/customer"
+          referralCode={referralCode}
+        />
+      <picture className="w-full max-w-screen-xl w-8xl">
         <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
         <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full object-cover max-w-screen-xl" />
       </picture>

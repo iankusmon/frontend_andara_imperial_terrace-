@@ -56,7 +56,7 @@ function VideoSliderMobile() {
           {/* Tombol share di pojok kanan atas tiap slide */}
           <button
             onClick={handleOpenShareModal}
-            className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+            className="absolute top-10 right-10 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
           >
             <Image src="/share.svg" alt="Share" width={24} height={24} />
           </button>

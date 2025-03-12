@@ -68,12 +68,11 @@ const DesktopSlider: React.FC = () => {
                 <img src={slide.image} className="rounded-lg object-cover w-full h-full" />
                 <p className="absolute bottom-0 left-0 right-0 text-center text-sm font-semibold bg-black bg-opacity-50 text-white py-2">{slide.label}</p>
               </a>
-              <button
-                onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
-                className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow-lg"
-              >
-                <Image src="/share.png" alt="Share" width={40} height={40} />
-              </button>
+              <button 
+              onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
+              className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10">
+              <Image src="/share.svg" alt="Share" width={24} height={24} />
+            </button>
             </div>
           </SwiperSlide>
         ))}

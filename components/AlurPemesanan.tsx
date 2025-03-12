@@ -53,7 +53,7 @@ const AlurPemesanan = () => {
       <h2 className="text-3xl font-bold text-center mb-6">Alur Pemesanan</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {steps.map((step, index) => (
-          <div key={index} className="step bg-white p-4 rounded-lg shadow-lg text-center">
+          <div key={index} className="step bg-white p-4 rounded-lg shadow-lg text-center bg-yellow-50">
             <div className="relative w-full h-40 mb-4">
               <Image
                 src={step.image}
@@ -64,9 +64,9 @@ const AlurPemesanan = () => {
               />
               {/* Tombol share di pojok kanan atas tiap slide */}
               <button
-                onClick={handleOpenShareModal}
-                className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
-              >
+                className="absolute top-0 right-0 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+                onClick={() => handleOpenShareModal(villa)}
+                >              
                 <Image src="/share.svg" alt="Share" width={24} height={24} />
               </button>
             </div>

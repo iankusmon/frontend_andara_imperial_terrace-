@@ -81,9 +81,8 @@ const MobileSlider: React.FC = () => {
             </a>
             <button 
               onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
-              className="absolute top-16 right-4 bg-white p-2 rounded-full shadow-lg z-50"
-            >
-              <Image src="/share.png" alt="Share" width={32} height={32} />
+              className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10">
+              <Image src="/share.svg" alt="Share" width={24} height={24} />
             </button>
           </div>
         ))}

@@ -56,8 +56,9 @@ const MobileSlider: React.FC = () => {
                 <Image src={slide.image} alt={slide.message} width={600} height={400} layout="responsive" quality={80} />
                 <div className="mt-2 text-center text-sm font-semibold bg-white bg-opacity-75 px-3 py-1 rounded-md">{slide.label}</div>
                 <div className="mt-2 flex justify-center">
-                  <button onClick={() => { setCurrentSlide(slide); setShowPopup(true); }} className="bg-white p-2 rounded-full shadow-lg">
-                    <Image src="/share.svg" alt="Share" width={30} height={30} />
+                  <button onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
+                    className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10">
+                    <Image src="/share.svg" alt="Share" width={24} height={24} />
                   </button>
                 </div>
               </div>

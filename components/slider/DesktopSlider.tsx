@@ -81,9 +81,8 @@ const DesktopSlider: React.FC = () => {
             </a>
             <button 
               onClick={() => { setCurrentSlide(slide); setShowPopup(true); }}
-              className="absolute top-24 right-3 bg-white p-2 pt-6 rounded-full shadow-lg"
-            >
-              <Image src="/share.png" alt="Share" width={40} height={40} />
+              className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10">
+              <Image src="/share.svg" alt="Share" width={24} height={24} />
             </button>
           </div>
         ))}
