@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import ShareModal from "../../components/ShareModal"; // sesuaikan path jika diperlukan
 import { useRouter } from "next/navigation";
 
 const articles = [
@@ -17,6 +18,21 @@ export default function AffiliateCorner() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const router = useRouter();
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const referral = localStorage.getItem("referralCode") || "";
+    setReferralCode(referral);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   useEffect(() => {
     // Cek localStorage apakah ada data user
@@ -32,7 +48,13 @@ export default function AffiliateCorner() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-40">
+    <div className="relatice container mx-auto px-4 py-8 pt-40">
+      <button
+        onClick={handleOpenShareModal}
+        className="fixed top-20 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-50"
+      >
+        <Image src="/share.svg" alt="Share" width={24} height={24} />
+      </button>
       <h1 className="text-3xl font-bold text-center mb-6 pt-40">
         Kemudahan dan Keuntungan Andara Agen Affiliate Program
       </h1>
@@ -171,6 +193,14 @@ export default function AffiliateCorner() {
         >
           Gabung Sekarang
         </Link>
+        {/* ShareModal ditempatkan di luar konten utama */}
+        <ShareModal
+            isOpen={isShareModalOpen}
+            onClose={handleCloseShareModal}
+            message="Yuk Gabung di Agent Affiliate"
+            shareLink="/sign-up/agent-affiliate"
+            referralCode={referralCode}
+          />
       </div>
       )}
 
