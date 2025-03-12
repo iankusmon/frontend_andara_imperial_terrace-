@@ -1,14 +1,36 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import ShareModal from "../../../../../components/ShareModal"; // sesuaikan path jika diperlukan
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTv, faBath } from '@fortawesome/free-solid-svg-icons';
 
 const VillaAmsterdamRoyal = () => {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const referral = localStorage.getItem("referralCode") || "";
+    setReferralCode(referral);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -32,9 +54,9 @@ const VillaAmsterdamRoyal = () => {
   const otherFacilities = ["/amsterdam_10_1.png", "/amsterdam_11_1.png", "/amsterdam_12_1.png", "/amsterdam_6_1.png"];
 
   return (
-    <div className="w-full">
+    <div className="relative w-full min-h-screen bg-gray-100 pt-20">
       {/* Full-width Autoplay Video */}
-      <div className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+      <div className="relative w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[900px] overflow-hidden">
         <video
           ref={videoRef}
           src="/amsterdam_vidio_2.mp4"
@@ -43,6 +65,21 @@ const VillaAmsterdamRoyal = () => {
           muted
           loop
           playsInline
+        />
+        {/* Tombol share dengan icon di pojok kanan atas */}
+        <button
+          onClick={handleOpenShareModal}
+          className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+        >
+          <Image src="/share.svg" alt="Share" width={24} height={24} />
+        </button>
+        {/* ShareModal diposisikan di atas dengan properti z-index */}
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={handleCloseShareModal}
+          message="Bagikan Kemewahan Villa Unit AR3 Amsterdam Royal"
+          shareLink="/sign-up/customer"
+          referralCode={referralCode}
         />
       </div>
       
@@ -61,23 +98,45 @@ const VillaAmsterdamRoyal = () => {
         </div>
 
         {/* Narasi */}
-        <div className="mt-8 text-center">
+      <div className="mt-8 text-center px-5 mx-auto">
           <h1 className="text-3xl font-bold">Villa Amsterdam Royale</h1>
-          <p className="mt-4 text-lg text-gray-700">
-            Villa Amsterdam Royale di Andara Imperial Terrace adalah lebih dari sekadar tempat tinggal; ini adalah peluang investasi strategis yang
-            menjanjikan keuntungan berkelanjutan. Memadukan arsitektur klasik Belanda dengan teknologi modern, villa ini menjadi simbol kemewahan
-            yang menarik bagi pasar properti premium.
+          <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
+          Andara Imperial Terrace mempersembahkan Villa Amsterdam Royal, sebuah mahakarya arsitektur Belanda yang menyatukan unsur kemewahan dan kenyamanan dalam setiap detailnya. Villa ini menawarkan pengalaman resor bintang lima dalam kenyamanan rumah pribadi, menjadikannya pilihan ideal bagi mereka yang mencari hunian eksklusif dan investasi bernilai tinggi.
+          </p>
+          <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
+          Dengan lokasi strategis, desain yang mewah, dan fasilitas premium, Villa Amsterdam Royal bukan sekadar tempat tinggal, tetapi juga investasi properti yang menjanjikan keuntungan luar biasa. Properti ini menawarkan nilai tambah bagi investor yang ingin mendapatkan keuntungan dari penyewaan jangka pendek maupun panjang.
           </p>
         </div>
 
-        {/* Promo Section */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-red-600 mb-4">💎 Cashback Rp 400 Juta – Keuntungan Maksimal Selama Pre-Launching! 1- 15 Maret 2025 !! 💎</h2>
-        <p className="text-lg text-gray-700 mb-4">
+      <div className="w-full max-w-4xl text-center px-5 mx-auto mt-10">
+        <h2 className="text-lg font-bold text-blue-600 mb-4"> Spesifikasi Villa Amsterdam Royale:</h2>
+        <ul className="text-left text-lg text-gray-700 mb-6 list-inside">
+          <li>📏 Luas Tanah / Bangunan: <strong>72/127m²</strong></li>
+          <li>🏠 Jumlah Lantai: <strong>2</strong></li>
+          <li>🛏 Kamar Tidur: <strong>3</strong> (Executive Suite, Junior Suite, Presidential Suite)</li>
+          <li><FontAwesomeIcon icon={faBath} className="text-blue-500" /> Kamar Mandi: <strong>5</strong></li>
+          <li><FontAwesomeIcon icon={faTv} className="text-blue-500" /> TV: <strong>5</strong></li>
+          <li>🔑 Kunci Smartlock: <strong>6</strong> (5 Pintu + 1 Gerbang)</li>
+          <li>❄️ Kulkas: <strong>4</strong> (3 di Kamar, 1 di Dapur)</li>
+          <li>🔒 Brankas: <strong>3</strong> (Di Lemari Kamar Tidur)</li>
+          <li>🏊 Private Pool</li>
+          <li>🍽 Dapur, Ruang Makan, dan Ruang Tamu</li>
+          <li>🔥 Rooftop BBQ Area</li>
+          <li>🎨 Full Dekorasi Interior & Furnished sekelas Resort Bintang 5</li>
+          <li>📡 Internet of Things (IoT), CCTV, Telephone Kabel, Wifi Router</li>
+          <li>🧯 Keamanan: APAR, Fire Detector, First Aid Kit, Hidran Kebakaran</li>
+          <li>🛡 Asuransi Property All Risk (PAR)</li>
+        </ul>
+      </div>
+
+      {/* Promo Section */}
+      <div className="w-full max-w-4xl text-center px-5 mx-auto mt-10">
+        <h2 className="text-lg font-bold text-red-600 mb-4">💎 Cashback Rp 400 Juta – Keuntungan Maksimal Selama Pre-Launching! 1- 15 Maret 2025 !! 💎</h2>
+        <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
           Jangan lewatkan kesempatan emas untuk memiliki hunian impian di Andara Imperial Terrace dengan penawaran spesial!
           Selama masa Pre-Launching 1-15 Maret 2025, kami menghadirkan Cashback Eksklusif sebesar Rp 400 Juta.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6 list-inside" style={{textDecoration: 'none; '}}>
           <li>✅ Harga Lebih Ringan – Potongan harga langsung.</li>
           <li>✅ Penghematan Maksimal – Gunakan untuk interior atau investasi tambahan.</li>
           <li>✅ Keuntungan Lebih Cepat – Nilai properti terus meningkat.</li>
@@ -85,14 +144,14 @@ const VillaAmsterdamRoyal = () => {
         </ul>
       </div>
 
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-blue-600 mb-4">🎯 Bebas Biaya Pajak – Hemat Maksimal, Investasi Lebih Ringan! 🎯</h2>
-        <p className="text-lg text-gray-700 mb-4">
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10 ">
+        <h2 className="text-lg font-bold text-blue-600 mb-4 w-full max-w-4xl text-center px-5x mx-auto">🎯 Bebas Biaya Pajak – Hemat Maksimal, Investasi Lebih Ringan! 🎯</h2>
+        <p className="text-lg text-gray-700 mb-4 px-5">
           Selama masa Pre-Launching, seluruh biaya pajak pembelian, termasuk PPN 12% dan BPHTB 5%, akan ditanggung pengembang.
         </p>
-        <table className="w-full border-collapse border border-gray-400 mb-6">
+        <table className="w-full border-collapse border border-gray-400 mb-6 px-5">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-gray-200 px-5">
               <th className="border border-gray-400 px-4 py-2">Metode Pembayaran</th>
               <th className="border border-gray-400 px-4 py-2">Persentase Pajak Ditanggung</th>
             </tr>
@@ -123,12 +182,12 @@ const VillaAmsterdamRoyal = () => {
       </div>
       
       {/* Asuransi Properti All Risk */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-green-600 mb-4">🏡 Asuransi Properti All Risk – Perlindungan Menyeluruh untuk Hunian Anda! 🔒</h2>
-        <p className="text-lg text-gray-700 mb-4">
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-green-600 mb-4">🏡 Asuransi Properti All Risk – Perlindungan Menyeluruh untuk Hunian Anda! 🔒</h2>
+        <p className="text-lg text-gray-700 mb-4 px-5">
           Setiap unit di Andara Imperial Terrace dilengkapi dengan Asuransi Properti All Risk, memberikan perlindungan menyeluruh dari berbagai risiko tak terduga.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6 px-5 list-inside">
           <li>✅ <strong>Perlindungan dari Risiko Kebakaran</strong> 🔥 – Menjamin kerusakan akibat kebakaran, hubungan arus pendek, dan ledakan gas.</li>
           <li>✅ <strong>Lindungi dari Bencana Alam</strong> 🌪️🌊 – Meliputi gempa bumi, banjir, angin topan, longsor, hingga letusan gunung berapi.</li>
           <li>✅ <strong>Cakupan Kerusakan Struktural</strong> 🏠 – Menanggung biaya perbaikan akibat retak dinding, atap bocor, dan insiden struktural lainnya.</li>
@@ -139,12 +198,12 @@ const VillaAmsterdamRoyal = () => {
       </div>
 
       {/* Full Furnished dengan Furnitur Premium */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-purple-600 mb-4">🏡 Full Furnished dengan Furnitur Premium – Hunian Mewah Siap Huni! 🏡</h2>
-        <p className="text-lg text-gray-700 mb-4">
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-purple-600 mb-4 px-5">🏡 Full Furnished dengan Furnitur Premium – Hunian Mewah Siap Huni! 🏡</h2>
+        <p className="text-lg text-gray-700 mb-4 px-5">
           Nikmati pengalaman tinggal di rumah impian dengan furnitur premium berkualitas tinggi, setara dengan standar hotel bintang lima, siap huni tanpa perlu repot mengatur interior.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6 px-5">
           <li>✅ <strong>Full Furnished dengan Furnitur Premium</strong> – Setiap unit dilengkapi dengan sofa eksklusif, tempat tidur king-size, meja makan elegan, dan kitchen set modern.</li>
           <li>✅ <strong>Gratis Smart Home System</strong> – Kontrol pencahayaan, keamanan, dan suhu ruangan langsung dari smartphone Anda.</li>
           <li>✅ <strong>Bonus Paket Interior Custom</strong> – Pilih desain interior sesuai selera Anda: modern minimalis, skandinavian, atau klasik mewah.</li>
@@ -153,13 +212,13 @@ const VillaAmsterdamRoyal = () => {
       </div>
 
       {/* Promo Baru: Gratis Biaya Akad dan Notaris */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-orange-600 mb-4">🎉 GRATIS BIAYA AKAD DAN NOTARIS – INVESTASI TANPA BEBAN! 🎉</h2>
-        <p className="text-lg text-gray-700 mb-4">
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-orange-600 mb-4 px-5">🎉 GRATIS BIAYA AKAD DAN NOTARIS – INVESTASI TANPA BEBAN! 🎉</h2>
+        <p className="text-lg text-gray-700 mb-4 px-5">
           Nikmati kemudahan memiliki hunian mewah di Andara Imperial Terrace tanpa perlu khawatir dengan biaya legalitas!
           Semua biaya Akta Jual Beli (AJB), balik nama Sertifikat Hak Guna Bangunan (SHGB), dan biaya notaris DITANGGUNG SEPENUHNYA oleh pengembang!
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6  list-inside px-5">
           <li>✅ Bea Balik Nama (BBN) – Nilai hingga 2% dari harga transaksi.</li>
           <li>✅ Biaya Pembuatan Akta Jual Beli (AJB) – Sekitar 1% dari harga transaksi.</li>
           <li>✅ Biaya Notaris – Termasuk pengurusan legalitas, cek sertifikat tanah, dan administrasi lainnya.</li>
@@ -168,12 +227,12 @@ const VillaAmsterdamRoyal = () => {
       </div>
 
       {/* Promo Baru: Program Referral Bonus Rp 60 Juta */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-teal-600 mb-4">🎁 Program Referral Bonus Rp 60 Juta – Dapatkan Keuntungan Tambahan! 🎁</h2>
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-teal-600 mb-4 px-5">🎁 Program Referral Bonus Rp 60 Juta – Dapatkan Keuntungan Tambahan! 🎁</h2>
         <p className="text-lg text-gray-700 mb-4">
           Bergabunglah dalam <strong>Andara Agen Affiliate Program</strong> dan dapatkan bonus Rp 60 juta setiap kali rekomendasi Anda menghasilkan pembelian unit di Andara Imperial Terrace.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6list-inside px-5">
           <li>✅ Bonus Langsung Rp 60 Juta untuk setiap unit yang berhasil direferensikan.</li>
           <li>✅ Tidak ada batasan jumlah referral – semakin banyak, semakin besar keuntungan Anda!</li>
           <li>✅ Bergabung gratis dan mulai mendapatkan penghasilan tambahan.</li>
@@ -181,12 +240,12 @@ const VillaAmsterdamRoyal = () => {
       </div>
 
        {/* Promo Baru: Cicilan Tanpa Bunga 12 Bulan */}
-       <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-blue-600 mb-4">📢 Cicilan Tanpa Bunga 12 Bulan – Kemudahan dan Fleksibilitas Pembayaran! 📢</h2>
+       <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-blue-600 mb-4 px-5">📢 Cicilan Tanpa Bunga 12 Bulan – Kemudahan dan Fleksibilitas Pembayaran! 📢</h2>
         <p className="text-lg text-gray-700 mb-4">
           Andara Imperial Terrace memberikan kemudahan bagi Anda yang ingin memiliki properti mewah tanpa beban finansial berat melalui program Cicilan Tanpa Bunga 12 Bulan.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6  list-inside px-5">
           <li>✅ Pembayaran Tanpa Bunga – Tidak ada biaya tambahan.</li>
           <li>✅ Fleksibilitas Pembayaran – Memudahkan perencanaan keuangan Anda.</li>
           <li>✅ Mempermudah Pemilik Rumah Pertama – Tanpa keterlibatan bank atau lembaga keuangan.</li>
@@ -195,12 +254,12 @@ const VillaAmsterdamRoyal = () => {
       </div>
       
       {/* Promo Baru: Buy Back Garansi 150% */}
-      <div className="w-full max-w-4xl text-center px-5 pb-10">
-        <h2 className="text-3xl font-bold text-red-600 mb-4">🔒 BUY BACK GARANSI 150% – Investasi Aman & Menguntungkan! 🔒</h2>
+      <div className="w-full max-w-4xl text-center px-5x mx-auto pb-10">
+        <h2 className="text-lg font-bold text-red-600 mb-4 px-5">🔒 BUY BACK GARANSI 150% – Investasi Aman & Menguntungkan! 🔒</h2>
         <p className="text-lg text-gray-700 mb-4">
           Dengan Buy Back Garansi 150%, Andara Imperial Terrace menawarkan jaminan keamanan investasi Anda dengan pengembalian hingga 150% setelah periode tertentu.
         </p>
-        <ul className="text-left text-lg text-gray-700 mb-6 list-disc list-inside">
+        <ul className="text-left text-lg text-gray-700 mb-6  list-inside px-5">
           <li>✅ Keamanan Finansial – Mengurangi risiko fluktuasi harga properti.</li>
           <li>✅ Pengembalian Investasi 50% di atas harga pembelian awal.</li>
           <li>✅ Fleksibilitas investasi untuk keuntungan maksimal.</li>
@@ -233,25 +292,57 @@ const VillaAmsterdamRoyal = () => {
 
           {/* Presidential Suite */}
           <div className="mt-6">
-            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Presidential Suite</h3>
-            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_7_1.png" alt="Presidential Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+            <h3 className="text-lg sm:text-2xl font-bold text-gray-800 text-center">Presidential Suite</h3>
+            <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
+            Presidential Suite Room adalah kamar utama yang mencerminkan kemewahan sejati. Dilengkapi dengan king-size bed, jendela kaca dengan pemandangan indah, serta kamar mandi pribadi dengan bathtub yang memberikan pengalaman spa. Fasilitas lengkap, termasuk mini refrigerator, brankas, serta dekorasi elegan, menunjukkan perhatian terhadap detail yang luar biasa.
+            </p>
+            
+           {/* Container untuk gambar */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_7_1.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_bath_presindetial.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
             </div>
           </div>
 
           {/* Executive Suite */}
           <div className="mt-6">
-            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Executive Suite</h3>
-            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_8_1.png" alt="Executive Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 text-center">Executive Suite</h3>
+            <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
+            Executive Suite Room memiliki tempat tidur king-size yang nyaman dengan fasilitas premium seperti TV, AC, mini refrigerator, dan berbagai perlengkapan eksklusif yang memastikan kenyamanan maksimal bagi penghuninya.
+            </p>
+            
+           {/* Container untuk gambar */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_8_1.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_bath_executive.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
             </div>
           </div>
 
           {/* Junior Suite */}
           <div className="mt-6">
-            <h3 className="text-md sm:text-lg font-semibold text-gray-800">Junior Suite</h3>
-            <div className="relative h-[250px] sm:h-[400px] md:h-[600px] lg:h-[800px] mt-2">
-              <Image src="/amsterdam_9_1.png" alt="Junior Suite" layout="fill" objectFit="cover" className="rounded-lg" />
+
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 text-center">Junior Suite Suite</h3>
+            <p className="mt-4 text-lg text-gray-700 w-full max-w-4xl text-center px-5x mx-auto">
+            Junior Suite Room memiliki akses eksklusif ke rooftop, menjadikannya pilihan premium. Kamar ini dilengkapi dengan fasilitas terbaik, termasuk king-size bed, TV, AC, mini refrigerator, brankas, hair dryer, coffee & tea maker, lemari pakaian, dan berbagai perlengkapan lainnya.
+            </p>
+            
+           {/* Container untuk gambar */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 mb-10">
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_9_1.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
+              <div className="w-full sm:w-1/2">
+                <Image src="/amsterdam_bath_junior.png" alt="Presidential Suite" width={800} height={600} className="rounded-lg w-full" />
+              </div>
             </div>
           </div>
         </div>
