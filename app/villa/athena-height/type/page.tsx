@@ -50,7 +50,7 @@ const AthenaHeight = () => {
   return (
     <div className="relative w-full min-h-screen bg-gray-100 pt-20">
       {/* Video Section */}
-      <div className="relative w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[800px] overflow-hidden">
+      <div className="relative w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[900px] overflow-hidden">
         <video
           ref={videoRef}
           className="w-full h-full object-cover"

@@ -248,7 +248,7 @@ const DavinciResidence = () => {
         <source srcSet="/masterplan_kavling.png" media="(min-width: 768px)" />
         <img src="/masterplan_kavling.png" alt="KPR Andara Imperial Terrace" className="w-full mb-4 pt-40" />
       </picture>
-      <h2 className="text-left text-2xl font-bold text-gray-800 my-4">Available Units</h2>
+      <h2 className="text-center text-2xl font-bold text-gray-800 my-4">Available Units</h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-left p-4">
         {Array.from({ length: totalUnits }, (_, i) => i + 1).map((unit) => (
           <Link
