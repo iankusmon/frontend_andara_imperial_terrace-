@@ -1,4 +1,9 @@
-import Image from 'next/image';
+'use client'
+
+import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import ShareModal from "../../../components/ShareModal"; // sesuaikan path jika diperlukan
 
 const steps = [
   {
@@ -42,12 +47,30 @@ const steps = [
 ];
 
 export default function AlurPemesanan() {
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const referral = localStorage.getItem("referralCode") || "";
+    setReferralCode(referral);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+  
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Andara Imperial Terrace</h1>
-      <p className="text-gray-700 mb-4">
-        Andara Imperial Terrace menawarkan kesempatan istimewa bagi Anda untuk memiliki hunian eksklusif dengan desain arsitektur khas Eropa di lokasi strategis Solo Raya. Proyek ini terdiri dari 197 villa dengan 15 tipe pilihan. Andara Imperial Terrace menjadi pilihan ideal karena kawasan terintegrasi dengan Akomodasi,
-      </p>
+    <div className="relative max-w-3xl mx-auto p-6 pt-20">
+      <button
+          onClick={handleOpenShareModal}
+          className="border rounded-full p-2 bg-white shadow hover:shadow-md transition fixed top-20 right-5 z-50"
+        >
+          <Image src="/share.svg" alt="Share" width={24} height={24} />
+        </button>
 
       <h2 className="text-2xl font-semibold mb-3">Tahapan Alur Pemesanan</h2>
       {steps.map((step) => (
@@ -60,11 +83,19 @@ export default function AlurPemesanan() {
               layout="fill"
               objectFit="contain"
               className="rounded-lg shadow-lg"
-            />
+            />  
           </div>
           <p className="text-gray-700 whitespace-pre-line">{step.description}</p>
         </div>
       ))}
+      {/* ShareModal ditempatkan di luar konten utama */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={handleCloseShareModal}
+        message="Bagikan Alur Pemesanan Villa AIT"
+        shareLink="/sign-up/customer"
+        referralCode={referralCode}
+      />
     </div>
   );
 }

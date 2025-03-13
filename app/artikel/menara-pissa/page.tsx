@@ -1,8 +1,9 @@
 "use client";
 
+import Link from 'next/link';
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import ShareModal from "../../../components/ShareModal"; // sesuaikan path jika diperlukan
 
 const articles = [
   { id: 1, src: "/menara_pissa_2.jpg" },
@@ -10,6 +11,21 @@ const articles = [
 
 export default function KawasanAIT() {
   const [showAlert, setShowAlert] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+
+  useEffect(() => {
+    const referral = localStorage.getItem("referralCode") || "";
+    setReferralCode(referral);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   const handleDownload = () => {
     setShowAlert(true);
@@ -19,8 +35,14 @@ export default function KawasanAIT() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-40">
-      <h1 className="text-3xl font-bold text-center mb-6 pt-40">
+    <div className="relative container mx-auto px-4 py-8 pt-40">
+      <button
+          onClick={handleOpenShareModal}
+          className="border rounded-full p-2 bg-white shadow hover:shadow-md transition fixed top-20 right-5 z-50"
+        >
+          <Image src="/share.svg" alt="Share" width={24} height={24} />
+      </button>
+      <h1 className="text-3xl font-bold text-center mb-6 pt-20">
       Lihat Keindahan Menara Pisa!
       </h1>
       <p className="text-lg mb-4">
@@ -107,6 +129,14 @@ export default function KawasanAIT() {
           </Link>
         </div>
       )}
+      {/* ShareModal ditempatkan di luar konten utama */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={handleCloseShareModal}
+        message="Lihat Keindahan Menara Pisa!"
+        shareLink="/sign-up/customer"
+        referralCode={referralCode}
+      />
     </div>
   );
 }
