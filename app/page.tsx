@@ -9,7 +9,9 @@ import DayClub from '../components/DayClub'; // Komponen Day Club
 import MiniHomepage from '@/components/MiniHomepage';
 import VillaSlider from '@/components/VillaSlider';
 import AlurPemesanan from '@/components/AlurPemesanan';
-import AffiliateBanner from '@/components/AffiliateBanner';
+// import AffiliateBanner from '@/components/AffiliateBanner';
+import AffiliateReviewSection from '@/components/AffiliateReviewSection';
+import ProductOfferingSection from '@/components/ProductOfferingSection';
 import FreshChat from "@/components/FreshChat";
 
 // Impor CSS eksternal
@@ -51,7 +53,8 @@ export default function Home() {
       <DayClub />
       <MiniHomepage />
       <AlurPemesanan />
-      <AffiliateBanner />
+      <AffiliateReviewSection />
+      <ProductOfferingSection />
       <FreshChat />
     </>
   );
