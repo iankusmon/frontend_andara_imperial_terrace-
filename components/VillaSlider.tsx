@@ -28,7 +28,7 @@ const villaTypes = [
     title: "Amsterdam Royale",
     concept: "Konsep Arsitektur: Rumah Belanda",
     features: "Fasad bata merah, perapian modern, dapur mewah.",
-    facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari.",
+    facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan pagi hari.",
     image: "/amsterdam_royale.png",
     link: "villa/amsterdam-royal/type",
     share_link: "/sign-up/customer",
@@ -90,25 +90,17 @@ const VillaSlider = () => {
     <div className="villa-slider-container">
       <Slider {...settings}>
         {villaTypes.map((villa, index) => (
-          <div key={index} className="villa-card-container relative">
-            <div className="villa-card relative">
+          <Link key={index} href={villa.link} className="villa-card-container">
+            <div className="villa-card">
               <img src={villa.image} alt={villa.title} className="villa-image" />
-              {/* Tombol Share di pojok kanan atas gambar */}
-              <button
-                className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
-                onClick={() => handleShareClick(villa)}
-                >              
-                <Image src="/share.svg" alt="Share" width={24} height={24} />
-              </button>
-              <h2 className="villa-title">{villa.title}</h2>
-              <p><strong>{villa.concept}</strong></p>
-              <p><strong>Ciri Khas:</strong> {villa.features}</p>
-              <p><strong>Fasilitas Tambahan:</strong> {villa.facilities}</p>
-              <Link href={villa.link}>
-                <button className="buy-button">Beli Sekarang</button>
-              </Link>
+              <div className="villa-content">
+                <h2 className="villa-title">{villa.title}</h2>
+                <p><strong>{villa.concept}</strong></p>
+                <p><strong>Ciri Khas:</strong> {villa.features}</p>
+                <p><strong>Fasilitas Tambahan:</strong> {villa.facilities}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
 
@@ -176,6 +168,32 @@ const VillaSlider = () => {
           background: none;
           border: none;
           cursor: pointer;
+        }
+
+        .villa-card-container {
+          cursor: pointer;
+        }
+        .villa-card {
+          background: white;
+          border-radius: 10px;
+          overflow: hidden;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          padding: 20px;
+        }
+        .villa-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+        .villa-content {
+          flex-grow: 1;
+        }
+        .villa-title {
+          font-size: 20px;
+          margin-top: 10px;
         }
       `}</style>
     </div>
