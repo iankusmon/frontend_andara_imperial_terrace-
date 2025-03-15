@@ -32,7 +32,7 @@ const AndaraInvestment: React.FC = () => {
   return (
     <section className="bg-gray-100 py-16 px-6 lg:px-20">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-900">IMPERIAL Passive Income</h2>
+        <h2 className="text-4xl font-bold text-gray-900">Imperial Passive Income</h2>
         <p className="text-lg text-gray-700 mt-4">
           Investasi Menguntungkan di Andara Imperial Terrace, Kawasan Modern Berkelas Internasional di Solo Raya
         </p>
@@ -85,11 +85,6 @@ const AndaraInvestment: React.FC = () => {
           <li><strong>Buy Back Garansi 150%</strong> - Jaminan buyback lebih tinggi dari harga pembelian.</li>
         </ul>
 
-        <div className="text-center mt-8">
-          <Button className="bg-gold-500 text-black px-6 py-3 text-lg font-semibold rounded-lg">
-            Hubungi Kami
-          </Button>
-        </div>
       </div>
     </section>
   );
