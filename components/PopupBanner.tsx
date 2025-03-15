@@ -40,7 +40,7 @@ const PopupBanner = () => {
           ✕
         </button>
         <Image
-          src="/prelaunch_1_cover.png"
+          src="/Prelaunch_cover_2.png"
           alt="The Royale Elegance"
           width={isMobile ? 350 : 500}
           height={isMobile ? 200 : 300}
