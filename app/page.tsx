@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
+import AndaraInvestment from "@/components/AndaraInvestment";
 import VideoLanding from '@/components/VideoLanding';
 import DayClub from '../components/DayClub'; // Komponen Day Club
 import MiniHomepage from '@/components/MiniHomepage';
@@ -48,6 +49,7 @@ export default function Home() {
       <PopupBanner />
       <VideoLanding />
       <Hero />
+      <AndaraInvestment/>
       <VillaSlider />
       <DynamicMap />
       <DayClub />
