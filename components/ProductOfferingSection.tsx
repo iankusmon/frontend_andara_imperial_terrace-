@@ -21,7 +21,7 @@ const ProductOfferingSection: React.FC = () => {
         </div>
 
         {/* Semua Sosial Media */}
-        <div className="flex justify-center gap-6 mb-6">
+        {/* <div className="flex justify-center gap-6 mb-6">
           <Link href="https://www.facebook.com/profile.php?id=61572417403488" target="_blank">
             <FaFacebook size={30} className="text-blue-600" />
           </Link>
@@ -34,7 +34,8 @@ const ProductOfferingSection: React.FC = () => {
           <Link href="https://www.youtube.com/@AndaraAgenAffiliate" target="_blank">
             <FaYoutube size={30} className="text-red-600" />
           </Link>
-        </div>
+        </div> */}
+        
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center max-w-5xl mx-auto">
