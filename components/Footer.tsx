@@ -11,8 +11,9 @@ import {
 
 const Footer = () => {
   return (
-    <footer className='footer-short-padding relative max-container footer-container py-36 flex xs:gap-12 lg:gap-20 xs:flex-col lg:flex-row'>
-      <Image className='absolute right-[-4%] xs:top-0 lg:top-[-20%] ' src='/footer-object.png' alt='object' width={100} height={100} />
+    <footer className='footer-short-padding relative max-w-screen-xl mx-auto footer-container py-36 flex xs:gap-12 lg:gap-20 xs:flex-col lg:flex-row overflow-hidden'>
+      <Image className='absolute right-[-4%] xs:top-0 lg:top-[-20%]' src='/footer-object.png' alt='object' width={100} height={100} />
+
 
       <div className='flex flex-col gap-12 lg:w-1/3'>
         {/* LOGO & TEXT */}
@@ -76,7 +77,7 @@ interface FooterCardProps {
 
 const FooterCard = ({ title, links }: FooterCardProps) => {
   return (
-    <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-4 w-full'>
       <h3 className='text-lg font-bold'>{title}</h3>
       <ul className='flex flex-col gap-4 mt-4 mr-4'>
         {links.map((link, index) =>
