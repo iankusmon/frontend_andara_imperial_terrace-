@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import ShareModal from "./ShareModal"; // sesuaikan path jika diperlukan
+import Slider from "react-slick";
 import Image from "next/image";
 import Link from "next/link";
-import Slider from "react-slick";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -18,7 +19,7 @@ const villaTypes = [
     title: "Da Vinci Residence",
     concept: "Konsep Arsitektur: Eropa Klasik",
     features: "Ornamen megah, balkon luas, taman dalam.",
-    facilities: "Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah.",
+    // facilities: "Kolam renang pribadi dengan desain klasik, taman dalam yang asri dan tenang, balkon besar untuk menikmati pemandangan luas, serta fitur pencahayaan artistik di seluruh ruangan untuk menciptakan suasana mewah, kolam renang pribadi.",
     image: "/davinci_residence.png",
     link: "/villa/davinci-residence/type",
     share_link: "/sign-up/customer",
@@ -28,7 +29,7 @@ const villaTypes = [
     title: "Amsterdam Royale",
     concept: "Konsep Arsitektur: Rumah Belanda",
     features: "Fasad bata merah, perapian modern, dapur mewah.",
-    facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan pagi hari.",
+    // facilities: "Taman hijau pribadi dengan nuansa pedesaan Belanda, kolam renang pribadi, serta rooftop dengan pemandangan indah untuk bersantai di sore hari dan pagi hari, kolam renang pribadi.",
     image: "/amsterdam_royale.png",
     link: "villa/amsterdam-royal/type",
     share_link: "/sign-up/customer",
@@ -37,8 +38,8 @@ const villaTypes = [
   {
     title: "Athena Height",
     concept: "Konsep Arsitektur: Yunani Klasik",
-    features: "Pilar kokoh, aksen putih bersih, rooftop BBQ area, kolam renang pribadi.",
-    facilities: "Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.",
+    features: "Pilar kokoh, aksen putih bersih, kolam renang pribadi.",
+    // facilities: "Kolam renang pribadi dengan desain pemandangan alami, rooftop BBQ area untuk acara santai, serta balkon dan hammock untuk relaksasi yang menyatu dengan alam.",
     image: "/athena_height.png",
     link: "/villa/athena-height/type",
     share_link: "/sign-up/customer",
@@ -49,9 +50,27 @@ const villaTypes = [
 const VillaSlider = () => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+
   // const [currentVilla, setCurrentVilla] = useState(null);
   const [currentVilla, setCurrentVilla] = useState<null | (typeof villaTypes)[0]>(null);
   const [referralCode, setReferralCode] = useState("");
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("token");
+
+    // const referralCode = localStorage.getItem("referralCode") ?? "";
+    const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
+    setReferralCode(referralCode);
+  }, []);
+
+  const handleOpenShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleCloseShareModal = () => {
+    setIsShareModalOpen(false);
+  };
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("token");
@@ -90,15 +109,21 @@ const VillaSlider = () => {
     <div className="villa-slider-container">
       <Slider {...settings}>
         {villaTypes.map((villa, index) => (
-          <Link key={index} href={villa.link} className="villa-card-container">
+          <Link key={index} href={villa.link} className="villa-card-container relative">
             <div className="villa-card">
               <img src={villa.image} alt={villa.title} className="villa-image" />
               <div className="villa-content">
                 <h2 className="villa-title">{villa.title}</h2>
                 <p><strong>{villa.concept}</strong></p>
                 <p><strong>Ciri Khas:</strong> {villa.features}</p>
-                <p><strong>Fasilitas Tambahan:</strong> {villa.facilities}</p>
               </div>
+              {/* Tombol share di pojok kanan atas tiap slide */}
+              <button
+                onClick={handleOpenShareModal}
+                className="absolute top-10 right-10 border rounded-full p-2 bg-white shadow hover:shadow-md transition z-10"
+              >
+                <Image src="/share.svg" alt="Share" width={24} height={24} />
+              </button>
             </div>
           </Link>
         ))}
@@ -185,7 +210,7 @@ const VillaSlider = () => {
         }
         .villa-image {
           width: 100%;
-          height: 200px;
+          height: 300px;
           object-fit: cover;
         }
         .villa-content {
@@ -196,6 +221,14 @@ const VillaSlider = () => {
           margin-top: 10px;
         }
       `}</style>
+      {/* ShareModal diletakkan di luar slider agar hanya ada satu modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={handleCloseShareModal}
+        message="Bagikan Type Villa Royale Ellegance"
+        shareLink="/sign-up/customer"
+        referralCode={referralCode}
+      />
     </div>
   );
 };
