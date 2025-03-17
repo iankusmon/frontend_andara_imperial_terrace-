@@ -47,7 +47,7 @@ const VideoLanding = () => {
         <video
           ref={videoRef}
           className="relatve w-full h-[800px] object-cover"
-          src="/vidio_landing_page2.mp4"
+          src="/vidio_landing_page_3.mp4"
           autoPlay
           loop
           muted

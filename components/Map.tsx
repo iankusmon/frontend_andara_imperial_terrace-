@@ -74,7 +74,7 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
         {/* Tombol share dengan icon di pojok kanan atas */}
         <button
           onClick={handleOpenShareModal}
-          className="absolute top-5 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition"
+          className="absolute top-10 right-5 border rounded-full p-2 bg-white shadow hover:shadow-md transition"
         >
           <Image src="/share.svg" alt="Share" width={24} height={24} />
         </button>
@@ -88,8 +88,8 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
           referralCode={referralCode}
         />
       <picture className="w-full max-w-screen-xl w-8xl">
-        <source srcSet="/siteplan_lanscape.png" media="(min-width: 768px)" />
-        <img src="/siteplan_portrait.jpg" alt="Sitemap Andara Imperial Terrace" className="w-full object-cover max-w-screen-xl" />
+        <source srcSet="/SitePlan_Desktop_3D.png" media="(min-width: 768px)" />
+        <img src="/SitePlan_Mobile_3D.png" alt="Sitemap Andara Imperial Terrace" className="w-full object-cover max-w-screen-xl" />
       </picture>
       {locations.map((loc) => (
         <div

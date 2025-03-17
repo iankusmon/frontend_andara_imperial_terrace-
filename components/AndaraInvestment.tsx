@@ -50,7 +50,7 @@ const AndaraInvestment: React.FC = () => {
       </div>
 
       {/* Investment Details */}
-      <div className="bg-white p-10 rounded-lg shadow-lg">
+      {/* <div className="bg-white p-10 rounded-lg shadow-lg">
         <h3 className="text-3xl font-bold text-gray-900 text-center mb-6">Mengapa Memilih Andara Imperial Terrace?</h3>
         <p className="text-gray-700 leading-relaxed">
           Andara Imperial Terrace menawarkan kesempatan istimewa bagi Anda untuk memiliki hunian eksklusif dengan desain
@@ -85,7 +85,7 @@ const AndaraInvestment: React.FC = () => {
           <li><strong>Buy Back Garansi 150%</strong> - Jaminan buyback lebih tinggi dari harga pembelian.</li>
         </ul>
 
-      </div>
+      </div> */}
     </section>
   );
 };

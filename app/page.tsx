@@ -55,7 +55,7 @@ export default function Home() {
       <DayClub />
       <MiniHomepage />
       <AlurPemesanan />
-      <AffiliateReviewSection />
+      {/* <AffiliateReviewSection /> */}
       <ProductOfferingSection />
       <FreshChat />
     </>

@@ -5,8 +5,13 @@ import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa"; /
 const ProductOfferingSection: React.FC = () => {
   return (
     <div className="bg-gray-200 py-10 px-6 md:px-20">
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-4">Product yang Ditawarkan</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center max-w-5xl mx-auto">
+        {/* Left Side - Banner */}
+
+        <div className="g-white p-6 mt-10 rounded-lg shadow-md w-full">
+        <div className="text-xl font-bold text-left sm:text-center mb-28">
+        <h2 className="text-2xl font-bold mb-2">Product yang Ditawarkan</h2>
 
         {/* Download Product Knowledge */}
         <div className="flex justify-center mb-4">
@@ -19,29 +24,7 @@ const ProductOfferingSection: React.FC = () => {
             Download Product Knowledge
           </a>
         </div>
-
-        {/* Semua Sosial Media */}
-        {/* <div className="flex justify-center gap-6 mb-6">
-          <Link href="https://www.facebook.com/profile.php?id=61572417403488" target="_blank">
-            <FaFacebook size={30} className="text-blue-600" />
-          </Link>
-          <Link href="https://www.instagram.com/andaraagenaffiliate/" target="_blank">
-            <FaInstagram size={30} className="text-pink-600" />
-          </Link>
-          <Link href="https://www.tiktok.com/@andaraagenaffiliate" target="_blank">
-            <FaTiktok size={30} className="text-black" />
-          </Link>
-          <Link href="https://www.youtube.com/@AndaraAgenAffiliate" target="_blank">
-            <FaYoutube size={30} className="text-red-600" />
-          </Link>
-        </div> */}
-        
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center max-w-5xl mx-auto">
-        {/* Left Side - Banner */}
-        <div>
-          <Image
+        <Image
             src="/banner_affiliate_mobile_2_1.png"
             alt="Affiliate Banner Desktop"
             width={600}
@@ -55,6 +38,9 @@ const ProductOfferingSection: React.FC = () => {
             height={200}
             className="md:hidden w-full rounded-lg"
           />
+        
+      </div>
+          
         </div>
 
         {/* Right Side - Call to Action & Cara Kerja */}
@@ -102,8 +88,6 @@ const ProductOfferingSection: React.FC = () => {
               ))}
             </div>
           </div>
-
-
 
           {/* Lihat Cara Lebih Detail */}
           <div className="text-center md:text-left mt-6">
