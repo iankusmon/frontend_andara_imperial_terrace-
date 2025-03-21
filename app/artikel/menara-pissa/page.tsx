@@ -1,142 +1,115 @@
-"use client";
-
-import Link from 'next/link';
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import ShareModal from "../../../components/ShareModal"; // sesuaikan path jika diperlukan
 
-const articles = [
-  { id: 1, src: "/menara_pissa_2.jpg" },
+const floors = [
+  {
+    level: "Lantai 1 - Zona Sejarah dan Inovasi",
+    description: "Menampilkan sejarah teknologi air dan pengolahan air, instalasi interaktif sistem pengeboran, serta mini museum proyek Andara Imperial Terrace."
+  },
+  {
+    level: "Lantai 2 - Galeri Pengolahan Air",
+    description: "Simulasi pengolahan air bersih, zona eksperimen interaktif, serta pameran inovasi teknologi lingkungan."
+  },
+  {
+    level: "Lantai 3 - Observatorium dan Edukasi",
+    description: "Platform observasi dengan pemandangan kawasan Andara, ruang edukasi keberlanjutan, serta pengalaman VR tentang perjalanan air dari sumber ke konsumen."
+  },
+  {
+    level: "Lantai 4 - Rooftop dan Panorama 360°",
+    description: "Area terbuka dengan spot foto terbaik, taman hijau dengan konsep eco-living, serta restoran dan café bertema air."
+  }
 ];
 
-export default function KawasanAIT() {
-  const [showAlert, setShowAlert] = useState(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [referralCode, setReferralCode] = useState("");
+const attractions = [
+  {
+    title: "Zona Eksplorasi Teknologi Pengeboran",
+    price: "Rp 20.000/orang",
+    facilities: [
+      "Akses ke Wahana Interaktif Sumur Dalam menggunakan perangkat VR.",
+      "Pemanduan di Zona Observasi Langsung dengan layar interaktif.",
+      "Kesempatan mencoba Eksperimen Miniatur pengeboran air untuk anak-anak dan keluarga.",
+      "Sertifikat ‘Explorer’ untuk peserta eksperimen miniatur."
+    ]
+  },
+  {
+    title: "Galeri Teknologi Pengolahan Air",
+    price: "Rp 20.000/orang",
+    facilities: [
+      "Partisipasi dalam Simulasi Sistem Pengolahan Air, termasuk filtrasi dan ozonisasi.",
+      "Akses ke Pameran Hidup Sehat dengan instalasi seni interaktif.",
+      "Area khusus anak di Zona Sains Anak, dengan permainan edukatif.",
+      "Suvenir edukasi berupa brosur ‘Langkah Menuju Hidup Sehat dengan Air Bersih.’"
+    ]
+  },
+  {
+    title: "Zona Penampungan dan Distribusi",
+    price: "Rp 20.000/orang",
+    facilities: [
+      "Tur di Tangki Transparan, dilengkapi panduan audio-visual.",
+      "Edukasi tentang efisiensi energi di Pameran Efisiensi Energi.",
+      "Akses ke Fotobooth Bertema Air dengan hasil cetak foto gratis.",
+      "Pin bertema ‘Champion of Sustainability.’"
+    ]
+  },
+  {
+    title: "Taman Air dan Pemandangan Spektakuler",
+    price: "Rp 25.000/orang",
+    facilities: [
+      "Akses ke Taman Edukasi Air dengan instalasi siklus air.",
+      "Pengalaman unik di Zona Air Mancur Interaktif dengan sensor gerak.",
+      "Spot foto berteknologi AR di Panorama Virtual.",
+      "Diskon 10% untuk menu di Kafe Air & Cahaya."
+    ]
+  }
+];
 
-  useEffect(() => {
-    const referral = localStorage.getItem("referralCode") || "";
-    setReferralCode(referral);
-  }, []);
-
-  const handleOpenShareModal = () => {
-    setIsShareModalOpen(true);
-  };
-
-  const handleCloseShareModal = () => {
-    setIsShareModalOpen(false);
-  };
-
-  const handleDownload = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  };
-
+const MenaraPisaAndara = () => {
   return (
-    <div className="relative container mx-auto px-4 py-8 pt-40">
-      <button
-          onClick={handleOpenShareModal}
-          className="border rounded-full p-2 bg-white shadow hover:shadow-md transition fixed top-20 right-5 z-50"
-        >
-          <Image src="/share.svg" alt="Share" width={24} height={24} />
-      </button>
-      <h1 className="text-3xl font-bold text-center mb-6 pt-20">
-      Lihat Keindahan Menara Pisa!
-      </h1>
-      <p className="text-lg mb-4">
-        Kemewahan dan Prestise Andara Imperial Terrace mengutamakan kemewahan dalam setiap aspek desain dan fasilitasnya. Inspirasi arsitektur dari ikon Eropa seperti Colosseum, Menara Eiffel, Menara Pisa, kincir Angin Belanda, dan Kanal Venice mencerminkan estetika kelas dunia yang menghadirkan nuansa prestise dan eksklusivitas.
+    <div className="max-w-4xl mx-auto p-6 sm:p-4 md:p-8 lg:p-10">
+      <h1 className="text-3xl font-bold text-center mb-4 sm:text-2xl md:text-4xl pt-20">Menara Pisa Andara</h1>
+      <p className="text-center text-gray-600 mb-6 sm:text-sm md:text-lg">
+        Ikon Teknologi dan Keberlanjutan di Solo Raya
       </p>
-      <p className="text-lg mb-4">
-        Kreativitas dan Inovasi: Setiap elemen kawasan dikembangkan dengan pendekatan kreatif dan inovatif, mulai dari fasilitas wisata modern seperti Menara Imperial Terrace, Colosseum Day Club by Andara, Menara Pisa Andara, Andara Play Story, Dunia Avatar Andara hingga konsep smart home di hunian. Inovasi ini menciptakan pengalaman unik yang memadukan hiburan dan teknologi.
-      </p>
-      <p className="text-lg mb-4">
-        Kualitas dan Ketelitian: Andara Imperial Terrace berkomitmen menjaga standar tinggi dalam pemilihan material dan pengerjaan, memastikan ketahanan dan estetika yang sesuai dengan konsep kemewahan. Setiap detail, mulai dari hunian hingga atraksi wisata, dikerjakan dengan ketelitian maksimal.
-      </p>
-      <p className="text-lg mb-4">
-        Harmoni Budaya dan Alam: Kawasan ini menggabungkan kemewahan arsitektur Eropa dengan sentuhan budaya tradisional dan alam sekitar. Program seperti Andara Colossal Festival, Andara Cow Milk, Andara Fashion Story, dan Andara Tumang Copper menonjolkan budaya lokal, sementara taman-taman tematik dan atraksi air menghadirkan keseimbangan dengan alam.
-      </p>
-      <p className="text-lg mb-4">
-        Kebersamaan dan Komunitas: Andara Imperial Terrace menciptakan ruang interaksi yang mendukung terbentuknya hubungan harmonis dan berkembang, seperti coworking space, Lobby & Lounge, area MICE, serta festival tematik yang menjadi wadah bagi penghuni dan pengunjung untuk berinteraksi.
-      </p>
-      <p className="text-lg mb-4">
-        Keberlanjutan dan Ramah Lingkungan: Dirancang dengan prinsip ramah lingkungan dan keberlanjutan, pengelolaan air, energi, serta taman hijau luas memastikan kehidupan modern berjalan selaras dengan alam.
-      </p>
-      <p className="text-lg mb-4">
-        Pengalaman Berkesan dan Berkelas: Menawarkan akomodasi mewah, atraksi wisata modern, dan layanan eksklusif yang meninggalkan kesan mendalam pada setiap kunjungan.
-      </p>
-      <p className="text-lg mb-4">
-        Kemakmuran dan Keberkahan: Filosofi angka 99 dalam logo mencerminkan harapan untuk menghadirkan keberkahan dan kemakmuran bagi semua stakeholder, menjadikan kawasan ini pusat pertumbuhan ekonomi jangka panjang.
-      </p>
-      <p className="text-lg mb-4">
-        Eksklusivitas dan Privasi: Hunian eksklusif dengan private pool, rooftop, dan taman pribadi menciptakan suasana resort mewah di dalam kenyamanan rumah sendiri.
-      </p>
-      <p className="text-lg mb-4">
-        Pengalaman Kuliner Berkelas: Menyajikan cita rasa internasional dan tradisional, seperti Imperial Dine & Lounge by Andara dan Nusantara Sagara Rasa by Andara, untuk memanjakan penghuni dan pengunjung.
-      </p>
-      <p className="text-lg mb-4">
-        Nilai-nilai tersebut mencerminkan esensi dari Andara Imperial Terrace sebagai kawasan akomodasi, MICE, Day Club, dan wisata modern yang memadukan kemewahan, inovasi, dan harmoni budaya untuk menciptakan pengalaman hidup spektakuler serta investasi tinggi.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {articles.map((article) => (
-          <Image
-            key={article.id}
-            src={article.src}
-            alt={`Artikel ${article.id}`}
-            width={500}
-            height={300}
-            className="rounded-lg shadow-lg"
-          />
-        ))}
+      <div className="flex justify-center mb-6">
+        <Image src="/menara_pissa_2.jpg" width={800} height={500} alt="Menara Pisa Andara" className="rounded-lg w-full sm:w-3/4 md:w-2/3 lg:w-1/2" />
       </div>
+      <p className="text-gray-700 mb-6 text-justify sm:text-sm md:text-base">
+        Menara Pisa Andara di kawasan Andara Imperial Terrace bukan hanya sekadar landmark wisata, tetapi juga menjadi simbol inovasi teknologi dan keberlanjutan lingkungan. Menara ini memiliki sistem pengeboran, pengolahan, dan penampungan air yang dirancang dengan teknologi canggih dan ramah lingkungan.
+      </p>
 
-      <div className="text-center mt-4">
-      {showAlert && (
-        <div className="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 shadow-md animate-fade-in">
-          ✅ Sukses Unduh Product Knowledge
+      {/* Struktur Lantai Menara */}
+      <h2 className="text-2xl font-semibold mt-6 mb-4 sm:text-xl text-center">Struktur Lantai Menara Pisa Andara</h2>
+      {floors.map((floor, index) => (
+        <div key={index} className="mb-6 p-4 border rounded-lg shadow-md sm:p-3 md:p-5">
+          <h3 className="text-xl font-bold sm:text-lg">{floor.level}</h3>
+          <p className="text-gray-700 mt-2 sm:text-sm md:text-base">{floor.description}</p>
         </div>
-      )}
-      <a
-        href="https://drive.google.com/uc?export=download&id=12UNuD8X8FRiPpUb8BPMuLvV5YQaxyscY"
-        download
-        onClick={handleDownload}
-        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
-      >
-        Unduh Product Knowledge
-      </a>
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.5s ease-in-out;
-        }
-      `}</style>
-    </div>
+      ))}
 
-      {/* Gabung Sekarang hanya muncul jika user belum login */}
-      {/* Asumsikan pengecekan login dilakukan dengan localStorage */}
-      {typeof window !== "undefined" && !localStorage.getItem("user") && (
-        <div className="text-center mt-6">
-          <Link 
-            href="/sign-up/customer/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
-          >
-            Investasi Sekarang
-          </Link>
+      {/* Wahana Wisata */}
+      <h2 className="text-2xl font-semibold mt-6 mb-4 sm:text-xl">Wahana Wisata dan Harga Tiket</h2>
+      {attractions.map((attraction, index) => (
+        <div key={index} className="mb-6 p-4 border rounded-lg shadow-md sm:p-3 md:p-5">
+          <h3 className="text-xl font-bold sm:text-lg">{attraction.title}</h3>
+          <p className="text-gray-600 font-semibold sm:text-sm">{attraction.price}</p>
+          <ul className="list-disc list-inside mt-2 text-gray-700 sm:text-sm md:text-base">
+            {attraction.facilities.map((facility, i) => (
+              <li key={i}>{facility}</li>
+            ))}
+          </ul>
         </div>
-      )}
-      {/* ShareModal ditempatkan di luar konten utama */}
-      <ShareModal
-        isOpen={isShareModalOpen}
-        onClose={handleCloseShareModal}
-        message="Lihat Keindahan Menara Pisa!"
-        shareLink="/sign-up/customer"
-        referralCode={referralCode}
-      />
+      ))}
+
+      {/* Paket Terpadu */}
+      <h2 className="text-2xl font-semibold mt-6 sm:text-xl">Paket Terpadu</h2>
+      <p className="text-gray-700 mt-2 sm:text-sm">Harga: Rp 50.000/orang</p>
+      <ul className="list-disc list-inside text-gray-700 mt-2 sm:text-sm md:text-base">
+        <li>Akses tanpa antrean ke semua lantai dan area outdoor.</li>
+        <li>Panduan wisata eksklusif.</li>
+        <li>Diskon 15% untuk pembelian makanan dan suvenir.</li>
+      </ul>
     </div>
   );
-}
+};
+
+export default MenaraPisaAndara;

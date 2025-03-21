@@ -1,142 +1,73 @@
-"use client";
+import Image from 'next/image';
 
-import Link from 'next/link';
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import ShareModal from "../../../components/ShareModal"; // sesuaikan path jika diperlukan
-
-const articles = [
-  { id: 1, src: "/menara_imperial_terrace_2.jpg" },
-];
-
-export default function KawasanAIT() {
-  const [showAlert, setShowAlert] = useState(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [referralCode, setReferralCode] = useState("");
-
-  useEffect(() => {
-    const referral = localStorage.getItem("referralCode") || "";
-    setReferralCode(referral);
-  }, []);
-
-  const handleOpenShareModal = () => {
-    setIsShareModalOpen(true);
-  };
-
-  const handleCloseShareModal = () => {
-    setIsShareModalOpen(false);
-  };
-
-  const handleDownload = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  };
-
+const MenaraImperialTerrace = () => {
   return (
-    <div className="relative container mx-auto px-4 py-8 pt-40">
-      <button
-          onClick={handleOpenShareModal}
-          className="border rounded-full p-2 bg-white shadow hover:shadow-md transition fixed top-20 right-5 z-50"
-        >
-          <Image src="/share.svg" alt="Share" width={24} height={24} />
-      </button>
-      <h1 className="text-3xl font-bold text-center mb-6 pt-20">
-      Lihatlah Kesempuranaan Menara Andara Imperial Terrace!
-      </h1>
-      <p className="text-lg mb-4">
-        Kemewahan dan Prestise Andara Imperial Terrace mengutamakan kemewahan dalam setiap aspek desain dan fasilitasnya. Inspirasi arsitektur dari ikon Eropa seperti Colosseum, Menara Eiffel, Menara Pisa, kincir Angin Belanda, dan Kanal Venice mencerminkan estetika kelas dunia yang menghadirkan nuansa prestise dan eksklusivitas.
-      </p>
-      <p className="text-lg mb-4">
-        Kreativitas dan Inovasi: Setiap elemen kawasan dikembangkan dengan pendekatan kreatif dan inovatif, mulai dari fasilitas wisata modern seperti Menara Imperial Terrace, Colosseum Day Club by Andara, Menara Pisa Andara, Andara Play Story, Dunia Avatar Andara hingga konsep smart home di hunian. Inovasi ini menciptakan pengalaman unik yang memadukan hiburan dan teknologi.
-      </p>
-      <p className="text-lg mb-4">
-        Kualitas dan Ketelitian: Andara Imperial Terrace berkomitmen menjaga standar tinggi dalam pemilihan material dan pengerjaan, memastikan ketahanan dan estetika yang sesuai dengan konsep kemewahan. Setiap detail, mulai dari hunian hingga atraksi wisata, dikerjakan dengan ketelitian maksimal.
-      </p>
-      <p className="text-lg mb-4">
-        Harmoni Budaya dan Alam: Kawasan ini menggabungkan kemewahan arsitektur Eropa dengan sentuhan budaya tradisional dan alam sekitar. Program seperti Andara Colossal Festival, Andara Cow Milk, Andara Fashion Story, dan Andara Tumang Copper menonjolkan budaya lokal, sementara taman-taman tematik dan atraksi air menghadirkan keseimbangan dengan alam.
-      </p>
-      <p className="text-lg mb-4">
-        Kebersamaan dan Komunitas: Andara Imperial Terrace menciptakan ruang interaksi yang mendukung terbentuknya hubungan harmonis dan berkembang, seperti coworking space, Lobby & Lounge, area MICE, serta festival tematik yang menjadi wadah bagi penghuni dan pengunjung untuk berinteraksi.
-      </p>
-      <p className="text-lg mb-4">
-        Keberlanjutan dan Ramah Lingkungan: Dirancang dengan prinsip ramah lingkungan dan keberlanjutan, pengelolaan air, energi, serta taman hijau luas memastikan kehidupan modern berjalan selaras dengan alam.
-      </p>
-      <p className="text-lg mb-4">
-        Pengalaman Berkesan dan Berkelas: Menawarkan akomodasi mewah, atraksi wisata modern, dan layanan eksklusif yang meninggalkan kesan mendalam pada setiap kunjungan.
-      </p>
-      <p className="text-lg mb-4">
-        Kemakmuran dan Keberkahan: Filosofi angka 99 dalam logo mencerminkan harapan untuk menghadirkan keberkahan dan kemakmuran bagi semua stakeholder, menjadikan kawasan ini pusat pertumbuhan ekonomi jangka panjang.
-      </p>
-      <p className="text-lg mb-4">
-        Eksklusivitas dan Privasi: Hunian eksklusif dengan private pool, rooftop, dan taman pribadi menciptakan suasana resort mewah di dalam kenyamanan rumah sendiri.
-      </p>
-      <p className="text-lg mb-4">
-        Pengalaman Kuliner Berkelas: Menyajikan cita rasa internasional dan tradisional, seperti Imperial Dine & Lounge by Andara dan Nusantara Sagara Rasa by Andara, untuk memanjakan penghuni dan pengunjung.
-      </p>
-      <p className="text-lg mb-4">
-        Nilai-nilai tersebut mencerminkan esensi dari Andara Imperial Terrace sebagai kawasan akomodasi, MICE, Day Club, dan wisata modern yang memadukan kemewahan, inovasi, dan harmoni budaya untuk menciptakan pengalaman hidup spektakuler serta investasi tinggi.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {articles.map((article) => (
-          <Image
-            key={article.id}
-            src={article.src}
-            alt={`Artikel ${article.id}`}
-            width={500}
-            height={300}
-            className="rounded-lg shadow-lg"
-          />
-        ))}
+    <div className="max-w-5xl mx-auto p-6 text-gray-800">
+      <h1 className="text-3xl font-bold text-center mb-6 pt-20">Menara Imperial Terrace</h1>
+      <p className="text-center text-lg">Destinasi MICE dan Wisata Modern di Andara Imperial Terrace</p>
+      <div className="mt-6">
+        <Image 
+          src="/menara_imperial_terrace_2.jpg" 
+          alt="Menara Imperial Terrace" 
+          width={800} 
+          height={500} 
+          className="rounded-lg mx-auto"
+        />
       </div>
+      
+      <section className="mt-6">
+        <p>
+          Menara Imperial Terrace adalah mahakarya arsitektur ikonis yang menjadi simbol kemegahan Andara Imperial Terrace, kawasan hunian dan wisata eksklusif di Teras Boyolali. Mengusung konsep MICE (Meeting, Incentive, Convention, and Exhibition) serta destinasi wisata modern, menara ini memadukan keindahan desain, fungsi multifungsi, dan keunikan budaya lokal.
+        </p>
+        <p className="mt-4">
+          Terinspirasi oleh Menara Eiffel, Menara Imperial Terrace memiliki ketinggian 35 meter dengan 5 lantai dan puncak observatorium (Meteora). Setiap lantainya memberikan pengalaman berbeda, menjadikannya daya tarik wisata dan pusat kegiatan kelas dunia.
+        </p>
+      </section>
 
-      <div className="text-center mt-4">
-      {showAlert && (
-        <div className="bg-green-500 text-white px-4 py-2 rounded-lg mb-4 shadow-md animate-fade-in">
-          ✅ Sukses Unduh Product Knowledge
-        </div>
-      )}
-      <a
-        href="https://drive.google.com/uc?export=download&id=12UNuD8X8FRiPpUb8BPMuLvV5YQaxyscY"
-        download
-        onClick={handleDownload}
-        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition inline-block"
-      >
-        Unduh Product Knowledge
-      </a>
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.5s ease-in-out;
-        }
-      `}</style>
-    </div>
+      <section className="mt-6">
+        <h2 className="text-2xl font-semibold">Struktur dan Desain Menara</h2>
+        <p className="mt-4">Menara ini dilengkapi dengan lift outdoor kaca dan tangga darurat dengan desain menyerupai menara masjid, menambah estetika ikonisnya.</p>
+        <ul className="mt-4 list-disc list-inside">
+          <li><strong>Lantai 1:</strong> Lobi utama, ballroom serbaguna, dan Andara Colossal Festival.</li>
+          <li><strong>Lantai 2 & 3:</strong> Ruang MICE, edukasi interaktif, Andara Innovation Center, dan Andara Smart Room.</li>
+          <li><strong>Lantai 4:</strong> Meteora - Observatorium dengan Andara CosmoSphere dan Meteora Wonders.</li>
+          <li><strong>Lantai 5:</strong> Al Eiffel Mushola - tempat ibadah dengan konsep modern.</li>
+          <li><strong>Puncak Menara:</strong> Pemandangan panorama dengan fasilitas eksklusif.</li>
+        </ul>
+      </section>
 
-      {/* Gabung Sekarang hanya muncul jika user belum login */}
-      {/* Asumsikan pengecekan login dilakukan dengan localStorage */}
-      {typeof window !== "undefined" && !localStorage.getItem("user") && (
-        <div className="text-center mt-6">
-          <Link 
-            href="/sign-up/customer/"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition inline-block"
-          >
-            Investasi Sekarang
-          </Link>
-        </div>
-      )}
-      {/* ShareModal ditempatkan di luar konten utama */}
-      <ShareModal
-        isOpen={isShareModalOpen}
-        onClose={handleCloseShareModal}
-        message="Lihatlah Kesempuranaan Menara Andara Imperial Terrace!"
-        shareLink="/sign-up/customer"
-        referralCode={referralCode}
-      />
+      <section className="mt-6">
+        <h2 className="text-2xl font-semibold">Paket Acara MICE</h2>
+        <p className="mt-4">Menara ini mendukung berbagai acara bisnis, sosial, pendidikan, hingga hiburan.</p>
+        <ul className="mt-4 list-disc list-inside">
+          <li><strong>Bisnis:</strong> Rapat, peluncuran produk, pameran dagang.</li>
+          <li><strong>Sosial:</strong> Pernikahan, reuni, pesta eksklusif.</li>
+          <li><strong>Pendidikan:</strong> Seminar, workshop, acara kampus.</li>
+          <li><strong>Hiburan:</strong> Konser kecil, pertunjukan seni.</li>
+          <li><strong>Kesehatan:</strong> Yoga retreat, wellness program.</li>
+        </ul>
+      </section>
+
+      <section className="mt-6">
+        <h2 className="text-2xl font-semibold">Destinasi Wisata Modern</h2>
+        <p className="mt-4">Selain MICE, menara ini menawarkan berbagai wahana wisata unik.</p>
+        <ul className="mt-4 list-disc list-inside">
+          <li><strong>Andara Colossal Festival:</strong> Pertunjukan budaya dengan teknologi modern.</li>
+          <li><strong>Lift Kaca Tembus Pandang:</strong> Menampilkan pemandangan spektakuler.</li>
+          <li><strong>Gardu Pandang 360°:</strong> Panorama Andara Venice Cruise dan Colosseum Day Club.</li>
+          <li><strong>Observatorium Astronomi:</strong> Teropong bintang, workshop astronomi.</li>
+          <li><strong>Flying Fox ke Imperial Dine & Lounge:</strong> Jalur 150 meter yang penuh adrenalin.</li>
+        </ul>
+      </section>
+
+      <section className="mt-6">
+        <h2 className="text-2xl font-semibold">Kesimpulan</h2>
+        <p className="mt-4">
+          Menara Imperial Terrace adalah destinasi yang menggabungkan arsitektur, teknologi modern, dan fungsi multifungsi untuk berbagai acara dan wisata. Dengan wahana unik dan pemandangan luar biasa, menara ini menjadi pilihan utama untuk pengalaman tak terlupakan.
+        </p>
+      </section>
     </div>
   );
-}
+};
+
+export default MenaraImperialTerrace;
