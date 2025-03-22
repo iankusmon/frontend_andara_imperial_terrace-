@@ -1,10 +1,9 @@
 "use client"
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 import { FaClipboardList, FaMoneyCheck, FaHome, FaFileInvoice, FaBuilding, FaUserCog, FaCogs, FaHistory } from 'react-icons/fa';
-import Link from 'next/link';
 import {
   FaGift,
   FaMoneyBillWave,
@@ -15,6 +14,10 @@ import {
   FaComments,
   FaUserPlus,
 } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Carousel } from "react-responsive-carousel";
 
 interface DashboardStat {
   label: string;
@@ -46,6 +49,19 @@ const landOwnershipData = [
   },
 ];
 
+const landOwnershipDataSartono = [
+  {
+    id: "RK. 02  SHGB 110",
+    customer: "-",
+    progress: {
+      NUP: "0%",
+      BookingFee: "0%",
+      DownPayment: "0%",
+      Pelunasan: "0%",
+    },
+  }
+];
+
 
 const stats: DashboardStat[] = [
   { label: "Total Revenue", value: "Rp0.00", icon: <FaGift /> },
@@ -57,8 +73,25 @@ const stats: DashboardStat[] = [
 ];
 
 const Dashboard = () => {
-  const [data] = useState(landOwnershipData);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [customerName, setCustomerName] = useState("");
+  const [data, setData] = useState<typeof landOwnershipData>([]);
 
+  useEffect(() => {
+    const customerName = localStorage.getItem("customerName") || "";
+    setCustomerName(customerName);
+
+    console.log(customerName)
+  }, []);
+
+  useEffect(() => {
+    if (customerName === "Bambang Nurmei") {
+      setData(landOwnershipData);
+    } else if (customerName === "Sartono") {
+      setData(landOwnershipDataSartono);
+    }
+  }, [customerName]);
+   
   return (
     <div className="container pt-40">
       <h1 className="text-center mt-5 pt-20">Land Owner Dashboard</h1>
@@ -76,7 +109,7 @@ const Dashboard = () => {
       </div>
 
       <div className="p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-lg font-semibold mb-4">Kepemilikan Lahan - Bapak Bambang Nurmei</h2>
+      <h2 className="text-lg font-semibold mb-4">Kepemilikan Lahan - Bapak {customerName}</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-300">
           <thead className="bg-gray-100">
@@ -90,7 +123,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+            {data?.map((item, index) => (
               <tr key={index} className="hover:bg-gray-50">
                 <td className="border px-4 py-2">{item.id}</td>
                 <td className="border px-4 py-2">{item.customer}</td>

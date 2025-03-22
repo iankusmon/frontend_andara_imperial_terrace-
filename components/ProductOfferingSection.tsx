@@ -16,7 +16,7 @@ const ProductOfferingSection: React.FC = () => {
         {/* Download Product Knowledge */}
         <div className="flex justify-center mb-4">
           <a
-            href="https://drive.google.com/drive/folders/1l8Im25cT0mvomsOP2uNEDJMHIieEMAfK"
+            href="https://drive.google.com/drive/folders/1b2s4hFC1u2jnD0MHU5OVJbrNX_MJKeps"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition"

@@ -29,6 +29,7 @@ const LoginPage = () => {
       // Simpan token dan data user di localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("customerId", data.customer.id);
+      localStorage.setItem("customerName", data.customer.name);
       localStorage.setItem(
         "user",
         JSON.stringify({
