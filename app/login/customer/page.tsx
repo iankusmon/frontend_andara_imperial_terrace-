@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -65,17 +67,26 @@ const LoginPage = () => {
               placeholder="Enter your email"
             />
           </div>
-          <div className="input-group">
+          <div className="input-group password-group">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="input-field"
-              placeholder="Enter your password"
-            />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input-field"
+                placeholder="Enter your password"
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
           <button type="submit" className="submit-btn">Login</button>
         </form>
@@ -140,6 +151,7 @@ const LoginPage = () => {
           border-radius: 5px;
           outline: none;
           transition: border-color 0.3s;
+          padding-right: 40px;
         }
         .input-field:focus {
           border-color: #4caf50;
@@ -179,6 +191,28 @@ const LoginPage = () => {
         }
         .signup-btn:hover {
           background-color: #005bb5;
+        }
+        .toggle-password {
+          position: absolute;
+          right: 0px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+        }
+        .toggle-password svg {
+          color: #555;
+        }
+        .password-group {
+          position: relative;
+        }
+        .password-wrapper {
+          display: flex;
+          align-items: center;
+          position: relative;
         }
       `}</style>
     </div>

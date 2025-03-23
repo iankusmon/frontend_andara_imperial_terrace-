@@ -96,7 +96,7 @@ const MobileSlider: React.FC = () => {
             <h3 className="text-md font-bold mb-2">Bagikan</h3>
             <p className="mb-3">{currentSlide.message}</p>
             <div className="flex gap-2 justify-center">
-            <FacebookShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
+            <FacebookShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}&message=Temukan Properti Impian Anda!`} quote="Temukan properti impian Anda dengan Andara Imperial Terrace! 🌟🏡" hashtag={currentSlide.message}>
                 <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
               </FacebookShareButton>
               <WhatsappShareButton url={`${DOMAIN}${currentSlide.share_link}?referral_code=${referralCode}`} title={currentSlide.message} separator=" - ">
