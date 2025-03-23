@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Form, Button, Modal, Alert } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
+import  { Modal }  from "react-bootstrap";
 import "../app/nup/Nup.css";
 import "../app/nup/custom-bootstrap.css"; // Overwrite warna Bootstrap
 
@@ -37,6 +38,8 @@ interface FormDataState {
   npwp: string;
   phone: string;
   email: string;
+  password: string;
+  password_confirmation: string;
   villaUnitType: string;
   unitNumber: string;
   bankName: string;
@@ -49,11 +52,13 @@ interface FormDataState {
 
 const villaUnitOptions: { [key: string]: number } = {
   "Da Vinci Residence": 10,
-  "Amsterdam Royal": 7,
-  "Athena Height": 9,
+  "Amsterdam Royal": 9,
+  "Athena Height": 7,
 };
 
 const WizardForm: React.FC = () => {
+  const [nupNumber, setNupNumber] = useState("");
+  const [orderNumber, setOrderNumber] = useState("");
   const [formDataState, setFormDataState] = useState<FormDataState>({
     fullName: "",
     nik: "",
@@ -63,6 +68,8 @@ const WizardForm: React.FC = () => {
     npwp: "",
     phone: "",
     email: "",
+    password: "",
+    password_confirmation: "",
     villaUnitType: "",
     unitNumber: "",
     bankName: "",
@@ -84,14 +91,14 @@ const WizardForm: React.FC = () => {
     if (!isLoggedIn) {
       setShowLoginWarning(true);
       setTimeout(() => {
-        router.push("/login/customer");
+        router.replace("/login/customer");
       }, 3000);
     }
 
     const customerId = localStorage.getItem("customerId");
     if (!customerId) {
       alert("Anda harus login terlebih dahulu!");
-      router.push("/login/customer");
+      router.replace("/login/customer");
       return;
     }
     else {
@@ -109,18 +116,43 @@ const WizardForm: React.FC = () => {
     setFormDataState({ ...formDataState, [fieldName]: file });
   };
 
-  const generateNupNumber = () => `NUP-${Date.now()}`;
-  const generateOrderNumber = () => `ORD-${Date.now()}`;
+  // const generateNupNumber = () => `NUP-${Date.now()}`;
+  // const generateOrderNumber = () => `ORD-${Date.now()}`;
+
+  useEffect(() => {
+    setNupNumber(`NUP-${Date.now()}`);
+    setOrderNumber(`ORD-${Date.now()}`);
+  }, []);
 
   const handleModalClose = () => {
     setShowSuccessModal(false);
-    // Reset wizard or navigate to dashboard
+    setFormDataState({
+      fullName: "",
+      nik: "",
+      address: "",
+      occupation: "",
+      income: "",
+      npwp: "",
+      phone: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      villaUnitType: "",
+      unitNumber: "",
+      bankName: "",
+      accountHolder: "",
+      accountNumber: "",
+      KTP: null,
+      paymentMethod: "",
+      paymentReceipt: null,
+    });
+    router.push("/customer-dashboard");
   };
 
   const numberFormat = (value: any) =>
-  new Intl.NumberFormat('IN', {
-    style: 'currency',
-    currency: 'IDR'
+  new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
   }).format(value);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -129,8 +161,8 @@ const WizardForm: React.FC = () => {
 
     const formData = new FormData();
     formData.append("nup[customer_id]", customerId);
-    formData.append("nup[nup_number]", generateNupNumber());
-    formData.append("nup[order_number]", generateOrderNumber());
+    formData.append("nup[nup_number]", nupNumber);
+    formData.append("nup[order_number]", orderNumber);
     formData.append("nup[fullname]", formDataState.fullName);
     formData.append("nup[nik]", formDataState.nik);
     formData.append("nup[address]", formDataState.address);
@@ -139,6 +171,8 @@ const WizardForm: React.FC = () => {
     formData.append("nup[npwp]", formDataState.npwp);
     formData.append("nup[phone]", formDataState.phone);
     formData.append("nup[email]", formDataState.email);
+    formData.append("nup[password]", formDataState.password);
+    formData.append("nup[password_confirmation]", formDataState.password_confirmation);
     formData.append("nup[villa_desired]", transformToSnakeCase(formDataState.villaUnitType));
     formData.append("nup[villa_unit_desired]", formDataState.unitNumber);
     formData.append("nup[bank_name]", formDataState.bankName);
@@ -164,12 +198,13 @@ const WizardForm: React.FC = () => {
       });
 
       if (response.ok) {
-        setShowSuccessModal(true);
+        alert("Pembayaran Berhasil! Bukti pembayaran NUP Anda telah berhasil diunggah.");
+        router.push("/customer-dashboard");
       } else {
-        setShowErrorAlert(true);
+        alert("Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.");
       }
     } catch (error) {
-      setShowErrorAlert(true);
+      alert("Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.");
     }
   };
 
@@ -223,9 +258,13 @@ const WizardForm: React.FC = () => {
             <label>Pilihan Nomor Unit Villa*</label>
             <select name="unitNumber" value={formDataState.unitNumber} onChange={handleInputChange} required>
               <option value="">Pilih</option>
-              {Array.from({ length: villaUnitOptions[formDataState.villaUnitType] || 0 }, (_, i) => (
+              {formDataState.villaUnitType ? (
+              Array.from({ length: villaUnitOptions[formDataState.villaUnitType] }, (_, i) => (
                 <option key={i + 1} value={(i + 1).toString()}>{i + 1}</option>
-              ))}
+              ))
+            ) : (
+              <option value="">Pilih tipe villa dulu</option>
+            )}
             </select>
 
             <label>Nama Bank</label>
@@ -252,10 +291,10 @@ const WizardForm: React.FC = () => {
         </form>
       )}
 
-        <Modal show={showSuccessModal} onHide={handleModalClose} centered>
-        {/* <Modal.Header closeButton>
+        {/* <Modal show={showSuccessModal} onHide={handleModalClose} centered>
+        <Modal.Header closeButton>
           <Modal.Title>Konfirmasi Sukses</Modal.Title>
-        </Modal.Header> */}
+        </Modal.Header>
         <Modal.Body>
           <div style={{ textAlign: "center", marginLeft: "40%" }}>
             <img
@@ -273,11 +312,11 @@ const WizardForm: React.FC = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button variant="primary" onClick={handleModalClose}>
+          <Button variant="primary" onClick={handleModalClose}>
             Dashboard
-          </Button> */}
+          </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
       <style jsx>{`
         /* FormWithTooltip.css */
         .react-tooltip {
