@@ -29,17 +29,17 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, message, share
         <h3 className="text-lg font-bold mb-2">Bagikan</h3>
         <p className="mb-4">{message}</p>
         <div className="flex gap-3 justify-center">
-          <FacebookShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} hashtag={message}>
+          <FacebookShareButton url={`${DOMAIN}${shareLink}`} hashtag={message}>
             <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
           </FacebookShareButton>
-          <WhatsappShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} title={message} separator=" - ">
+          <WhatsappShareButton url={`${DOMAIN}${shareLink}`} title={message} separator=" - ">
             <FaWhatsapp className="text-green-500 text-3xl cursor-pointer" />
           </WhatsappShareButton>
-          <TelegramShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} title={message}>
+          <TelegramShareButton url={`${DOMAIN}${shareLink}`} title={message}>
             <FaTelegram className="text-blue-400 text-3xl cursor-pointer" />
           </TelegramShareButton>
           <a
-            href={`https://www.instagram.com/?url=${DOMAIN}${shareLink}?referral_code=${referralCode}`}
+            href={`https://www.instagram.com/?url=${DOMAIN}${shareLink}`}
             target="_blank"
             rel="noopener noreferrer"
           >
