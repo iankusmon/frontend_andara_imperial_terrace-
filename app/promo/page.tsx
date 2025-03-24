@@ -26,11 +26,18 @@ const salesData = [
 export default function SalesPage() {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
     setReferralCode(referral);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -216,7 +223,7 @@ export default function SalesPage() {
         isOpen={isShareModalOpen}
         onClose={handleCloseShareModal}
         message="Bagikan Promo Melimpah dari AIT"
-        shareLink="/sign-up/customer"
+        shareLink={shareLink} // Use the state instead of directly accessing window
         referralCode={referralCode}
       />
     </div>

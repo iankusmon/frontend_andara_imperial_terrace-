@@ -138,7 +138,7 @@ const VillaSlider = () => {
             </button>
             <h2 className="text-center mb-3">Bagikan {currentVilla.share_cta}</h2>
             <div className="flex gap-3 justify-center">
-              <FacebookShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
+              <FacebookShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} hashtag={currentVilla.share_cta}>
                 <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
               </FacebookShareButton>
               <WhatsappShareButton url={`${DOMAIN}${currentVilla.share_link}?referral_code=${referralCode}`} title={currentVilla.share_cta} separator=" - ">

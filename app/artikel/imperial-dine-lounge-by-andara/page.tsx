@@ -13,11 +13,18 @@ export default function KawasanAIT() {
   const [showAlert, setShowAlert] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
     setReferralCode(referral);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -134,7 +141,7 @@ export default function KawasanAIT() {
         isOpen={isShareModalOpen}
         onClose={handleCloseShareModal}
         message="Temukan Imperial Dine & Lounge by Andara dengan Pemandangan Sawah Terasering Asri dan Segar!"
-        shareLink="/sign-up/customer"
+        shareLink={shareLink} // Use the state instead of directly accessing window
         referralCode={referralCode}
       />
     </div>

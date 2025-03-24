@@ -12,11 +12,19 @@ import "swiper/css/pagination";
 const DavinciResidence = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
     setReferralCode(referral);
   }, []); 
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
+  
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -73,7 +81,8 @@ const DavinciResidence = () => {
           isOpen={isShareModalOpen}
           onClose={handleCloseShareModal}
           message="Bagikan Kemewahan Villa Type Davinci Residence"
-          shareLink="/sign-up/customer"
+          // shareLink="/sign-up/customer"
+          shareLink={shareLink} // Use the state instead of directly accessing window
           referralCode={referralCode}
         />
       </div>

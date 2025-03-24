@@ -16,11 +16,18 @@ const VillaAthenaHeight = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
     setReferralCode(referral);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -76,7 +83,7 @@ const VillaAthenaHeight = () => {
           isOpen={isShareModalOpen}
           onClose={handleCloseShareModal}
           message="Bagikan Kemewahan Villa Unit AH1 Athena Height"
-          shareLink="/sign-up/customer"
+          shareLink={shareLink} // Use the state instead of directly accessing window
           referralCode={referralCode}
         />
       </div>

@@ -31,6 +31,7 @@ const steps = [
 const AlurPemesanan = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("token");
@@ -39,6 +40,13 @@ const AlurPemesanan = () => {
     const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
     setReferralCode(referralCode);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
+  
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -82,7 +90,7 @@ const AlurPemesanan = () => {
           isOpen={isShareModalOpen}
           onClose={handleCloseShareModal}
           message="Bagikan Cara Melakukan Pemesanan Villa AIT"
-          shareLink="/sign-up/customer"
+          shareLink={shareLink} // Use the state instead of directly accessing window
           referralCode={referralCode}
         />
       </div>

@@ -198,7 +198,8 @@ export default function AffiliateCorner() {
             isOpen={isShareModalOpen}
             onClose={handleCloseShareModal}
             message="Yuk Gabung di Agent Affiliate"
-            shareLink="/sign-up/agent-affiliate"
+            // shareLink="/sign-up/agent-affiliate"
+            shareLink={typeof window !== "undefined" ? window.location.href : ""}
             referralCode={referralCode}
           />
       </div>

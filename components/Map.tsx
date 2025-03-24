@@ -37,6 +37,7 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
   const [hoveredLocation, setHoveredLocation] = useState<Location | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [shareLink, setShareLink] = useState("");
 
   const [referralCode, setReferralCode] = useState("");
 
@@ -47,6 +48,12 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
     const referralCode = localStorage.getItem("referralCode") || ""; // Jika null, atur menjadi string kosong
     setReferralCode(referralCode);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -84,7 +91,7 @@ function MapComponent({ locations, isMobile }: MapComponentProps) {
           isOpen={isShareModalOpen}
           onClose={handleCloseShareModal}
           message="Bagikan Keseruan Map Kawasan AIT"
-          shareLink="/sign-up/customer"
+          shareLink={shareLink} // Use the state instead of directly accessing window
           referralCode={referralCode}
         />
       <picture className="w-full max-w-screen-xl w-8xl">

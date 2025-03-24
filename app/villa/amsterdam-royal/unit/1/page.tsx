@@ -17,12 +17,19 @@ const VillaAmsterdamRoyal = () => {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [shareLink, setShareLink] = useState("");
   const [referralCode, setReferralCode] = useState("");
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
     setReferralCode(referral);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   const handleOpenShareModal = () => {
     setIsShareModalOpen(true);
@@ -78,7 +85,7 @@ const VillaAmsterdamRoyal = () => {
           isOpen={isShareModalOpen}
           onClose={handleCloseShareModal}
           message="Bagikan Kemewahan Villa Unit AR1 Amsterdam Royal"
-          shareLink="/sign-up/customer"
+          shareLink={shareLink} // Use the state instead of directly accessing window
           referralCode={referralCode}
         />
       </div>

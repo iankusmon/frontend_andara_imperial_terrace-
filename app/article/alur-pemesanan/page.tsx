@@ -49,6 +49,13 @@ const steps = [
 export default function AlurPemesanan() {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [referralCode, setReferralCode] = useState("");
+  const [shareLink, setShareLink] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareLink(`/${window.location.pathname}?referral_code=${referralCode}`);
+    }
+  }, [referralCode]);
 
   useEffect(() => {
     const referral = localStorage.getItem("referralCode") || "";
@@ -93,7 +100,7 @@ export default function AlurPemesanan() {
         isOpen={isShareModalOpen}
         onClose={handleCloseShareModal}
         message="Bagikan Alur Pemesanan Villa AIT"
-        shareLink="/sign-up/customer"
+        shareLink={shareLink} // Use the state instead of directly accessing window
         referralCode={referralCode}
       />
     </div>

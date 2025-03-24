@@ -29,7 +29,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, message, share
         <h3 className="text-lg font-bold mb-2">Bagikan</h3>
         <p className="mb-4">{message}</p>
         <div className="flex gap-3 justify-center">
-          <FacebookShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} hashtag="#PropertiImpian">
+          <FacebookShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} hashtag={message}>
             <FaFacebook className="text-blue-600 text-3xl cursor-pointer" />
           </FacebookShareButton>
           <WhatsappShareButton url={`${DOMAIN}${shareLink}?referral_code=${referralCode}`} title={message} separator=" - ">
