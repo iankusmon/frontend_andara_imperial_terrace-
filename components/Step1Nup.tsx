@@ -198,7 +198,7 @@ const WizardForm: React.FC = () => {
       });
 
       if (response.ok) {
-        alert("Pembayaran Berhasil! Bukti pembayaran NUP Anda telah berhasil diunggah.");
+        alert("Pembayaran Berhasil! Bukti pembayaran NUP Anda telah berhasil diunggah, silahkan Cek Dashboard");
         router.push("/customer-dashboard");
       } else {
         alert("Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.");

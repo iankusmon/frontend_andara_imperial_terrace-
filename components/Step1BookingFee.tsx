@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import "../app/booking-fee/BookingFee.css"; // Add your custom CSS
 
+import { useRouter } from "next/navigation";
+
 interface FormData {
   paymentType: string;
   payment_amount: string;
@@ -78,6 +80,8 @@ const WizardForm: React.FC = () => {
   const [LaporanKeuanganPreview, setLaporanKeuanganPreview] = useState<string | null>(null);
   const [RekeningKoranUsaaha6BulanPreview, setRekeningKoranUsaaha6BulanPreview] = useState<string | null>(null);
 
+  const router = useRouter();
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -140,11 +144,15 @@ const WizardForm: React.FC = () => {
   };
 
   const handleConfirmationSubmit = () => {
-    // Show success modal on submit
-    setShowSuccessModal(true);
-
     // e.preventDefault();
     console.log("Submitted Form Data:", formData);
+
+    // Show success modal on submit
+    // setShowSuccessModal(true);
+
+    alert("Pembayaran Berhasil! Bukti pembayaran Booking Fee Anda telah berhasil diunggah, silahkan Cek Dashboard.");
+    router.push("/customer-dashboard");
+    
   };
 
   const handleModalClose = () => {
