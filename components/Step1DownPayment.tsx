@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import "../app/down-payment/DownPayment.css"; // Add your custom CSS
 
+import { useRouter } from "next/navigation";
+
 interface FormData {
   paymentType: string;
   payment_amount: string;
@@ -28,6 +30,7 @@ const WizardForm: React.FC = () => {
   });
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const router = useRouter();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -59,10 +62,13 @@ const WizardForm: React.FC = () => {
 
   const handleConfirmationSubmit = () => {
     // Show success modal on submit
-    setShowSuccessModal(true);
+    // setShowSuccessModal(true);
 
     // e.preventDefault();
     console.log("Submitted Form Data:", formData);
+
+    alert("Pembayaran Berhasil! Bukti pembayaran Down Payment Anda telah berhasil diunggah, silahkan Cek Dashboard.");
+    router.push("/customer-dashboard");
   };
 
   const handleModalClose = () => {

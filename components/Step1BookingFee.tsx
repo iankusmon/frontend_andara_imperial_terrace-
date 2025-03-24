@@ -737,7 +737,7 @@ const WizardForm: React.FC = () => {
       Back
     </button>
       <button type="button" onClick={handleConfirmationSubmit} className="btn btn-primary">
-      Next
+      Submit
     </button>
     </div>
   );

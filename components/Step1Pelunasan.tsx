@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Form, Button, Modal, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import "../app/pelunasan/Pelunasan.css"; // Add your custom CSS
 
+import { useRouter } from "next/navigation";
+
 interface FormData {
   fullName: string;
   nik: string;
