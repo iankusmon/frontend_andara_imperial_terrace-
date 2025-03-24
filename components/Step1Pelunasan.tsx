@@ -36,6 +36,8 @@ const WizardForm: React.FC = () => {
   const [PaymentReceipt, setPaymentReceipt] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  const router = useRouter();
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -45,10 +47,13 @@ const WizardForm: React.FC = () => {
 
   const handleConfirmationSubmit = () => {
     // Show success modal on submit
-    setShowSuccessModal(true);
+    // setShowSuccessModal(true);
 
     // e.preventDefault();
     console.log("Submitted Form Data:", formData);
+
+    alert("Pembayaran Berhasil! Bukti pembayaran Pelunasan Anda telah berhasil diunggah, silahkan Cek Dashboard.");
+    router.push("/customer-dashboard");
   };
 
   const handleModalClose = () => {
@@ -179,7 +184,7 @@ const WizardForm: React.FC = () => {
       Back
     </button>
       <button type="button" onClick={handleConfirmationSubmit} className="btn btn-primary">
-      Next
+      Submit
     </button>
       </div>
     </div>
