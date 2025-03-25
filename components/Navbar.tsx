@@ -40,7 +40,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUser(null);
-    router.push("/login/customer");
+    router.replace("/");
   };
 
   useEffect(() => {
