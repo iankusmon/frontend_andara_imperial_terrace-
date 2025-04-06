@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ImperialRentalRates() {
+export default function TarifSewa() {
   return (
     <div className="min-h-screen flex flex-col items-center p-4 text-black">
       <div className="max-w-4xl w-full p-6">
