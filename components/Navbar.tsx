@@ -86,14 +86,7 @@ const Navbar = () => {
 
         {/* Profile/Login Section for Desktop */}
         <div className="hidden lg:flex gap-2 pt-2 relative">
-          {!isLoggedIn && (
-            <Link
-              href="/sign-up/agent-affiliate"
-              className="bg-white text-black border border-gray-300 hover:bg-gray-200 px-4 py-2 rounded"
-            >
-              Daftar Affiliate
-            </Link>
-          )}
+
           {isLoggedIn && user ? (
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
