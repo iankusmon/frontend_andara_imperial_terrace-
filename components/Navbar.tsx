@@ -82,13 +82,13 @@ const Navbar = () => {
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
                 <Image
-                  src={user.profilePic}
+                  src={user?.profilePic}
                   alt="Profile"
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
-                <span className="font-bold text-sm">{user.username}</span>
+                <span className="font-bold text-sm">{user?.username}</span>
               </button>
               {showDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
@@ -165,13 +165,13 @@ const Navbar = () => {
             <div className="flex flex-col items-center gap-2 mt-2">
               <div className="flex items-center gap-2">
                 <Image
-                  src={user.profilePic}
+                  src={user?.profilePic ?? "/images/default-profile.png"}
                   alt="Profile"
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
-                <span className="text-white font-bold text-sm">{user.username}</span>
+                <span className="text-white font-bold text-sm">{user?.username}</span>
               </div>
               <Link href={dashboardPath} className="text-white hover:underline text-sm" onClick={() => setNavbarOpen(false)}>
                 Go to Dashboard
