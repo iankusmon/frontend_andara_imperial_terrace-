@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { NAV_LINKS } from "@/constants";
-import Button from "./Button";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
@@ -13,8 +12,6 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<{ username: string; profilePic: string; role: string } | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showLoginDropdown, setShowLoginDropdown] = useState(false);
-  const [showSignupDropdown, setShowSignupDropdown] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -47,11 +44,9 @@ const Navbar = () => {
     function handleClickOutside(event: MouseEvent) {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node) // ✅ Konversi event.target ke Node
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         setShowDropdown(false);
-        setShowLoginDropdown(false);
-        setShowSignupDropdown(false);
       }
     }
 
@@ -67,7 +62,6 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between fixed z-50 text-white w-full py-4 px-4 lg:px-16 nav-container">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo dan judul */}
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/LogoAIT3.svg" alt="logo" width={60} height={60} />
@@ -75,7 +69,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden lg:flex gap-4 pt-2">
           {NAV_LINKS.map((link) => (
             <Link key={link.key} href={link.href} className="text-white text-sm">
@@ -84,9 +77,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Profile/Login Section for Desktop */}
         <div className="hidden lg:flex gap-2 pt-2 relative">
-
           {isLoggedIn && user ? (
             <div className="relative">
               <button onClick={() => setShowDropdown(!showDropdown)} className="flex items-center gap-2 focus:outline-none">
@@ -117,48 +108,17 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <div className="flex gap-2 relative">
-              <div>
-                <button onClick={() => {
-                  setShowLoginDropdown(!showLoginDropdown);
-                  setShowSignupDropdown(false);
-                }} className="btn_white px-4 py-2 rounded">
-                  Login
-                </button>
-                {showLoginDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
-                    <Link href="/login/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
-                      Customer
-                    </Link>
-                    <Link href="/login" className="block px-4 py-2 hover:bg-gray-200 text-sm">
-                      Agent Affiliate
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <div>
-                <button onClick={() => {
-                  setShowSignupDropdown(!showSignupDropdown);
-                  setShowLoginDropdown(false);
-                }} className="btn_white px-4 py-2 rounded">
-                  Sign Up
-                </button>
-                {showSignupDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
-                    <Link href="/sign-up/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm">
-                      Customer
-                    </Link>
-                    <Link href="/sign-up/agent-affiliate" className="block px-4 py-2 hover:bg-gray-200 text-sm">
-                      Agent Affiliate
-                    </Link>
-                  </div>
-                )}
-              </div>
+            <div className="flex gap-2">
+              <Link href="/login/customer" className="btn_white px-4 py-2 rounded">
+                Login
+              </Link>
+              <Link href="/sign-up/customer" className="btn_white px-4 py-2 rounded">
+                Sign Up
+              </Link>
             </div>
           )}
         </div>
 
-        {/* Hamburger Button for Mobile */}
         <div className="block lg:hidden pt-2 relative z-50">
           {navbarOpen ? (
             <button onClick={() => setNavbarOpen(false)}>
@@ -172,7 +132,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu: ditempatkan tepat di bawah navbar */}
       {navbarOpen && (
         <div className="absolute top-full left-0 w-full bg-green-custom text-white p-5 flex flex-col items-center lg:hidden z-40">
           {NAV_LINKS.map((link) => (
@@ -185,16 +144,24 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          {!isLoggedIn && (
-            <Link
-              href="/sign-up/agent-affiliate"
-              className="bg-white text-black border hover:bg-gray-200 px-4 py-2 rounded my-4"
-              onClick={() => setNavbarOpen(false)}
-            >
-              Daftar Affiliate
-            </Link>
-          )}
-          {isLoggedIn && user ? (
+          {!isLoggedIn ? (
+            <div className="flex flex-col gap-2 mt-4">
+              <Link
+                href="/login/customer"
+                className="bg-white text-black border hover:bg-gray-200 px-4 py-2 rounded"
+                onClick={() => setNavbarOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                href="/sign-up/customer"
+                className="bg-white text-black border hover:bg-gray-200 px-4 py-2 rounded"
+                onClick={() => setNavbarOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </div>
+          ) : (
             <div className="flex flex-col items-center gap-2 mt-2">
               <div className="flex items-center gap-2">
                 <Image
@@ -212,51 +179,6 @@ const Navbar = () => {
               <button onClick={() => { handleLogout(); setNavbarOpen(false); }} className="text-white hover:underline text-sm">
                 Logout
               </button>
-            </div>
-          ) : (
-            <div className="flex gap-2 relative">
-              <div className="dropdown-menu">
-                <button
-                  onClick={() => {
-                    setShowLoginDropdown(!showLoginDropdown);
-                    setShowSignupDropdown(false);
-                  }}
-                  className="btn_white px-4 py-2 rounded"
-                >
-                  Login
-                </button>
-                {showLoginDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
-                    <Link href="/login/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm" onClick={() => setNavbarOpen(false)}>
-                      Customer
-                    </Link>
-                    <Link href="/login" className="block px-4 py-2 hover:bg-gray-200 text-sm" onClick={() => setNavbarOpen(false)}>
-                      Agent Affiliate
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <div className="dropdown-menu">
-                <button
-                  onClick={() => {
-                    setShowSignupDropdown(!showSignupDropdown);
-                    setShowLoginDropdown(false);
-                  }}
-                  className="btn_white px-4 py-2 rounded"
-                >
-                  Sign Up
-                </button>
-                {showSignupDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
-                    <Link href="/sign-up/customer" className="block px-4 py-2 hover:bg-gray-200 text-sm" onClick={() => setNavbarOpen(false)}>
-                      Customer
-                    </Link>
-                    <Link href="/sign-up/agent-affiliate" className="block px-4 py-2 hover:bg-gray-200 text-sm" onClick={() => setNavbarOpen(false)}>
-                      Agent Affiliate
-                    </Link>
-                  </div>
-                )}
-              </div>
             </div>
           )}
         </div>
